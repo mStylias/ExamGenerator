@@ -40,6 +40,9 @@
             this.labelDifficultyArrow = new System.Windows.Forms.Label();
             this.buttonSortDifficulty = new System.Windows.Forms.Button();
             this.panelQuestions = new System.Windows.Forms.Panel();
+            this.panelControlQuestions = new System.Windows.Forms.Panel();
+            this.buttonBack = new System.Windows.Forms.Button();
+            this.buttonForward = new System.Windows.Forms.Button();
             this.togglePanelDifficulty = new ExamGenerator.CustomControls.TogglablePanel();
             this.radioDifficultyItem = new System.Windows.Forms.RadioButton();
             this.togglePanelTags = new ExamGenerator.CustomControls.TogglablePanel();
@@ -48,6 +51,8 @@
             this.panelFilters.SuspendLayout();
             this.panelSortTags.SuspendLayout();
             this.panelSortDifficulty.SuspendLayout();
+            this.panelQuestions.SuspendLayout();
+            this.panelControlQuestions.SuspendLayout();
             this.togglePanelDifficulty.SuspendLayout();
             this.togglePanelTags.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +65,7 @@
             this.labelSectionTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(28)))), ((int)(((byte)(32)))));
             this.labelSectionTitle.Location = new System.Drawing.Point(20, 25);
             this.labelSectionTitle.Name = "labelSectionTitle";
-            this.labelSectionTitle.Size = new System.Drawing.Size(240, 41);
+            this.labelSectionTitle.Size = new System.Drawing.Size(280, 41);
             this.labelSectionTitle.TabIndex = 1;
             this.labelSectionTitle.Text = "Questions";
             this.labelSectionTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -73,7 +78,7 @@
             this.panelTop.Location = new System.Drawing.Point(60, 0);
             this.panelTop.Margin = new System.Windows.Forms.Padding(0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Padding = new System.Windows.Forms.Padding(20, 25, 40, 0);
+            this.panelTop.Padding = new System.Windows.Forms.Padding(20, 25, 0, 0);
             this.panelTop.Size = new System.Drawing.Size(780, 66);
             this.panelTop.TabIndex = 2;
             // 
@@ -84,7 +89,7 @@
             this.panelFilters.Controls.Add(this.panelBarrier1);
             this.panelFilters.Controls.Add(this.panelSortDifficulty);
             this.panelFilters.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelFilters.Location = new System.Drawing.Point(260, 25);
+            this.panelFilters.Location = new System.Drawing.Point(300, 25);
             this.panelFilters.Name = "panelFilters";
             this.panelFilters.Size = new System.Drawing.Size(480, 41);
             this.panelFilters.TabIndex = 2;
@@ -185,18 +190,64 @@
             // 
             // panelQuestions
             // 
+            this.panelQuestions.Controls.Add(this.panelControlQuestions);
             this.panelQuestions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelQuestions.Location = new System.Drawing.Point(60, 66);
             this.panelQuestions.Name = "panelQuestions";
             this.panelQuestions.Size = new System.Drawing.Size(780, 594);
             this.panelQuestions.TabIndex = 12;
             // 
+            // panelControlQuestions
+            // 
+            this.panelControlQuestions.Controls.Add(this.buttonBack);
+            this.panelControlQuestions.Controls.Add(this.buttonForward);
+            this.panelControlQuestions.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControlQuestions.Location = new System.Drawing.Point(0, 550);
+            this.panelControlQuestions.Name = "panelControlQuestions";
+            this.panelControlQuestions.Padding = new System.Windows.Forms.Padding(0, 0, 0, 14);
+            this.panelControlQuestions.Size = new System.Drawing.Size(780, 44);
+            this.panelControlQuestions.TabIndex = 9;
+            // 
+            // buttonBack
+            // 
+            this.buttonBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonBack.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonBack.FlatAppearance.BorderSize = 0;
+            this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBack.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBack.Image = global::ExamGenerator.Properties.Resources.left_25px;
+            this.buttonBack.Location = new System.Drawing.Point(0, 0);
+            this.buttonBack.Margin = new System.Windows.Forms.Padding(5, 5, 0, 12);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(30, 30);
+            this.buttonBack.TabIndex = 8;
+            this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Visible = false;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+            // 
+            // buttonForward
+            // 
+            this.buttonForward.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonForward.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonForward.FlatAppearance.BorderSize = 0;
+            this.buttonForward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonForward.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonForward.Image = global::ExamGenerator.Properties.Resources.right_25px;
+            this.buttonForward.Location = new System.Drawing.Point(750, 0);
+            this.buttonForward.Margin = new System.Windows.Forms.Padding(5, 5, 0, 12);
+            this.buttonForward.Name = "buttonForward";
+            this.buttonForward.Size = new System.Drawing.Size(30, 30);
+            this.buttonForward.TabIndex = 7;
+            this.buttonForward.UseVisualStyleBackColor = true;
+            this.buttonForward.Visible = false;
+            this.buttonForward.Click += new System.EventHandler(this.buttonForward_Click);
+            // 
             // togglePanelDifficulty
             // 
             this.togglePanelDifficulty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.togglePanelDifficulty.BackColor = System.Drawing.Color.White;
             this.togglePanelDifficulty.Controls.Add(this.radioDifficultyItem);
-            this.togglePanelDifficulty.Location = new System.Drawing.Point(672, 66);
+            this.togglePanelDifficulty.Location = new System.Drawing.Point(712, 66);
             this.togglePanelDifficulty.Margin = new System.Windows.Forms.Padding(0);
             this.togglePanelDifficulty.MaximumSize = new System.Drawing.Size(128, 170);
             this.togglePanelDifficulty.Name = "togglePanelDifficulty";
@@ -234,7 +285,7 @@
             this.togglePanelTags.AutoScroll = true;
             this.togglePanelTags.BackColor = System.Drawing.Color.White;
             this.togglePanelTags.Controls.Add(this.radioTagsItem);
-            this.togglePanelTags.Location = new System.Drawing.Point(512, 66);
+            this.togglePanelTags.Location = new System.Drawing.Point(552, 66);
             this.togglePanelTags.Margin = new System.Windows.Forms.Padding(0);
             this.togglePanelTags.MaximumSize = new System.Drawing.Size(128, 170);
             this.togglePanelTags.Name = "togglePanelTags";
@@ -284,6 +335,8 @@
             this.panelFilters.ResumeLayout(false);
             this.panelSortTags.ResumeLayout(false);
             this.panelSortDifficulty.ResumeLayout(false);
+            this.panelQuestions.ResumeLayout(false);
+            this.panelControlQuestions.ResumeLayout(false);
             this.togglePanelDifficulty.ResumeLayout(false);
             this.togglePanelTags.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -308,5 +361,8 @@
         private System.Windows.Forms.RadioButton radioTagsItem;
         private System.Windows.Forms.RadioButton radioDifficultyItem;
         private System.Windows.Forms.Panel panelQuestions;
+        private System.Windows.Forms.Button buttonForward;
+        private System.Windows.Forms.Button buttonBack;
+        private System.Windows.Forms.Panel panelControlQuestions;
     }
 }

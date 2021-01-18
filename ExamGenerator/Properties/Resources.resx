@@ -127,6 +127,12 @@
   <data name="x_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\x_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="right_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\right_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="artificial_intelligence_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\artificial_intelligence_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="add_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\add_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -139,7 +145,7 @@
   <data name="manual_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\manual_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="artificial_intelligence_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\artificial_intelligence_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="left_25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\left_25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -127,6 +127,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icons8_book_shelf.ico" />
+    <None Include="Resources\left_25px.png" />
+    <None Include="Resources\right_25px.png" />
     <None Include="Resources\artificial_intelligence_25px.png" />
     <None Include="Resources\manual_25px.png" />
     <None Include="Resources\add_25px.png" />

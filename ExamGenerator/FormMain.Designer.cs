@@ -320,13 +320,13 @@
             this.radioMenuQuestions.UseVisualStyleBackColor = true;
             this.radioMenuQuestions.Click += new System.EventHandler(this.radioMenuQuestions_Click);
             // 
-            // questionsSection
+            // questionsSection1
             // 
             this.questionsSection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(233)))), ((int)(((byte)(242)))));
             this.questionsSection.Dock = System.Windows.Forms.DockStyle.Fill;
             this.questionsSection.Location = new System.Drawing.Point(195, 54);
-            this.questionsSection.Name = "questionsSection";
-            this.questionsSection.Padding = new System.Windows.Forms.Padding(60, 0, 0, 0);
+            this.questionsSection.Name = "questionsSection1";
+            this.questionsSection.Padding = new System.Windows.Forms.Padding(60, 0, 60, 0);
             this.questionsSection.Size = new System.Drawing.Size(900, 660);
             this.questionsSection.TabIndex = 2;
             // 

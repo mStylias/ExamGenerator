@@ -8,13 +8,13 @@ namespace ExamGenerator
 {
     public class Question
     {
-        public List<string> Tags { get; set; }
+        public HashSet<string> Tags { get; set; }
         public string QuestionBody { get; set; }
         public List<string> PossibleAnswers { get; set; }
         public string CorrectAnswer { get; set; }
         public string Difficulty { get; set; }
 
-        public Question(List<string> tags, string questionBody, List<string> possibleAnswers, string correctAnswer, string difficulty)
+        public Question(HashSet<string> tags, string questionBody, List<string> possibleAnswers, string correctAnswer, string difficulty)
         {
             Tags = tags;
             QuestionBody = questionBody;

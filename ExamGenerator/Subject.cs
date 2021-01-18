@@ -16,5 +16,27 @@ namespace ExamGenerator
         {
             Name = name;
         }
+
+        public List<Question> SortQuestionsByTag(string tag)
+        {
+            var sortedList = new List<Question>();
+            foreach (Question question in Questions)
+            {
+                if (question.Tags.Contains(tag))
+                    sortedList.Add(question);
+            }
+            return sortedList;
+        }
+
+        public List<Question> SortQuestionsByDifficulty(string difficulty)
+        {
+            var sortedList = new List<Question>();
+            foreach (Question question in Questions)
+            {
+                if (question.Difficulty.Equals(difficulty))
+                    sortedList.Add(question);
+            }
+            return sortedList;
+        }
     }
 }

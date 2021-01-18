@@ -93,6 +93,16 @@ namespace ExamGenerator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap left_25px {
+            get {
+                object obj = ResourceManager.GetObject("left_25px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap manual_25px {
             get {
                 object obj = ResourceManager.GetObject("manual_25px", resourceCulture);
@@ -116,6 +126,16 @@ namespace ExamGenerator.Properties {
         internal static System.Drawing.Bitmap questions_25px {
             get {
                 object obj = ResourceManager.GetObject("questions_25px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap right_25px {
+            get {
+                object obj = ResourceManager.GetObject("right_25px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
