@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomControls\TogglablePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,10 +64,10 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModernTextbox.cs">
+    <Compile Include="CustomControls\ModernTextbox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ModernTextbox.Designer.cs">
+    <Compile Include="CustomControls\ModernTextbox.Designer.cs">
       <DependentUpon>ModernTextbox.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -75,8 +78,11 @@
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModernTextbox.resx">
+    <EmbeddedResource Include="CustomControls\ModernTextbox.resx">
       <DependentUpon>ModernTextbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -103,6 +109,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icons8_book_shelf.ico" />
+    <None Include="Resources\artificial_intelligence_25px.png" />
+    <None Include="Resources\manual_25px.png" />
+    <None Include="Resources\add_25px.png" />
+    <None Include="Resources\questions_25px.png" />
+    <None Include="Resources\search_54px.png" />
     <None Include="Resources\minus_20px.png" />
     <None Include="Resources\x_24px.png" />
     <None Include="Resources\bank.jpg" />

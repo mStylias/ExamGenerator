@@ -107,7 +107,7 @@ namespace ExamGenerator
         /* Returns true if only one of the options to choose 
          * how the subject will be loaded is selected and
          * the username field is not empty. e.g. If
-         * the user selects an item from the list and writes
+         * the user selects an item from the list AND writes
          * a name for a new subject this method returns false */
         private bool InfoIsCorrect()
         {         
@@ -170,9 +170,11 @@ namespace ExamGenerator
                 Serialize.SaveSubjects(subjects);
             }
 
+            this.Hide();
             var form = new FormMain(subject, textboxUsername.Text);
-            this.Close();
+            form.FormClosed += (sender, e) => this.Close();
             form.Show();
+            
         }
     }
 }

@@ -28,7 +28,7 @@ namespace ExamGenerator
             if (difficulty.Equals("Easy") || difficulty.Equals("Medium") || difficulty.Equals("Hard"))
                 Difficulty = difficulty;
             else
-                throw new Exception("Difficulty can only be easy, medium or hard");
+                throw new Exception("Difficulty can only be Easy, Medium or Hard with case sensitivity");
         }
 
     }
