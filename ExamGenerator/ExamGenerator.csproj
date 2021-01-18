@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomControls\QuestionModel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\QuestionModel.Designer.cs">
+      <DependentUpon>QuestionModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\TogglablePanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -70,11 +76,20 @@
     <Compile Include="CustomControls\ModernTextbox.Designer.cs">
       <DependentUpon>ModernTextbox.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainFiles\QuestionsSection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainFiles\QuestionsSection.Designer.cs">
+      <DependentUpon>QuestionsSection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Question.cs" />
+    <Compile Include="MainFiles\Question.cs" />
     <Compile Include="Serialize.cs" />
     <Compile Include="Subject.cs" />
+    <EmbeddedResource Include="CustomControls\QuestionModel.resx">
+      <DependentUpon>QuestionModel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFiles\QuestionsSection.resx">
+      <DependentUpon>QuestionsSection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

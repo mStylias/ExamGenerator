@@ -10,6 +10,7 @@ namespace ExamGenerator
     public class Subject
     {
         public string Name { get; set; }
+        public List<Question> Questions { get; set; } = new List<Question>();
 
         public Subject(string name)
         {
