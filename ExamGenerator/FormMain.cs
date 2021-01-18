@@ -19,6 +19,7 @@ namespace ExamGenerator
         public FormMain(Subject subject, string username)
         {
             InitializeComponent();
+            previousSize = Size;
             this.subject = subject;
             this.username = username;
         }
@@ -50,6 +51,28 @@ namespace ExamGenerator
         private void radioMenuAuto_Click(object sender, EventArgs e)
         {
             TogglablePanel.ShowPanel(panelMenuButtons.Controls, panelAutoActive);
+        }
+
+        // Responsiveness
+        Size previousSize;
+        private void FormMain_ResizeEnd(object sender, EventArgs e)
+        {
+            if (Size != previousSize)
+            {
+                questionsSection.OnResizeEnd();
+                previousSize = Size;
+            }
+                
+        }
+
+        FormWindowState previousState = FormWindowState.Normal;
+        private void FormMain_Resize(object sender, EventArgs e)
+        {
+            if (WindowState != previousState && WindowState != FormWindowState.Minimized)
+            {
+                questionsSection.OnResizeEnd();
+                previousState = WindowState;
+            }
         }
     }
 }

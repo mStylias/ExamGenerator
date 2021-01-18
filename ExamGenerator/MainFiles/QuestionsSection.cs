@@ -42,10 +42,11 @@ namespace ExamGenerator.MainFiles
             var correctAnswer = "2. Certainly not me";
             var difficulty = "Medium";
 
-            CurrentSubject.Questions.Add(new Question(tags, questionBody, possibleAnswers, correctAnswer, difficulty));
+            for (int i = 0; i < 6; i++)
+                CurrentSubject.Questions.Add(new Question(tags, questionBody, possibleAnswers, correctAnswer, difficulty));
 
             InitializeQuestionModels();
-            //DisplayQuestionModels();
+            DisplayQuestionModels();
         }
 
 
@@ -61,9 +62,8 @@ namespace ExamGenerator.MainFiles
 
         }
 
-        static readonly int TOP_DISTANCE = 96;
+        static readonly int TOP_DISTANCE = 25;
         static readonly int VERTICAL_SPACING = 30;
-        static readonly int LEFT_DISTANCE = 60;
         static readonly int HORIZONTAL_SPACING = 15;
         private void DisplayQuestionModels()
         {
@@ -73,19 +73,21 @@ namespace ExamGenerator.MainFiles
                 // With default size only 3 questions can be displayed per line and 2 per row
                 int modelsPerLine = 3;
                 int modelsPerRow = 2;
+
+                modelsPerLine += (this.Width - initialWidth) / QuestionModels[0].Width;
+                modelsPerRow += (this.Height - initialHeight) / QuestionModels[0].Height;
+
+                int leftDistance = 0;
+                int maximumModelsNum = modelsPerLine * modelsPerRow;
                 int modelsDisplayedOnCurrentLine = 0;
                 int modelsDisplayedOnCurrentRow = 0;
-
-                modelsPerLine += (this.Width - initialWidth) / QuestionModels[0].Width - 1;
-                modelsPerRow += (this.Height - initialHeight) / QuestionModels[0].Height - 1;
-
-                int maximumModelsNum = modelsPerLine + modelsPerRow;
                 int i = 0;
+
                 while (i < maximumModelsNum && i < QuestionModels.Count)
                 {
 
                     QuestionModels[i].Left = QuestionModels[i].Width * modelsDisplayedOnCurrentLine +
-                                             HORIZONTAL_SPACING * modelsDisplayedOnCurrentLine + LEFT_DISTANCE;
+                                             HORIZONTAL_SPACING * modelsDisplayedOnCurrentLine + leftDistance;
 
                     QuestionModels[i].Top = QuestionModels[i].Height * modelsDisplayedOnCurrentRow +
                                             VERTICAL_SPACING * modelsDisplayedOnCurrentRow + TOP_DISTANCE;
@@ -105,7 +107,10 @@ namespace ExamGenerator.MainFiles
                     control.Show();
             }
         }
-        
 
+        public void OnResizeEnd()
+        {
+            DisplayQuestionModels();
+        }
     }
 }

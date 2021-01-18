@@ -323,7 +323,6 @@
             // questionsSection
             // 
             this.questionsSection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(233)))), ((int)(((byte)(242)))));
-            this.questionsSection.CurrentSubject = null;
             this.questionsSection.Dock = System.Windows.Forms.DockStyle.Fill;
             this.questionsSection.Location = new System.Drawing.Point(195, 54);
             this.questionsSection.Name = "questionsSection";
@@ -344,6 +343,8 @@
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Exam Generator";
+            this.ResizeEnd += new System.EventHandler(this.FormMain_ResizeEnd);
+            this.Resize += new System.EventHandler(this.FormMain_Resize);
             this.panelTopSection.ResumeLayout(false);
             this.panelTitlebar.ResumeLayout(false);
             this.panelSearchQuestions.ResumeLayout(false);

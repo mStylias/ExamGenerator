@@ -11,3 +11,4 @@ C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator\obj\Debug\ExamGen
 C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator\obj\Debug\ExamGenerator.FormMain.resources
 C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator\obj\Debug\ExamGenerator.MainFiles.QuestionsSection.resources
 C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator\obj\Debug\ExamGenerator.CustomControls.QuestionModel.resources
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator\obj\Debug\ExamGenerator.csprojAssemblyReference.cache

@@ -39,11 +39,11 @@
             this.panelSortDifficulty = new System.Windows.Forms.Panel();
             this.labelDifficultyArrow = new System.Windows.Forms.Label();
             this.buttonSortDifficulty = new System.Windows.Forms.Button();
+            this.panelQuestions = new System.Windows.Forms.Panel();
             this.togglePanelDifficulty = new ExamGenerator.CustomControls.TogglablePanel();
             this.radioDifficultyItem = new System.Windows.Forms.RadioButton();
             this.togglePanelTags = new ExamGenerator.CustomControls.TogglablePanel();
             this.radioTagsItem = new System.Windows.Forms.RadioButton();
-            this.panelQuestions = new System.Windows.Forms.Panel();
             this.panelTop.SuspendLayout();
             this.panelFilters.SuspendLayout();
             this.panelSortTags.SuspendLayout();
@@ -60,7 +60,7 @@
             this.labelSectionTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(28)))), ((int)(((byte)(32)))));
             this.labelSectionTitle.Location = new System.Drawing.Point(20, 25);
             this.labelSectionTitle.Name = "labelSectionTitle";
-            this.labelSectionTitle.Size = new System.Drawing.Size(97, 41);
+            this.labelSectionTitle.Size = new System.Drawing.Size(240, 41);
             this.labelSectionTitle.TabIndex = 1;
             this.labelSectionTitle.Text = "Questions";
             this.labelSectionTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -84,9 +84,9 @@
             this.panelFilters.Controls.Add(this.panelBarrier1);
             this.panelFilters.Controls.Add(this.panelSortDifficulty);
             this.panelFilters.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelFilters.Location = new System.Drawing.Point(117, 25);
+            this.panelFilters.Location = new System.Drawing.Point(260, 25);
             this.panelFilters.Name = "panelFilters";
-            this.panelFilters.Size = new System.Drawing.Size(623, 41);
+            this.panelFilters.Size = new System.Drawing.Size(480, 41);
             this.panelFilters.TabIndex = 2;
             // 
             // labelFilters
@@ -98,7 +98,7 @@
             this.labelFilters.Location = new System.Drawing.Point(0, 0);
             this.labelFilters.Name = "labelFilters";
             this.labelFilters.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.labelFilters.Size = new System.Drawing.Size(335, 41);
+            this.labelFilters.Size = new System.Drawing.Size(192, 41);
             this.labelFilters.TabIndex = 8;
             this.labelFilters.Text = "Filters:";
             this.labelFilters.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -109,7 +109,7 @@
             this.panelSortTags.Controls.Add(this.labelTagsArrow);
             this.panelSortTags.Controls.Add(this.buttonSortTags);
             this.panelSortTags.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelSortTags.Location = new System.Drawing.Point(335, 0);
+            this.panelSortTags.Location = new System.Drawing.Point(192, 0);
             this.panelSortTags.Name = "panelSortTags";
             this.panelSortTags.Size = new System.Drawing.Size(128, 41);
             this.panelSortTags.TabIndex = 7;
@@ -142,7 +142,7 @@
             // panelBarrier1
             // 
             this.panelBarrier1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelBarrier1.Location = new System.Drawing.Point(463, 0);
+            this.panelBarrier1.Location = new System.Drawing.Point(320, 0);
             this.panelBarrier1.Name = "panelBarrier1";
             this.panelBarrier1.Size = new System.Drawing.Size(32, 41);
             this.panelBarrier1.TabIndex = 5;
@@ -153,7 +153,7 @@
             this.panelSortDifficulty.Controls.Add(this.labelDifficultyArrow);
             this.panelSortDifficulty.Controls.Add(this.buttonSortDifficulty);
             this.panelSortDifficulty.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelSortDifficulty.Location = new System.Drawing.Point(495, 0);
+            this.panelSortDifficulty.Location = new System.Drawing.Point(352, 0);
             this.panelSortDifficulty.Name = "panelSortDifficulty";
             this.panelSortDifficulty.Size = new System.Drawing.Size(128, 41);
             this.panelSortDifficulty.TabIndex = 6;
@@ -182,6 +182,14 @@
             this.buttonSortDifficulty.TabIndex = 6;
             this.buttonSortDifficulty.Text = "Difficulty";
             this.buttonSortDifficulty.UseVisualStyleBackColor = true;
+            // 
+            // panelQuestions
+            // 
+            this.panelQuestions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelQuestions.Location = new System.Drawing.Point(60, 66);
+            this.panelQuestions.Name = "panelQuestions";
+            this.panelQuestions.Size = new System.Drawing.Size(780, 594);
+            this.panelQuestions.TabIndex = 12;
             // 
             // togglePanelDifficulty
             // 
@@ -257,14 +265,6 @@
             this.radioTagsItem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioTagsItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.radioTagsItem.UseVisualStyleBackColor = true;
-            // 
-            // panelQuestions
-            // 
-            this.panelQuestions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelQuestions.Location = new System.Drawing.Point(60, 66);
-            this.panelQuestions.Name = "panelQuestions";
-            this.panelQuestions.Size = new System.Drawing.Size(780, 594);
-            this.panelQuestions.TabIndex = 12;
             // 
             // QuestionsSection
             // 
