@@ -60,7 +60,7 @@ namespace ExamGenerator.MainFiles
         private void InitializeQuestionModels()
         {
             QuestionModels = new List<QuestionModel>();
-            foreach (Question question in CurrentSubject.SortQuestionsByTag("Modulo"))
+            foreach (Question question in CurrentSubject.Questions)
             {
                 QuestionModel model = new QuestionModel(question);
                 model.Visible = false;
@@ -85,7 +85,10 @@ namespace ExamGenerator.MainFiles
                 // Determine how many models fit in the current screen
                 modelsPerLine += (this.Width - initialWidth) / QuestionModels[0].Width;
                 modelsPerRow += (this.Height - initialHeight) / QuestionModels[0].Height;
-                
+
+                // Modify the position values to keep models centered
+                horizontalSpacing = (panelControlQuestions.Width - (modelsPerLine * QuestionModels[0].Width)) / modelsPerLine;
+
                 // Currently displayed models number
                 int modelsDisplayedOnCurrentLine = 0;
                 int modelsDisplayedOnCurrentRow = 0; 
@@ -94,9 +97,6 @@ namespace ExamGenerator.MainFiles
 
                 // Determines which model is going to be displayed next
                 int i = (page-1) * maximumModelsNum;
-                
-                // Modify the position values to keep models centered
-
 
                 while (i < maximumModelsNum * page && i < QuestionModels.Count)
                 {
@@ -163,7 +163,7 @@ namespace ExamGenerator.MainFiles
 
             // Hide all the models except for the ones currently on screen
             for (int i = 0; i < QuestionModels.Count; i++)
-                if (i < (page - 1) * maximumModelsNum || i > page * maximumModelsNum)
+                if (i < (page - 1) * maximumModelsNum || i >= page * maximumModelsNum)
                     QuestionModels[i].Hide();
                 
         }
