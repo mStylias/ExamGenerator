@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExamGenerator
+namespace ExamGenerator.MainFiles
 {
+    [Serializable]
     public class Question
     {
         public HashSet<string> Tags { get; set; }

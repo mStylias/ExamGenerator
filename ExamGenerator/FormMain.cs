@@ -19,9 +19,15 @@ namespace ExamGenerator
         public FormMain(Subject subject, string username)
         {
             InitializeComponent();
-            previousSize = Size;
+            previousSize = Size; // Used to make user controls responsive
             this.subject = subject;
             this.username = username;
+            // If the screen is smaller than the form size start fullscreen
+            //if (Screen.GetWorkingArea(this).Width > this.Width || 
+            //    Screen.GetWorkingArea(this).Height > this.Height )
+            //{
+            //    WindowState = FormWindowState.Maximized;
+            //}
         }
 
         /* Gives the focus to the search textbox when a control in 

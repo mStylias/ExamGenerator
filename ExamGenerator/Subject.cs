@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using ExamGenerator.MainFiles;
+
 namespace ExamGenerator
 {
     [Serializable]
@@ -11,6 +13,7 @@ namespace ExamGenerator
     {
         public string Name { get; set; }
         public List<Question> Questions { get; set; } = new List<Question>();
+        public static Dictionary<string, Subject> Subjects { get; set; } = new Dictionary<string, Subject>();
 
         public Subject(string name)
         {

@@ -13,8 +13,6 @@ namespace ExamGenerator
 {
     public partial class FormLogin : Form
     {
-        Dictionary<string, Subject> subjects = new Dictionary<string, Subject>();
-
         public FormLogin()
         {
             InitializeComponent();
@@ -31,11 +29,11 @@ namespace ExamGenerator
             // Get saved subjects
             var temp = Serialize.LoadSubjects();
             if (temp != null)
-                subjects = temp;
+                Subject.Subjects = temp;
 
             // Load them to the dropdown menu
-            if (subjects != null)
-                foreach (var subject in subjects)
+            if (Subject.Subjects != null)
+                foreach (var subject in Subject.Subjects)
                 {
                     dropdownListSubjects.Items.Add(subject.Key);
                 }
@@ -158,16 +156,16 @@ namespace ExamGenerator
 
             if (IsDropdownUsed())
             {
-                subject = subjects[dropdownListSubjects.SelectedItem.ToString()];
+                subject = Subject.Subjects[dropdownListSubjects.SelectedItem.ToString()];
             }
             // Make sure that the given subject doesn't already exist in the list
-            else if (!subjects.TryGetValue(textBoxSubject.Text, out subject))
+            else if (!Subject.Subjects.TryGetValue(textBoxSubject.Text, out subject))
             {
             
                 subject = new Subject(textBoxSubject.Text);
-                subjects.Add(subject.Name, subject);
+                Subject.Subjects.Add(subject.Name, subject);
 
-                Serialize.SaveSubjects(subjects);
+                Serialize.SaveSubjects(Subject.Subjects);
             }
 
             this.Hide();

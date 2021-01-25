@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using ExamGenerator.MainFiles;
+
 namespace ExamGenerator.CustomControls
 {
     public partial class QuestionModel : UserControl

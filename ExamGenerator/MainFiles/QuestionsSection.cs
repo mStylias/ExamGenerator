@@ -23,11 +23,8 @@ namespace ExamGenerator.MainFiles
         {
             InitializeComponent();
             initialWidth = this.Width;
-            initialHeight = this.Height;  
-        }
+            initialHeight = this.Height;
 
-        private void QuestionsSection_Load(object sender, EventArgs e)
-        {
             // Temporary load subject
             CurrentSubject = new Subject("Math");
 
@@ -49,11 +46,16 @@ namespace ExamGenerator.MainFiles
 
                 CurrentSubject.Questions.Add(new Question(tags, questionBody, possibleAnswers, correctAnswer, difficulty));
             }
-                
+
 
             InitializeQuestionModels();
             DisplayQuestionModels();
             ToggleNavigationButtons();
+        }
+
+        private void QuestionsSection_Load(object sender, EventArgs e)
+        {
+            
         }
 
 
