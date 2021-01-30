@@ -23,9 +23,15 @@ namespace ExamGenerator.MainFiles
 
         private void AddQuestionsSection_Load(object sender, EventArgs e)
         {
-            listBox1.Update();
-            //listBox1.DataSource = subject.SubjectTags;
-            /*if(subject.SubjectTags == null) listBox1.Items.Add("You haven't created a tag yet.");
+            //listBox1.Update();
+            ////listBox1.DataSource = subject.SubjectTags;
+            
+        }
+
+        public void OnLoad(Subject subject)
+        {
+            this.subject = subject;
+            if (!subject.SubjectTags.Any()) listBox1.Items.Add("You haven't created a tag yet.");
             else
             {
                 if (listBox1.Items.Contains("You haven't created a tag yet.")) listBox1.Items.Remove("You haven't created a tag yet.");
@@ -33,7 +39,7 @@ namespace ExamGenerator.MainFiles
                 {
                     listBox1.Items.Add(s);
                 }
-            }*/
+            }
         }
 
         private void buttonCreate_Click(object sender, EventArgs e)

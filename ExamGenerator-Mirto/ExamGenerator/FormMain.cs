@@ -23,7 +23,7 @@ namespace ExamGenerator
             this.subject = subject;
             this.username = username;
             questionsSection.subject = subject;
-            addQuestionsSection1.subject = subject;
+            addQuestionsSection1.OnLoad(subject);
             // If the screen is smaller than the form size start fullscreen
             //if (Screen.GetWorkingArea(this).Width > this.Width || 
             //    Screen.GetWorkingArea(this).Height > this.Height )
