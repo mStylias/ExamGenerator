@@ -23,7 +23,6 @@ namespace ExamGenerator.MainFiles
 
         private void AddQuestionsSection_Load(object sender, EventArgs e)
         {
-            listBox1.Update();
             //listBox1.DataSource = subject.SubjectTags;
             /*if(subject.SubjectTags == null) listBox1.Items.Add("You haven't created a tag yet.");
             else
@@ -48,7 +47,7 @@ namespace ExamGenerator.MainFiles
                 }
                 List<string> answers = new List<string>();
                 answers.AddRange(richTextBoxAnswers.Text.Split(Environment.NewLine.ToCharArray()));
-                Question q = new Question(subject, tags, richTextBoxQuestion.Text, answers, richTextBoxCorrectAnswer.Text, comboBox1.SelectedItem.ToString());
+                Question q = new Question(tags, richTextBoxQuestion.Text, answers, richTextBoxCorrectAnswer.Text, comboBox1.SelectedItem.ToString());
                 if (q != null) MessageBox.Show("Question added successfully!");
             }
             catch(Exception ex)

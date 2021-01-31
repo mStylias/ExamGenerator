@@ -22,14 +22,8 @@ namespace ExamGenerator
             previousSize = Size; // Used to make user controls responsive
             this.subject = subject;
             this.username = username;
-            questionsSection.subject = subject;
+            //questionsSection.CurrentSubject = subject;
             addQuestionsSection1.subject = subject;
-            // If the screen is smaller than the form size start fullscreen
-            //if (Screen.GetWorkingArea(this).Width > this.Width || 
-            //    Screen.GetWorkingArea(this).Height > this.Height )
-            //{
-            //    WindowState = FormWindowState.Maximized;
-            //}
         }
 
         /* Gives the focus to the search textbox when a control in 
@@ -43,24 +37,24 @@ namespace ExamGenerator
         private void radioMenuQuestions_Click(object sender, EventArgs e)
         {
             // Show the color panel associated with the selected menu radio button
-            TogglablePanel.ShowPanel(panelMenuButtons.Controls, panelQuestionsActive);
+            panelQuestionsActive.ShowPanel(panelMenuButtons.Controls);
             questionsSection.BringToFront();
         }
 
         private void radioMenuAddQuestions_Click(object sender, EventArgs e)
         {
-            TogglablePanel.ShowPanel(panelMenuButtons.Controls, panelAddQuestionsActive);
+            panelAddQuestionsActive.ShowPanel(panelMenuButtons.Controls);
             addQuestionsSection1.BringToFront();
         }
 
         private void radioMenuManual_Click(object sender, EventArgs e)
         {
-            TogglablePanel.ShowPanel(panelMenuButtons.Controls, panelManualActive);
+            panelManualActive.ShowPanel(panelMenuButtons.Controls);
         }
 
         private void radioMenuAuto_Click(object sender, EventArgs e)
         {
-            TogglablePanel.ShowPanel(panelMenuButtons.Controls, panelAutoActive);
+            panelAutoActive.ShowPanel(panelMenuButtons.Controls);
         }
 
         // Responsiveness
@@ -88,6 +82,11 @@ namespace ExamGenerator
         private void addQuestionsSection1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            questionsSection.SearchAndDisplayQuestions(textBoxSearch.Text);
         }
     }
 }

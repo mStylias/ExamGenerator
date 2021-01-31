@@ -33,20 +33,22 @@
             this.panelFilters = new System.Windows.Forms.Panel();
             this.labelFilters = new System.Windows.Forms.Label();
             this.panelSortTags = new System.Windows.Forms.Panel();
-            this.labelTagsArrow = new System.Windows.Forms.Label();
+            this.labelTagsArrow = new System.Windows.Forms.Button();
             this.buttonSortTags = new System.Windows.Forms.Button();
             this.panelBarrier1 = new System.Windows.Forms.Panel();
             this.panelSortDifficulty = new System.Windows.Forms.Panel();
-            this.labelDifficultyArrow = new System.Windows.Forms.Label();
+            this.labelDifficultyArrow = new System.Windows.Forms.Button();
             this.buttonSortDifficulty = new System.Windows.Forms.Button();
             this.panelQuestions = new System.Windows.Forms.Panel();
             this.panelControlQuestions = new System.Windows.Forms.Panel();
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonForward = new System.Windows.Forms.Button();
             this.togglePanelDifficulty = new ExamGenerator.CustomControls.TogglablePanel();
-            this.radioDifficultyItem = new System.Windows.Forms.RadioButton();
+            this.checkBoxHard = new System.Windows.Forms.RadioButton();
+            this.radioDifficultyMedium = new System.Windows.Forms.RadioButton();
+            this.radioDifficultyEasy = new System.Windows.Forms.RadioButton();
+            this.radioDifficultyAny = new System.Windows.Forms.RadioButton();
             this.togglePanelTags = new ExamGenerator.CustomControls.TogglablePanel();
-            this.radioTagsItem = new System.Windows.Forms.RadioButton();
             this.panelTop.SuspendLayout();
             this.panelFilters.SuspendLayout();
             this.panelSortTags.SuspendLayout();
@@ -54,7 +56,6 @@
             this.panelQuestions.SuspendLayout();
             this.panelControlQuestions.SuspendLayout();
             this.togglePanelDifficulty.SuspendLayout();
-            this.togglePanelTags.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelSectionTitle
@@ -122,6 +123,9 @@
             // labelTagsArrow
             // 
             this.labelTagsArrow.Dock = System.Windows.Forms.DockStyle.Right;
+            this.labelTagsArrow.FlatAppearance.BorderSize = 0;
+            this.labelTagsArrow.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
+            this.labelTagsArrow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.labelTagsArrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelTagsArrow.Font = new System.Drawing.Font("Marlett", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.labelTagsArrow.Location = new System.Drawing.Point(101, 0);
@@ -129,12 +133,16 @@
             this.labelTagsArrow.Size = new System.Drawing.Size(27, 41);
             this.labelTagsArrow.TabIndex = 0;
             this.labelTagsArrow.Text = "6";
-            this.labelTagsArrow.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelTagsArrow.Click += new System.EventHandler(this.Tags_Click);
+            this.labelTagsArrow.MouseEnter += new System.EventHandler(this.buttonSort_MouseEnter);
+            this.labelTagsArrow.MouseLeave += new System.EventHandler(this.buttonSort_MouseLeave);
             // 
             // buttonSortTags
             // 
             this.buttonSortTags.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonSortTags.FlatAppearance.BorderSize = 0;
+            this.buttonSortTags.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonSortTags.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonSortTags.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSortTags.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSortTags.Location = new System.Drawing.Point(0, 0);
@@ -143,6 +151,9 @@
             this.buttonSortTags.TabIndex = 6;
             this.buttonSortTags.Text = "Tags";
             this.buttonSortTags.UseVisualStyleBackColor = true;
+            this.buttonSortTags.Click += new System.EventHandler(this.Tags_Click);
+            this.buttonSortTags.MouseEnter += new System.EventHandler(this.buttonSort_MouseEnter);
+            this.buttonSortTags.MouseLeave += new System.EventHandler(this.buttonSort_MouseLeave);
             // 
             // panelBarrier1
             // 
@@ -166,6 +177,9 @@
             // labelDifficultyArrow
             // 
             this.labelDifficultyArrow.Dock = System.Windows.Forms.DockStyle.Right;
+            this.labelDifficultyArrow.FlatAppearance.BorderSize = 0;
+            this.labelDifficultyArrow.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
+            this.labelDifficultyArrow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.labelDifficultyArrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelDifficultyArrow.Font = new System.Drawing.Font("Marlett", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.labelDifficultyArrow.Location = new System.Drawing.Point(101, 0);
@@ -173,12 +187,16 @@
             this.labelDifficultyArrow.Size = new System.Drawing.Size(27, 41);
             this.labelDifficultyArrow.TabIndex = 0;
             this.labelDifficultyArrow.Text = "6";
-            this.labelDifficultyArrow.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelDifficultyArrow.Click += new System.EventHandler(this.Difficulty_Click);
+            this.labelDifficultyArrow.MouseEnter += new System.EventHandler(this.buttonSort_MouseEnter);
+            this.labelDifficultyArrow.MouseLeave += new System.EventHandler(this.buttonSort_MouseLeave);
             // 
             // buttonSortDifficulty
             // 
             this.buttonSortDifficulty.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonSortDifficulty.FlatAppearance.BorderSize = 0;
+            this.buttonSortDifficulty.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonSortDifficulty.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonSortDifficulty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSortDifficulty.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSortDifficulty.Location = new System.Drawing.Point(0, 0);
@@ -187,6 +205,9 @@
             this.buttonSortDifficulty.TabIndex = 6;
             this.buttonSortDifficulty.Text = "Difficulty";
             this.buttonSortDifficulty.UseVisualStyleBackColor = true;
+            this.buttonSortDifficulty.Click += new System.EventHandler(this.Difficulty_Click);
+            this.buttonSortDifficulty.MouseEnter += new System.EventHandler(this.buttonSort_MouseEnter);
+            this.buttonSortDifficulty.MouseLeave += new System.EventHandler(this.buttonSort_MouseLeave);
             // 
             // panelQuestions
             // 
@@ -245,77 +266,98 @@
             // togglePanelDifficulty
             // 
             this.togglePanelDifficulty.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.togglePanelDifficulty.AutoSize = true;
+            this.togglePanelDifficulty.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.togglePanelDifficulty.BackColor = System.Drawing.Color.White;
-            this.togglePanelDifficulty.Controls.Add(this.radioDifficultyItem);
+            this.togglePanelDifficulty.Controls.Add(this.checkBoxHard);
+            this.togglePanelDifficulty.Controls.Add(this.radioDifficultyMedium);
+            this.togglePanelDifficulty.Controls.Add(this.radioDifficultyEasy);
+            this.togglePanelDifficulty.Controls.Add(this.radioDifficultyAny);
             this.togglePanelDifficulty.Location = new System.Drawing.Point(712, 66);
             this.togglePanelDifficulty.Margin = new System.Windows.Forms.Padding(0);
-            this.togglePanelDifficulty.MaximumSize = new System.Drawing.Size(128, 170);
+            this.togglePanelDifficulty.MinimumSize = new System.Drawing.Size(128, 136);
             this.togglePanelDifficulty.Name = "togglePanelDifficulty";
-            this.togglePanelDifficulty.Size = new System.Drawing.Size(128, 170);
+            this.togglePanelDifficulty.Size = new System.Drawing.Size(128, 136);
             this.togglePanelDifficulty.TabIndex = 4;
             this.togglePanelDifficulty.Visible = false;
             // 
-            // radioDifficultyItem
+            // checkBoxHard
             // 
-            this.radioDifficultyItem.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioDifficultyItem.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radioDifficultyItem.Checked = true;
-            this.radioDifficultyItem.Dock = System.Windows.Forms.DockStyle.Top;
-            this.radioDifficultyItem.FlatAppearance.BorderSize = 0;
-            this.radioDifficultyItem.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
-            this.radioDifficultyItem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
-            this.radioDifficultyItem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
-            this.radioDifficultyItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioDifficultyItem.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioDifficultyItem.Location = new System.Drawing.Point(0, 0);
-            this.radioDifficultyItem.Margin = new System.Windows.Forms.Padding(0);
-            this.radioDifficultyItem.Name = "radioDifficultyItem";
-            this.radioDifficultyItem.Padding = new System.Windows.Forms.Padding(0, 0, 13, 5);
-            this.radioDifficultyItem.Size = new System.Drawing.Size(128, 34);
-            this.radioDifficultyItem.TabIndex = 10;
-            this.radioDifficultyItem.TabStop = true;
-            this.radioDifficultyItem.Text = "Questions";
-            this.radioDifficultyItem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radioDifficultyItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.radioDifficultyItem.UseVisualStyleBackColor = true;
+            this.checkBoxHard.Dock = System.Windows.Forms.DockStyle.Top;
+            this.checkBoxHard.FlatAppearance.BorderSize = 0;
+            this.checkBoxHard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBoxHard.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxHard.Location = new System.Drawing.Point(0, 102);
+            this.checkBoxHard.Name = "checkBoxHard";
+            this.checkBoxHard.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.checkBoxHard.Size = new System.Drawing.Size(128, 34);
+            this.checkBoxHard.TabIndex = 3;
+            this.checkBoxHard.Text = "Hard";
+            this.checkBoxHard.UseVisualStyleBackColor = true;
+            this.checkBoxHard.Click += new System.EventHandler(this.radioDifficultyAll_Click);
+            // 
+            // radioDifficultyMedium
+            // 
+            this.radioDifficultyMedium.Dock = System.Windows.Forms.DockStyle.Top;
+            this.radioDifficultyMedium.FlatAppearance.BorderSize = 0;
+            this.radioDifficultyMedium.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.radioDifficultyMedium.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioDifficultyMedium.Location = new System.Drawing.Point(0, 68);
+            this.radioDifficultyMedium.Name = "radioDifficultyMedium";
+            this.radioDifficultyMedium.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.radioDifficultyMedium.Size = new System.Drawing.Size(128, 34);
+            this.radioDifficultyMedium.TabIndex = 2;
+            this.radioDifficultyMedium.Text = "Medium";
+            this.radioDifficultyMedium.UseVisualStyleBackColor = true;
+            this.radioDifficultyMedium.Click += new System.EventHandler(this.radioDifficultyAll_Click);
+            // 
+            // radioDifficultyEasy
+            // 
+            this.radioDifficultyEasy.Dock = System.Windows.Forms.DockStyle.Top;
+            this.radioDifficultyEasy.FlatAppearance.BorderSize = 0;
+            this.radioDifficultyEasy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.radioDifficultyEasy.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioDifficultyEasy.Location = new System.Drawing.Point(0, 34);
+            this.radioDifficultyEasy.Name = "radioDifficultyEasy";
+            this.radioDifficultyEasy.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.radioDifficultyEasy.Size = new System.Drawing.Size(128, 34);
+            this.radioDifficultyEasy.TabIndex = 1;
+            this.radioDifficultyEasy.Text = "Easy";
+            this.radioDifficultyEasy.UseVisualStyleBackColor = true;
+            this.radioDifficultyEasy.Click += new System.EventHandler(this.radioDifficultyAll_Click);
+            // 
+            // radioDifficultyAny
+            // 
+            this.radioDifficultyAny.Checked = true;
+            this.radioDifficultyAny.Dock = System.Windows.Forms.DockStyle.Top;
+            this.radioDifficultyAny.FlatAppearance.BorderSize = 0;
+            this.radioDifficultyAny.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.radioDifficultyAny.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioDifficultyAny.Location = new System.Drawing.Point(0, 0);
+            this.radioDifficultyAny.Name = "radioDifficultyAny";
+            this.radioDifficultyAny.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.radioDifficultyAny.Size = new System.Drawing.Size(128, 34);
+            this.radioDifficultyAny.TabIndex = 4;
+            this.radioDifficultyAny.TabStop = true;
+            this.radioDifficultyAny.Text = "Any";
+            this.radioDifficultyAny.UseVisualStyleBackColor = true;
+            this.radioDifficultyAny.Click += new System.EventHandler(this.radioDifficultyAll_Click);
             // 
             // togglePanelTags
             // 
             this.togglePanelTags.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.togglePanelTags.AutoScroll = true;
+            this.togglePanelTags.AutoSize = true;
+            this.togglePanelTags.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.togglePanelTags.BackColor = System.Drawing.Color.White;
-            this.togglePanelTags.Controls.Add(this.radioTagsItem);
             this.togglePanelTags.Location = new System.Drawing.Point(552, 66);
             this.togglePanelTags.Margin = new System.Windows.Forms.Padding(0);
-            this.togglePanelTags.MaximumSize = new System.Drawing.Size(128, 170);
+            this.togglePanelTags.MaximumSize = new System.Drawing.Size(128, 136);
+            this.togglePanelTags.MinimumSize = new System.Drawing.Size(128, 34);
             this.togglePanelTags.Name = "togglePanelTags";
-            this.togglePanelTags.Size = new System.Drawing.Size(128, 170);
+            this.togglePanelTags.Size = new System.Drawing.Size(128, 34);
             this.togglePanelTags.TabIndex = 3;
             this.togglePanelTags.Visible = false;
-            // 
-            // radioTagsItem
-            // 
-            this.radioTagsItem.Appearance = System.Windows.Forms.Appearance.Button;
-            this.radioTagsItem.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radioTagsItem.Checked = true;
-            this.radioTagsItem.Dock = System.Windows.Forms.DockStyle.Top;
-            this.radioTagsItem.FlatAppearance.BorderSize = 0;
-            this.radioTagsItem.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
-            this.radioTagsItem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
-            this.radioTagsItem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
-            this.radioTagsItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.radioTagsItem.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioTagsItem.Location = new System.Drawing.Point(0, 0);
-            this.radioTagsItem.Margin = new System.Windows.Forms.Padding(0);
-            this.radioTagsItem.Name = "radioTagsItem";
-            this.radioTagsItem.Padding = new System.Windows.Forms.Padding(0, 0, 13, 5);
-            this.radioTagsItem.Size = new System.Drawing.Size(128, 34);
-            this.radioTagsItem.TabIndex = 9;
-            this.radioTagsItem.TabStop = true;
-            this.radioTagsItem.Text = "Questions";
-            this.radioTagsItem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radioTagsItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.radioTagsItem.UseVisualStyleBackColor = true;
             // 
             // QuestionsSection
             // 
@@ -330,7 +372,6 @@
             this.Name = "QuestionsSection";
             this.Padding = new System.Windows.Forms.Padding(60, 0, 60, 0);
             this.Size = new System.Drawing.Size(900, 660);
-            this.Load += new System.EventHandler(this.QuestionsSection_Load);
             this.panelTop.ResumeLayout(false);
             this.panelFilters.ResumeLayout(false);
             this.panelSortTags.ResumeLayout(false);
@@ -338,8 +379,8 @@
             this.panelQuestions.ResumeLayout(false);
             this.panelControlQuestions.ResumeLayout(false);
             this.togglePanelDifficulty.ResumeLayout(false);
-            this.togglePanelTags.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -350,19 +391,21 @@
         private System.Windows.Forms.Panel panelFilters;
         private System.Windows.Forms.Panel panelSortTags;
         private System.Windows.Forms.Button buttonSortTags;
-        private System.Windows.Forms.Label labelTagsArrow;
+        private System.Windows.Forms.Button labelTagsArrow;
         private System.Windows.Forms.Panel panelBarrier1;
         private System.Windows.Forms.Panel panelSortDifficulty;
         private System.Windows.Forms.Button buttonSortDifficulty;
-        private System.Windows.Forms.Label labelDifficultyArrow;
+        private System.Windows.Forms.Button labelDifficultyArrow;
         private System.Windows.Forms.Label labelFilters;
         private CustomControls.TogglablePanel togglePanelTags;
         private CustomControls.TogglablePanel togglePanelDifficulty;
-        private System.Windows.Forms.RadioButton radioTagsItem;
-        private System.Windows.Forms.RadioButton radioDifficultyItem;
         private System.Windows.Forms.Panel panelQuestions;
         private System.Windows.Forms.Button buttonForward;
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Panel panelControlQuestions;
+        private System.Windows.Forms.RadioButton checkBoxHard;
+        private System.Windows.Forms.RadioButton radioDifficultyMedium;
+        private System.Windows.Forms.RadioButton radioDifficultyEasy;
+        private System.Windows.Forms.RadioButton radioDifficultyAny;
     }
 }

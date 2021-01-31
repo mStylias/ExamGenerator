@@ -9,32 +9,19 @@ namespace ExamGenerator.MainFiles
     [Serializable]
     public class Question
     {
-        public Subject subject = new Subject("");
-        public HashSet<string> QuestionTags { get; set; } = new HashSet<string>();
-        public string QuestionBody { get; set; }
+        public HashSet<string> Tags { get; set; } = new HashSet<string>();
+        public string Body { get; set; }
         public List<string> PossibleAnswers { get; set; } = new List<string>();
         public string CorrectAnswer { get; set; }
         public string Difficulty { get; set; }
 
-        public Question(Subject subject, HashSet<string> tags, string questionBody, List<string> possibleAnswers, string correctAnswer, string difficulty)
+        public Question(HashSet<string> tags, string questionBody, List<string> possibleAnswers, string correctAnswer, string difficulty)
         {
-            this.subject = subject;
-            QuestionTags = tags;
-            foreach(string tag in QuestionTags)
-            {
-                try
-                {
-                    if (subject.SubjectTags.Contains(tag)) continue;
-                    else subject.SubjectTags.Add(tag);
-                }
-                catch(NullReferenceException)
-                {
-                    subject.SubjectTags.Add(tag);
-                }
-            }
-            QuestionBody = questionBody;
-            PossibleAnswers = possibleAnswers;
+            Tags = tags;
 
+            Body = questionBody;
+
+            PossibleAnswers = possibleAnswers;
             if (possibleAnswers.Contains(correctAnswer))
                 CorrectAnswer = correctAnswer;
             else

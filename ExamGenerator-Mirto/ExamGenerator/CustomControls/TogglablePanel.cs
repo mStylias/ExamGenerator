@@ -9,14 +9,16 @@ namespace ExamGenerator.CustomControls
 {
     public class TogglablePanel : Panel
     {
-        public static void ShowPanel(ControlCollection controls, TogglablePanel panelToShow)
+        public void ShowPanel(ControlCollection targetContainerControls)
         {
-            foreach (TogglablePanel tPanel in controls.OfType<TogglablePanel>())
+            foreach (Panel panel in targetContainerControls.OfType<Panel>())
             {
-                if (tPanel != panelToShow)
-                    tPanel.Hide();
+                if (panel is TogglablePanel)
+                    panel.Hide();
+                else
+                    ShowPanel(panel.Controls);
             }
-            panelToShow.Show();
+            this.Show();
         }
     }
 }
