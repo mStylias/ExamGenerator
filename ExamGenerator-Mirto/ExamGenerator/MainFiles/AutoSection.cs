@@ -17,6 +17,7 @@ namespace ExamGenerator
         public Subject subject;
         public List<MainFiles.Question> TestQuestions = new List<MainFiles.Question>();
         public List<string> CorrectAnswers = new List<string>();
+        public StringBuilder FileContent = new StringBuilder();
         Random random = new Random();
 
         public AutoSection()
@@ -48,42 +49,55 @@ namespace ExamGenerator
         private void button1_Click(object sender, EventArgs e)
         {
             //Questions Generation
-            for(int i=0; i<QuestionsNumericUpDown.Value; i++)
+            for(int i=0; i<QuestionsNumericUpDown.Value-1; i++)
             {
                 int k = random.Next(0, subject.Questions.Count()-1);
                 if(!TestQuestions.Contains(subject.Questions[k]))
                 {
                     TestQuestions.Add(subject.Questions[k]);
-                    //ίσως προσθήκη σε ένα άλλο word (ερώτηση-σωστή απάντηση)
+                    FileContent.Append(subject.Questions[k].ToString() + Environment.NewLine);
                     CorrectAnswers.Add(subject.Questions[k].CorrectAnswer);
+                    FileContent.Append(subject.Questions[k].CorrectAnswer.ToString() + Environment.NewLine);
                 }
             }
+            WriteToFile("CorrectAnswers.doc", FileContent.ToString());
+            FileContent.Clear();
 
             //different test layout
-            for(int i=0; i<LayoutNumericUpDown.Value; i++)
+            for (int i=0; i<LayoutNumericUpDown.Value-1; i++)
             {
-                int j = random.Next(0, TestQuestions.Count()-1);
-                foreach(string answer in TestQuestions[j].PossibleAnswers)
+                for(int m=0; m < TestQuestions.Count() - 1; m++)
                 {
-                    int l = random.Next(0, TestQuestions[j].PossibleAnswers.Count() - 1);
+                    int j = random.Next(0, TestQuestions.Count() - 1);
+                    bool n = FileContent.ToString().Contains(TestQuestions[j].ToString());
+                    if (!n) FileContent.Append(Environment.NewLine + Environment.NewLine + TestQuestions[j].ToString() + Environment.NewLine + Environment.NewLine);
+                    for (int y=0; y< TestQuestions[j].PossibleAnswers.Count(); y++)
+                    {
+                        int l = random.Next(0, TestQuestions[j].PossibleAnswers.Count() - 1);
+                        bool w = FileContent.ToString().Contains(TestQuestions[j].PossibleAnswers[l].ToString());
+                        if (!w) FileContent.Append(TestQuestions[j].PossibleAnswers[l] + Environment.NewLine);
+                    }
                 }
 
-                //Word 2007 - 2019 Version
-                if (officeNumberVersion == "12" || officeNumberVersion == "14" || officeNumberVersion == "15" || officeNumberVersion == "16")
-                {
-                    WriteToFile("Test" + i + ".docx");
-                }
-                //Word 97 - 2003 Version
-                else if (officeNumberVersion == "7" || officeNumberVersion == "8" || officeNumberVersion == "9" || officeNumberVersion == "10" || officeNumberVersion == "11")
-                {
-                    WriteToFile("Test" + i + ".doc");
-                }
+                WriteToFile("Test" + i + "doc", FileContent.ToString());
+                FileContent.Clear();
             }
         }
 
-        private void WriteToFile(string filepath)
+        private void WriteToFile(string filepath, string content)
         {
-
+            //Word 2007 - 2019 Version
+            if (officeNumberVersion == "12" || officeNumberVersion == "14" || officeNumberVersion == "15" || officeNumberVersion == "16")
+            {
+                StreamWriter sw = new StreamWriter(filepath + 'x');
+                sw.WriteLine(content);
+            }
+            //Word 97 - 2003 Version
+            else if (officeNumberVersion == "7" || officeNumberVersion == "8" || officeNumberVersion == "9" || officeNumberVersion == "10" || officeNumberVersion == "11")
+            {
+                StreamWriter sw = new StreamWriter(filepath);
+                sw.WriteLine(content);
+            }
         }
     }
 }

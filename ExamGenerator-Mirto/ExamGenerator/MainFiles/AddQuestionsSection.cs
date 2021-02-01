@@ -21,8 +21,7 @@ namespace ExamGenerator.MainFiles
 
         private void AddQuestionsSection_Load(object sender, EventArgs e)
         {
-            //listBox1.Update();
-            ////listBox1.DataSource = subject.SubjectTags;
+
         }
 
         public void OnLoad(Subject subject)
