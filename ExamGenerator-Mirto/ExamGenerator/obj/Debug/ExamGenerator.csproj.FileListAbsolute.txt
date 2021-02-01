@@ -58,3 +58,4 @@ C:\Πανεπιστήμιο\Github\ExamGenerator\ExamGenerator-Mirto\ExamGenerat
 C:\Πανεπιστήμιο\Github\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.exe
 C:\Πανεπιστήμιο\Github\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.pdb
 C:\Πανεπιστήμιο\Github\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.AutoSection.resources
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.AutoSection.resources

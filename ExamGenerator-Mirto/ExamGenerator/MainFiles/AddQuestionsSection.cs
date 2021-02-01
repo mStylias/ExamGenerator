@@ -27,12 +27,12 @@ namespace ExamGenerator.MainFiles
         public void OnLoad(Subject subject)
         {
             this.subject = subject;
-            if (!subject.SubjectTags.Any()) listBox1.Items.Add("You haven't created a tag yet.");
+            if (!subject.AllTags.Any()) listBox1.Items.Add("You haven't created a tag yet.");
 
             else
             {
                 if (listBox1.Items.Contains("You haven't created a tag yet.")) listBox1.Items.Remove("You haven't created a tag yet.");
-                foreach (string s in subject.SubjectTags)
+                foreach (string s in subject.AllTags)
                 {
                     listBox1.Items.Add(s);
                 }

@@ -64,18 +64,18 @@ namespace ExamGenerator.MainFiles
             this.panelQuestions.AutoSize = true;
             this.panelQuestions.Controls.Add(this.panel2);
             this.panelQuestions.Controls.Add(this.panel1);
-            this.panelQuestions.Location = new System.Drawing.Point(67, 79);
-            this.panelQuestions.Margin = new System.Windows.Forms.Padding(4);
+            this.panelQuestions.Location = new System.Drawing.Point(50, 64);
             this.panelQuestions.Name = "panelQuestions";
-            this.panelQuestions.Size = new System.Drawing.Size(1037, 783);
+            this.panelQuestions.Size = new System.Drawing.Size(778, 636);
             this.panelQuestions.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.buttonCreate);
-            this.panel2.Location = new System.Drawing.Point(352, 634);
+            this.panel2.Location = new System.Drawing.Point(264, 515);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(333, 113);
+            this.panel2.Size = new System.Drawing.Size(250, 92);
             this.panel2.TabIndex = 0;
             // 
             // buttonCreate
@@ -86,10 +86,9 @@ namespace ExamGenerator.MainFiles
             this.buttonCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCreate.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCreate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(247)))));
-            this.buttonCreate.Location = new System.Drawing.Point(21, 24);
-            this.buttonCreate.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonCreate.Location = new System.Drawing.Point(16, 20);
             this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(291, 68);
+            this.buttonCreate.Size = new System.Drawing.Size(218, 55);
             this.buttonCreate.TabIndex = 0;
             this.buttonCreate.TabStop = false;
             this.buttonCreate.Text = "Create Question";
@@ -112,10 +111,10 @@ namespace ExamGenerator.MainFiles
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.richTextBoxQuestion);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(284, 35);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(213, 28);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(469, 570);
+            this.panel1.Size = new System.Drawing.Size(352, 464);
             this.panel1.TabIndex = 0;
             // 
             // comboBox1
@@ -128,10 +127,10 @@ namespace ExamGenerator.MainFiles
             "Easy",
             "Medium",
             "Hard"});
-            this.comboBox1.Location = new System.Drawing.Point(0, 495);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBox1.Location = new System.Drawing.Point(0, 390);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(467, 29);
+            this.comboBox1.Size = new System.Drawing.Size(350, 28);
             this.comboBox1.TabIndex = 12;
             // 
             // label5
@@ -139,9 +138,10 @@ namespace ExamGenerator.MainFiles
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
             this.label5.Dock = System.Windows.Forms.DockStyle.Top;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(0, 461);
+            this.label5.Location = new System.Drawing.Point(0, 362);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(467, 34);
+            this.label5.Size = new System.Drawing.Size(350, 28);
             this.label5.TabIndex = 11;
             this.label5.Text = "Difficulty";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -150,10 +150,10 @@ namespace ExamGenerator.MainFiles
             // 
             this.richTextBoxCorrectAnswer.Dock = System.Windows.Forms.DockStyle.Top;
             this.richTextBoxCorrectAnswer.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.richTextBoxCorrectAnswer.Location = new System.Drawing.Point(0, 421);
-            this.richTextBoxCorrectAnswer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.richTextBoxCorrectAnswer.Location = new System.Drawing.Point(0, 329);
+            this.richTextBoxCorrectAnswer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.richTextBoxCorrectAnswer.Name = "richTextBoxCorrectAnswer";
-            this.richTextBoxCorrectAnswer.Size = new System.Drawing.Size(467, 40);
+            this.richTextBoxCorrectAnswer.Size = new System.Drawing.Size(350, 33);
             this.richTextBoxCorrectAnswer.TabIndex = 10;
             this.richTextBoxCorrectAnswer.Text = "";
             // 
@@ -162,9 +162,10 @@ namespace ExamGenerator.MainFiles
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
             this.label4.Dock = System.Windows.Forms.DockStyle.Top;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(0, 387);
+            this.label4.Location = new System.Drawing.Point(0, 301);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(467, 34);
+            this.label4.Size = new System.Drawing.Size(350, 28);
             this.label4.TabIndex = 9;
             this.label4.Text = "Write only the Correct Answer";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -176,9 +177,10 @@ namespace ExamGenerator.MainFiles
             this.panel3.Controls.Add(this.richTextBoxAnswer2);
             this.panel3.Controls.Add(this.richTextBoxAnswer1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 267);
+            this.panel3.Location = new System.Drawing.Point(0, 203);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(467, 120);
+            this.panel3.Size = new System.Drawing.Size(350, 98);
             this.panel3.TabIndex = 8;
             // 
             // RemoveAnswerButton
@@ -187,10 +189,10 @@ namespace ExamGenerator.MainFiles
             this.RemoveAnswerButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.RemoveAnswerButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.RemoveAnswerButton.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold);
-            this.RemoveAnswerButton.Location = new System.Drawing.Point(422, 45);
-            this.RemoveAnswerButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.RemoveAnswerButton.Location = new System.Drawing.Point(316, 37);
+            this.RemoveAnswerButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.RemoveAnswerButton.Name = "RemoveAnswerButton";
-            this.RemoveAnswerButton.Size = new System.Drawing.Size(32, 32);
+            this.RemoveAnswerButton.Size = new System.Drawing.Size(24, 26);
             this.RemoveAnswerButton.TabIndex = 0;
             this.RemoveAnswerButton.Text = "-";
             this.RemoveAnswerButton.UseVisualStyleBackColor = false;
@@ -205,9 +207,10 @@ namespace ExamGenerator.MainFiles
             this.AddAnswerButton.FlatAppearance.BorderSize = 0;
             this.AddAnswerButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AddAnswerButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.AddAnswerButton.Location = new System.Drawing.Point(0, 80);
+            this.AddAnswerButton.Location = new System.Drawing.Point(0, 66);
+            this.AddAnswerButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddAnswerButton.Name = "AddAnswerButton";
-            this.AddAnswerButton.Size = new System.Drawing.Size(467, 38);
+            this.AddAnswerButton.Size = new System.Drawing.Size(350, 31);
             this.AddAnswerButton.TabIndex = 0;
             this.AddAnswerButton.Text = "+";
             this.AddAnswerButton.UseVisualStyleBackColor = false;
@@ -217,10 +220,10 @@ namespace ExamGenerator.MainFiles
             // 
             this.richTextBoxAnswer2.Dock = System.Windows.Forms.DockStyle.Top;
             this.richTextBoxAnswer2.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.richTextBoxAnswer2.Location = new System.Drawing.Point(0, 40);
-            this.richTextBoxAnswer2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.richTextBoxAnswer2.Location = new System.Drawing.Point(0, 33);
+            this.richTextBoxAnswer2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.richTextBoxAnswer2.Name = "richTextBoxAnswer2";
-            this.richTextBoxAnswer2.Size = new System.Drawing.Size(467, 40);
+            this.richTextBoxAnswer2.Size = new System.Drawing.Size(350, 33);
             this.richTextBoxAnswer2.TabIndex = 0;
             this.richTextBoxAnswer2.Text = "2.";
             // 
@@ -229,9 +232,9 @@ namespace ExamGenerator.MainFiles
             this.richTextBoxAnswer1.Dock = System.Windows.Forms.DockStyle.Top;
             this.richTextBoxAnswer1.Font = new System.Drawing.Font("Century Gothic", 11F);
             this.richTextBoxAnswer1.Location = new System.Drawing.Point(0, 0);
-            this.richTextBoxAnswer1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.richTextBoxAnswer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.richTextBoxAnswer1.Name = "richTextBoxAnswer1";
-            this.richTextBoxAnswer1.Size = new System.Drawing.Size(467, 40);
+            this.richTextBoxAnswer1.Size = new System.Drawing.Size(350, 33);
             this.richTextBoxAnswer1.TabIndex = 0;
             this.richTextBoxAnswer1.Text = "1.";
             // 
@@ -240,9 +243,10 @@ namespace ExamGenerator.MainFiles
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
             this.label3.Dock = System.Windows.Forms.DockStyle.Top;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(0, 233);
+            this.label3.Location = new System.Drawing.Point(0, 175);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(467, 34);
+            this.label3.Size = new System.Drawing.Size(350, 28);
             this.label3.TabIndex = 7;
             this.label3.Text = "Write ALL the Answers (Divide them by Enter)";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -251,10 +255,10 @@ namespace ExamGenerator.MainFiles
             // 
             this.richTextBox4.Dock = System.Windows.Forms.DockStyle.Top;
             this.richTextBox4.Font = new System.Drawing.Font("Century Gothic", 11F);
-            this.richTextBox4.Location = new System.Drawing.Point(0, 193);
-            this.richTextBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.richTextBox4.Location = new System.Drawing.Point(0, 142);
+            this.richTextBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.richTextBox4.Name = "richTextBox4";
-            this.richTextBox4.Size = new System.Drawing.Size(467, 40);
+            this.richTextBox4.Size = new System.Drawing.Size(350, 33);
             this.richTextBox4.TabIndex = 6;
             this.richTextBox4.Text = "";
             // 
@@ -263,9 +267,10 @@ namespace ExamGenerator.MainFiles
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
             this.label7.Dock = System.Windows.Forms.DockStyle.Top;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(0, 159);
+            this.label7.Location = new System.Drawing.Point(0, 114);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(467, 34);
+            this.label7.Size = new System.Drawing.Size(350, 28);
             this.label7.TabIndex = 5;
             this.label7.Text = "or Create a new Tag";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -275,13 +280,13 @@ namespace ExamGenerator.MainFiles
             this.listBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.listBox1.Font = new System.Drawing.Font("Century Gothic", 11F);
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 21;
-            this.listBox1.Location = new System.Drawing.Point(0, 134);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listBox1.ItemHeight = 20;
+            this.listBox1.Location = new System.Drawing.Point(0, 110);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listBox1.Name = "listBox1";
             this.listBox1.ScrollAlwaysVisible = true;
             this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listBox1.Size = new System.Drawing.Size(467, 25);
+            this.listBox1.Size = new System.Drawing.Size(350, 4);
             this.listBox1.TabIndex = 4;
             // 
             // label2
@@ -289,9 +294,10 @@ namespace ExamGenerator.MainFiles
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
             this.label2.Dock = System.Windows.Forms.DockStyle.Top;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(0, 100);
+            this.label2.Location = new System.Drawing.Point(0, 82);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(467, 34);
+            this.label2.Size = new System.Drawing.Size(350, 28);
             this.label2.TabIndex = 3;
             this.label2.Text = "Select from Existing Tags";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -300,10 +306,10 @@ namespace ExamGenerator.MainFiles
             // 
             this.richTextBoxQuestion.Dock = System.Windows.Forms.DockStyle.Top;
             this.richTextBoxQuestion.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold);
-            this.richTextBoxQuestion.Location = new System.Drawing.Point(0, 60);
-            this.richTextBoxQuestion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.richTextBoxQuestion.Location = new System.Drawing.Point(0, 49);
+            this.richTextBoxQuestion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.richTextBoxQuestion.Name = "richTextBoxQuestion";
-            this.richTextBoxQuestion.Size = new System.Drawing.Size(467, 40);
+            this.richTextBoxQuestion.Size = new System.Drawing.Size(350, 33);
             this.richTextBoxQuestion.TabIndex = 2;
             this.richTextBoxQuestion.Text = "";
             // 
@@ -313,8 +319,9 @@ namespace ExamGenerator.MainFiles
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(467, 60);
+            this.label1.Size = new System.Drawing.Size(350, 49);
             this.label1.TabIndex = 1;
             this.label1.Text = "Add Question";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -322,34 +329,35 @@ namespace ExamGenerator.MainFiles
             // panelTop
             // 
             this.panelTop.Controls.Add(this.label6);
-            this.panelTop.Location = new System.Drawing.Point(65, -2);
+            this.panelTop.Location = new System.Drawing.Point(49, -2);
             this.panelTop.Margin = new System.Windows.Forms.Padding(0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Padding = new System.Windows.Forms.Padding(27, 31, 0, 0);
-            this.panelTop.Size = new System.Drawing.Size(1040, 81);
+            this.panelTop.Padding = new System.Windows.Forms.Padding(20, 25, 0, 0);
+            this.panelTop.Size = new System.Drawing.Size(780, 66);
             this.panelTop.TabIndex = 0;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century", 21.75F);
-            this.label6.Location = new System.Drawing.Point(393, 31);
+            this.label6.Location = new System.Drawing.Point(295, 25);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(255, 44);
+            this.label6.Size = new System.Drawing.Size(200, 34);
             this.label6.TabIndex = 0;
             this.label6.Text = "Add Question";
             // 
             // AddQuestionsSection
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(233)))), ((int)(((byte)(242)))));
             this.Controls.Add(this.panelTop);
             this.Controls.Add(this.panelQuestions);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AddQuestionsSection";
-            this.Size = new System.Drawing.Size(1171, 820);
+            this.Size = new System.Drawing.Size(900, 660);
             this.Load += new System.EventHandler(this.AddQuestionsSection_Load);
             this.panelQuestions.ResumeLayout(false);
             this.panelQuestions.PerformLayout();
