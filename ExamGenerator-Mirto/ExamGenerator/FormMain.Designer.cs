@@ -50,6 +50,7 @@
             this.radioMenuQuestions = new System.Windows.Forms.RadioButton();
             this.addQuestionsSection1 = new ExamGenerator.MainFiles.AddQuestionsSection();
             this.questionsSection = new ExamGenerator.MainFiles.QuestionsSection();
+            this.autoSection1 = new ExamGenerator.AutoSection();
             this.panelTopSection.SuspendLayout();
             this.panelTitlebar.SuspendLayout();
             this.panelSearchQuestions.SuspendLayout();
@@ -324,9 +325,10 @@
             // 
             // addQuestionsSection1
             // 
+            this.addQuestionsSection1.AutoScroll = true;
             this.addQuestionsSection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(233)))), ((int)(((byte)(242)))));
-            this.addQuestionsSection1.Location = new System.Drawing.Point(195, 54);
-            this.addQuestionsSection1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addQuestionsSection1.Location = new System.Drawing.Point(260, 66);
+            this.addQuestionsSection1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addQuestionsSection1.Name = "addQuestionsSection1";
             this.addQuestionsSection1.Size = new System.Drawing.Size(900, 660);
             this.addQuestionsSection1.TabIndex = 3;
@@ -341,18 +343,28 @@
             this.questionsSection.Padding = new System.Windows.Forms.Padding(60, 0, 60, 0);
             this.questionsSection.Size = new System.Drawing.Size(900, 660);
             this.questionsSection.TabIndex = 4;
+            //
+            // autoSection1
+            // 
+            this.autoSection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(233)))), ((int)(((byte)(242)))));
+            this.autoSection1.Location = new System.Drawing.Point(260, 66);
+            this.autoSection1.Name = "autoSection1";
+            this.autoSection1.Size = new System.Drawing.Size(1197, 810);
+            this.autoSection1.TabIndex = 4;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1095, 714);
+            this.ClientSize = new System.Drawing.Size(1460, 879);
+            this.Controls.Add(this.autoSection1);
             this.Controls.Add(this.questionsSection);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelTopSection);
             this.Controls.Add(this.addQuestionsSection1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1110, 752);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(1474, 915);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Exam Generator";
@@ -393,5 +405,6 @@
         private System.Windows.Forms.Label labelSubjectsList;
         private MainFiles.AddQuestionsSection addQuestionsSection1;
         private MainFiles.QuestionsSection questionsSection;
+        private AutoSection autoSection1;
     }
 }

@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainFiles\AutoSection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainFiles\AutoSection.Designer.cs">
+      <DependentUpon>AutoSection.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\QuestionModel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -93,6 +99,9 @@
     <Compile Include="MainFiles\Question.cs" />
     <Compile Include="Serialize.cs" />
     <Compile Include="Subject.cs" />
+    <EmbeddedResource Include="MainFiles\AutoSection.resx">
+      <DependentUpon>AutoSection.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\QuestionModel.resx">
       <DependentUpon>QuestionModel.cs</DependentUpon>
     </EmbeddedResource>

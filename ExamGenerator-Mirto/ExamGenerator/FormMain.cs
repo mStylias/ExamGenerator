@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,7 +23,8 @@ namespace ExamGenerator
             this.subject = subject;
             this.username = username;
             //questionsSection.CurrentSubject = subject;
-            addQuestionsSection1.subject = subject;
+            autoSection1.subject = subject;
+            addQuestionsSection1.OnLoad(subject);
         }
 
         /* Gives the focus to the search textbox when a control in 
@@ -55,6 +56,7 @@ namespace ExamGenerator
         private void radioMenuAuto_Click(object sender, EventArgs e)
         {
             panelAutoActive.ShowPanel(panelMenuButtons.Controls);
+            autoSection1.BringToFront();
         }
 
         // Responsiveness
