@@ -23,6 +23,7 @@ namespace ExamGenerator
             this.subject = subject;
             this.username = username;
             questionsSection.subject = subject;
+            autoSection1.subject = subject;
             addQuestionsSection1.OnLoad(subject);
             // If the screen is smaller than the form size start fullscreen
             //if (Screen.GetWorkingArea(this).Width > this.Width || 
@@ -61,6 +62,7 @@ namespace ExamGenerator
         private void radioMenuAuto_Click(object sender, EventArgs e)
         {
             TogglablePanel.ShowPanel(panelMenuButtons.Controls, panelAutoActive);
+            autoSection1.BringToFront();
         }
 
         // Responsiveness

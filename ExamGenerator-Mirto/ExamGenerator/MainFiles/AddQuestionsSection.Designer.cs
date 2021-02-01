@@ -64,7 +64,7 @@ namespace ExamGenerator.MainFiles
             this.panelQuestions.AutoSize = true;
             this.panelQuestions.Controls.Add(this.panel2);
             this.panelQuestions.Controls.Add(this.panel1);
-            this.panelQuestions.Location = new System.Drawing.Point(80, 79);
+            this.panelQuestions.Location = new System.Drawing.Point(67, 79);
             this.panelQuestions.Margin = new System.Windows.Forms.Padding(4);
             this.panelQuestions.Name = "panelQuestions";
             this.panelQuestions.Size = new System.Drawing.Size(1037, 783);
@@ -322,7 +322,7 @@ namespace ExamGenerator.MainFiles
             // panelTop
             // 
             this.panelTop.Controls.Add(this.label6);
-            this.panelTop.Location = new System.Drawing.Point(77, -2);
+            this.panelTop.Location = new System.Drawing.Point(65, -2);
             this.panelTop.Margin = new System.Windows.Forms.Padding(0);
             this.panelTop.Name = "panelTop";
             this.panelTop.Padding = new System.Windows.Forms.Padding(27, 31, 0, 0);

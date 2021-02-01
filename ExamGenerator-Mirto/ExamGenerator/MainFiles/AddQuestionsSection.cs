@@ -13,6 +13,7 @@ namespace ExamGenerator.MainFiles
     public partial class AddQuestionsSection : UserControl
     {
         public Subject subject;
+
         public AddQuestionsSection()
         {
             InitializeComponent();
