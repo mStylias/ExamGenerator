@@ -93,6 +93,16 @@ namespace ExamGenerator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap delete_16px {
+            get {
+                object obj = ResourceManager.GetObject("delete_16px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap left_25px {
             get {
                 object obj = ResourceManager.GetObject("left_25px", resourceCulture);

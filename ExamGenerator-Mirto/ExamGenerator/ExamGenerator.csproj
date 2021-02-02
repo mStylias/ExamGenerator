@@ -36,6 +36,10 @@
     <ApplicationIcon>icons8_book_shelf.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions.cs" />
     <Compile Include="MainFiles\AutoSection.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -88,12 +93,19 @@
     <Compile Include="MainFiles\AddQuestionsSection.Designer.cs">
       <DependentUpon>AddQuestionsSection.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainFiles\QuestionsSection.cs">
+    <Compile Include="MainFiles\FormManualGenerate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFiles\FormManualGenerate.Designer.cs">
+      <DependentUpon>FormManualGenerate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFiles\ManualSection.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MainFiles\QuestionsSection.Designer.cs">
-      <DependentUpon>QuestionsSection.cs</DependentUpon>
+    <Compile Include="MainFiles\ManualSection.Designer.cs">
+      <DependentUpon>ManualSection.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainFiles\MicrosoftWordManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MainFiles\Question.cs" />
@@ -117,8 +129,11 @@
     <EmbeddedResource Include="MainFiles\AddQuestionsSection.resx">
       <DependentUpon>AddQuestionsSection.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainFiles\QuestionsSection.resx">
-      <DependentUpon>QuestionsSection.cs</DependentUpon>
+    <EmbeddedResource Include="MainFiles\FormManualGenerate.resx">
+      <DependentUpon>FormManualGenerate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFiles\ManualSection.resx">
+      <DependentUpon>ManualSection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -130,6 +145,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -145,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icons8_book_shelf.ico" />
+    <None Include="Resources\delete_16px.png" />
     <None Include="Resources\left_25px.png" />
     <None Include="Resources\right_25px.png" />
     <None Include="Resources\artificial_intelligence_25px.png" />
