@@ -60,6 +60,17 @@ namespace ExamGenerator
             this.label10 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.togglablePanel1 = new ExamGenerator.CustomControls.TogglablePanel();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.panelTop.SuspendLayout();
             this.panelQuestions.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -68,6 +79,10 @@ namespace ExamGenerator
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LayoutNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QuestionsNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTop
@@ -353,6 +368,17 @@ namespace ExamGenerator
             // 
             this.panel4.AutoScroll = true;
             this.panel4.AutoSize = true;
+            this.panel4.Controls.Add(this.numericUpDown4);
+            this.panel4.Controls.Add(this.numericUpDown3);
+            this.panel4.Controls.Add(this.numericUpDown2);
+            this.panel4.Controls.Add(this.numericUpDown1);
+            this.panel4.Controls.Add(this.togglablePanel1);
+            this.panel4.Controls.Add(this.radioButton4);
+            this.panel4.Controls.Add(this.radioButton3);
+            this.panel4.Controls.Add(this.radioButton2);
+            this.panel4.Controls.Add(this.radioButton1);
+            this.panel4.Controls.Add(this.button5);
+            this.panel4.Controls.Add(this.button4);
             this.panel4.Controls.Add(this.button3);
             this.panel4.Controls.Add(this.button2);
             this.panel4.Controls.Add(this.label10);
@@ -370,7 +396,7 @@ namespace ExamGenerator
             // LayoutNumericUpDown
             // 
             this.LayoutNumericUpDown.Font = new System.Drawing.Font("Century", 12F);
-            this.LayoutNumericUpDown.Location = new System.Drawing.Point(462, 457);
+            this.LayoutNumericUpDown.Location = new System.Drawing.Point(462, 602);
             this.LayoutNumericUpDown.Name = "LayoutNumericUpDown";
             this.LayoutNumericUpDown.Size = new System.Drawing.Size(120, 32);
             this.LayoutNumericUpDown.TabIndex = 4;
@@ -379,7 +405,7 @@ namespace ExamGenerator
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century", 18F);
-            this.label9.Location = new System.Drawing.Point(78, 362);
+            this.label9.Location = new System.Drawing.Point(84, 511);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(885, 70);
             this.label9.TabIndex = 3;
@@ -426,18 +452,20 @@ namespace ExamGenerator
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century", 18F);
-            this.label10.Location = new System.Drawing.Point(105, 234);
+            this.label10.Location = new System.Drawing.Point(236, 161);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(115, 35);
+            this.label10.Size = new System.Drawing.Size(569, 70);
             this.label10.TabIndex = 5;
-            this.label10.Text = "Filters:";
+            this.label10.Text = "Please, choose the number of questions \r\nfrom the specific tags or difficulty lev" +
+    "els:";
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Century", 12F);
-            this.button2.Location = new System.Drawing.Point(248, 229);
+            this.button2.Location = new System.Drawing.Point(267, 270);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(171, 50);
             this.button2.TabIndex = 6;
@@ -446,11 +474,137 @@ namespace ExamGenerator
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(377, 229);
+            this.button3.BackColor = System.Drawing.Color.White;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Marlett", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button3.Location = new System.Drawing.Point(402, 271);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(36, 50);
             this.button3.TabIndex = 7;
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Text = "6";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.White;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Century", 12F);
+            this.button4.Location = new System.Drawing.Point(594, 270);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(171, 50);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "Difficulty";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.White;
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Marlett", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button5.Location = new System.Drawing.Point(729, 269);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(36, 50);
+            this.button5.TabIndex = 9;
+            this.button5.Text = "6";
+            this.button5.UseVisualStyleBackColor = false;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.BackColor = System.Drawing.Color.White;
+            this.radioButton1.Checked = true;
+            this.radioButton1.FlatAppearance.BorderSize = 0;
+            this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.radioButton1.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.radioButton1.Location = new System.Drawing.Point(594, 314);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(171, 42);
+            this.radioButton1.TabIndex = 10;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Any";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.BackColor = System.Drawing.Color.White;
+            this.radioButton2.FlatAppearance.BorderSize = 0;
+            this.radioButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.radioButton2.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.radioButton2.Location = new System.Drawing.Point(594, 354);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(171, 42);
+            this.radioButton2.TabIndex = 11;
+            this.radioButton2.Text = "Easy";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.BackColor = System.Drawing.Color.White;
+            this.radioButton3.FlatAppearance.BorderSize = 0;
+            this.radioButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.radioButton3.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.radioButton3.Location = new System.Drawing.Point(594, 396);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(171, 42);
+            this.radioButton3.TabIndex = 12;
+            this.radioButton3.Text = "Medium";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.BackColor = System.Drawing.Color.White;
+            this.radioButton4.FlatAppearance.BorderSize = 0;
+            this.radioButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.radioButton4.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.radioButton4.Location = new System.Drawing.Point(594, 438);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(171, 42);
+            this.radioButton4.TabIndex = 13;
+            this.radioButton4.Text = "Hard";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            // 
+            // togglablePanel1
+            // 
+            this.togglablePanel1.BackColor = System.Drawing.Color.White;
+            this.togglablePanel1.Location = new System.Drawing.Point(267, 320);
+            this.togglablePanel1.Name = "togglablePanel1";
+            this.togglablePanel1.Size = new System.Drawing.Size(171, 44);
+            this.togglablePanel1.TabIndex = 14;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Font = new System.Drawing.Font("Century", 12F);
+            this.numericUpDown1.Location = new System.Drawing.Point(717, 313);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(48, 32);
+            this.numericUpDown1.TabIndex = 15;
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Font = new System.Drawing.Font("Century", 12F);
+            this.numericUpDown2.Location = new System.Drawing.Point(717, 354);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(48, 32);
+            this.numericUpDown2.TabIndex = 16;
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.Font = new System.Drawing.Font("Century", 12F);
+            this.numericUpDown3.Location = new System.Drawing.Point(717, 396);
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(48, 32);
+            this.numericUpDown3.TabIndex = 17;
+            // 
+            // numericUpDown4
+            // 
+            this.numericUpDown4.Font = new System.Drawing.Font("Century", 12F);
+            this.numericUpDown4.Location = new System.Drawing.Point(717, 440);
+            this.numericUpDown4.Name = "numericUpDown4";
+            this.numericUpDown4.Size = new System.Drawing.Size(48, 32);
+            this.numericUpDown4.TabIndex = 18;
             // 
             // AutoSection
             // 
@@ -473,6 +627,10 @@ namespace ExamGenerator
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LayoutNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.QuestionsNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -511,5 +669,16 @@ namespace ExamGenerator
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private CustomControls.TogglablePanel togglablePanel1;
+        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }

@@ -99,5 +99,10 @@ namespace ExamGenerator
                 sw.WriteLine(content);
             }
         }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
