@@ -15,6 +15,7 @@ namespace ExamGenerator.CustomControls
     public partial class QuestionModel : UserControl
     {
         public Question Question { get; set; }
+        public bool Checked { get; set; } = false;
         public QuestionModel(Question question)
         {
             this.Question = question;
@@ -48,6 +49,11 @@ namespace ExamGenerator.CustomControls
 
             // Difficulty
             labelDifficulty.Text = Question.Difficulty;
+        }
+
+        private void checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Checked = checkBox.Checked;
         }
     }
 }

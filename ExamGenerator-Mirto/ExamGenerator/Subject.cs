@@ -33,39 +33,6 @@ namespace ExamGenerator
             }
         }
 
-        public List<Question> SearchQuestions(string difficulty)
-        {
-            if (difficulty.Equals("Any"))
-            {
-                return Questions;
-            }
-                
-
-            var sortedQuestions = new List<Question>();
-            foreach (Question question in Questions)
-            {
-                if (question.Difficulty.Equals(difficulty))
-                    sortedQuestions.Add(question);
-                    
-            }
-
-            return sortedQuestions;
-        }
-
-        public List<Question> SearchQuestions(string difficulty, HashSet<string> tags)
-        {
-            var sortedQuestions = new List<Question>();
-            foreach (Question question in Questions)
-            {
-                if (question.Difficulty.Equals(difficulty) || difficulty.Equals("Any"))
-                    foreach (string tag in tags)
-                        if (question.Tags.Contains(tag))
-                            sortedQuestions.Add(question);
-            }
-
-            return sortedQuestions;
-        }
-
         public List<Question> SearchQuestions(string difficulty, HashSet<string> tags, string typedSearch)
         {
             var sortedQuestions = new List<Question>();
@@ -73,13 +40,13 @@ namespace ExamGenerator
             {
                 if (question.Difficulty.Equals(difficulty) || difficulty.Equals("Any"))
                 {
-                    if (tags.Count > 0)
+                    if (tags != null && tags.Count > 0)
                     {
                         foreach (string tag in tags)
                             if (question.Tags.Contains(tag) && question.Body.Contains(typedSearch))
                                 sortedQuestions.Add(question);
                     }
-                    else if (question.Body.Contains(typedSearch))
+                    else if (typedSearch != null && question.Body.Contains(typedSearch))
                         sortedQuestions.Add(question);
                 }
             }

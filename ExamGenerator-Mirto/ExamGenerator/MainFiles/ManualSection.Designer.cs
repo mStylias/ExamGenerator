@@ -1,6 +1,6 @@
 ﻿namespace ExamGenerator.MainFiles
 {
-    partial class QuestionsSection
+    partial class ManualSection
     {
         /// <summary> 
         /// Required designer variable.
@@ -41,6 +41,7 @@
             this.buttonSortDifficulty = new System.Windows.Forms.Button();
             this.panelQuestions = new System.Windows.Forms.Panel();
             this.panelControlQuestions = new System.Windows.Forms.Panel();
+            this.buttonGenerate = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonForward = new System.Windows.Forms.Button();
             this.togglePanelDifficulty = new ExamGenerator.CustomControls.TogglablePanel();
@@ -215,19 +216,38 @@
             this.panelQuestions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelQuestions.Location = new System.Drawing.Point(60, 66);
             this.panelQuestions.Name = "panelQuestions";
-            this.panelQuestions.Size = new System.Drawing.Size(780, 594);
+            this.panelQuestions.Size = new System.Drawing.Size(780, 614);
             this.panelQuestions.TabIndex = 12;
             // 
             // panelControlQuestions
             // 
+            this.panelControlQuestions.Controls.Add(this.buttonGenerate);
             this.panelControlQuestions.Controls.Add(this.buttonBack);
             this.panelControlQuestions.Controls.Add(this.buttonForward);
             this.panelControlQuestions.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControlQuestions.Location = new System.Drawing.Point(0, 550);
+            this.panelControlQuestions.Location = new System.Drawing.Point(0, 570);
             this.panelControlQuestions.Name = "panelControlQuestions";
             this.panelControlQuestions.Padding = new System.Windows.Forms.Padding(0, 0, 0, 14);
             this.panelControlQuestions.Size = new System.Drawing.Size(780, 44);
             this.panelControlQuestions.TabIndex = 9;
+            // 
+            // buttonGenerate
+            // 
+            this.buttonGenerate.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonGenerate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(166)))), ((int)(((byte)(243)))));
+            this.buttonGenerate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonGenerate.FlatAppearance.BorderSize = 0;
+            this.buttonGenerate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGenerate.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonGenerate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(247)))));
+            this.buttonGenerate.Location = new System.Drawing.Point(281, 0);
+            this.buttonGenerate.Name = "buttonGenerate";
+            this.buttonGenerate.Size = new System.Drawing.Size(218, 30);
+            this.buttonGenerate.TabIndex = 9;
+            this.buttonGenerate.TabStop = false;
+            this.buttonGenerate.Text = "Generate Exam";
+            this.buttonGenerate.UseVisualStyleBackColor = false;
+            this.buttonGenerate.Click += new System.EventHandler(this.buttonGenerate_Click);
             // 
             // buttonBack
             // 
@@ -359,7 +379,7 @@
             this.togglePanelTags.TabIndex = 3;
             this.togglePanelTags.Visible = false;
             // 
-            // QuestionsSection
+            // ManualSection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -369,9 +389,9 @@
             this.Controls.Add(this.panelQuestions);
             this.Controls.Add(this.panelTop);
             this.DoubleBuffered = true;
-            this.Name = "QuestionsSection";
+            this.Name = "ManualSection";
             this.Padding = new System.Windows.Forms.Padding(60, 0, 60, 0);
-            this.Size = new System.Drawing.Size(900, 660);
+            this.Size = new System.Drawing.Size(900, 680);
             this.panelTop.ResumeLayout(false);
             this.panelFilters.ResumeLayout(false);
             this.panelSortTags.ResumeLayout(false);
@@ -407,5 +427,6 @@
         private System.Windows.Forms.RadioButton radioDifficultyMedium;
         private System.Windows.Forms.RadioButton radioDifficultyEasy;
         private System.Windows.Forms.RadioButton radioDifficultyAny;
+        private System.Windows.Forms.Button buttonGenerate;
     }
 }

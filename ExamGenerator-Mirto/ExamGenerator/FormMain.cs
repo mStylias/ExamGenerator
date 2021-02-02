@@ -35,13 +35,6 @@ namespace ExamGenerator
         }
 
         /* Menu functionality */
-        private void radioMenuQuestions_Click(object sender, EventArgs e)
-        {
-            // Show the color panel associated with the selected menu radio button
-            panelQuestionsActive.ShowPanel(panelMenuButtons.Controls);
-            questionsSection.BringToFront();
-        }
-
         private void radioMenuAddQuestions_Click(object sender, EventArgs e)
         {
             panelAddQuestionsActive.ShowPanel(panelMenuButtons.Controls);
@@ -51,6 +44,7 @@ namespace ExamGenerator
         private void radioMenuManual_Click(object sender, EventArgs e)
         {
             panelManualActive.ShowPanel(panelMenuButtons.Controls);
+            manualSection.BringToFront();
         }
 
         private void radioMenuAuto_Click(object sender, EventArgs e)
@@ -65,7 +59,7 @@ namespace ExamGenerator
         {
             if (Size != previousSize)
             {
-                questionsSection.OnResizeEnd();
+                manualSection.OnResizeEnd();
                 previousSize = Size;
             }
                 
@@ -76,19 +70,15 @@ namespace ExamGenerator
         {
             if (WindowState != previousState && WindowState != FormWindowState.Minimized)
             {
-                questionsSection.OnResizeEnd();
+                manualSection.OnResizeEnd();
                 previousState = WindowState;
             }
         }
 
-        private void addQuestionsSection1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
-            questionsSection.SearchAndDisplayQuestions(textBoxSearch.Text);
+            manualSection.SearchAndDisplayQuestions(textBoxSearch.Text);
         }
+
     }
 }
