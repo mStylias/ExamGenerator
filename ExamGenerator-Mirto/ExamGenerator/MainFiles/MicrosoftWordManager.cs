@@ -58,12 +58,12 @@ namespace ExamGenerator.MainFiles
 
                     // Add the questions
                 
-                    Paragraph paragraphVariations = document.Content.Paragraphs.Add(ref missing);
-                    paragraphVariations.Range.Text = "Variation " + i;
-                    object styleHeading1 = WdBuiltinStyle.wdStyleHeading1;
-                    paragraphVariations.Range.set_Style(ref styleHeading1);
-                    paragraphVariations.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
-                    paragraphVariations.Range.InsertParagraphAfter();
+                    //Paragraph paragraphVariations = document.Content.Paragraphs.Add(ref missing);
+                    //paragraphVariations.Range.Text = "Variation " + i;
+                    //object styleHeading1 = WdBuiltinStyle.wdStyleHeading1;
+                    //paragraphVariations.Range.set_Style(ref styleHeading1);
+                    //paragraphVariations.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+                    //paragraphVariations.Range.InsertParagraphAfter();
 
 
                     foreach (Question question in questions)
@@ -90,9 +90,9 @@ namespace ExamGenerator.MainFiles
 
                     questions.Shuffle();
 
-                    //Save the document  
-                    //object kati = Path.Combine()
-                    //document.SaveAs2(ref kati);
+                    // Save the document
+                    object filePath = Path.Combine(folderPath, fileName + i + ".docx");
+                    document.SaveAs2(ref filePath);
                     document.Close(ref missing, ref missing, ref missing);
                     document = null;
                     

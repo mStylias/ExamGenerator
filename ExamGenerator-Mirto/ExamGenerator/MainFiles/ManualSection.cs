@@ -371,15 +371,22 @@ namespace ExamGenerator.MainFiles
         /* Opens the manual generate dialog with the selected questions */
         private void buttonGenerate_Click(object sender, EventArgs e)
         {
-            List<Question> questions = new List<Question>();
-            foreach (QuestionModel model in panelQuestions.Controls.OfType<QuestionModel>())
+            var questions = new List<Question>();
+            foreach (QuestionModel model in AllQuestionModels)
             {
                 if (model.Checked)
                     questions.Add(model.Question);
             }
 
-            FormManualGenerate form = new FormManualGenerate(CurrentSubject.Name, questions);
-            form.ShowDialog();
+            if (questions.Count > 0)
+            {
+                Console.WriteLine("Hello?");
+                FormManualGenerate form = new FormManualGenerate(CurrentSubject.Name, questions);
+                form.ShowDialog();
+            }
+            else
+                MessageBox.Show("No questions were selected. Select at least 1 question and try again", "No selected questions",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
         }
     }

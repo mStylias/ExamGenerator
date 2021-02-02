@@ -58,5 +58,5 @@ C:\Πανεπιστήμιο\Github\ExamGenerator\ExamGenerator-Mirto\ExamGenerat
 C:\Πανεπιστήμιο\Github\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.AutoSection.resources
 C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.AutoSection.resources
 C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.MainFiles.ManualSection.resources
-C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.csprojAssemblyReference.cache
 C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.MainFiles.FormManualGenerate.resources
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.csprojAssemblyReference.cache

@@ -155,7 +155,7 @@
             this.panelMenu.Location = new System.Drawing.Point(0, 54);
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Padding = new System.Windows.Forms.Padding(0, 60, 0, 0);
-            this.panelMenu.Size = new System.Drawing.Size(195, 680);
+            this.panelMenu.Size = new System.Drawing.Size(195, 700);
             this.panelMenu.TabIndex = 1;
             // 
             // labelSubjectsList
@@ -291,9 +291,9 @@
             this.autoSection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(233)))), ((int)(((byte)(242)))));
             this.autoSection1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.autoSection1.Location = new System.Drawing.Point(195, 54);
-            this.autoSection1.Margin = new System.Windows.Forms.Padding(2);
+            this.autoSection1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.autoSection1.Name = "autoSection1";
-            this.autoSection1.Size = new System.Drawing.Size(900, 680);
+            this.autoSection1.Size = new System.Drawing.Size(900, 700);
             this.autoSection1.TabIndex = 4;
             // 
             // manualSection
@@ -303,7 +303,7 @@
             this.manualSection.Location = new System.Drawing.Point(195, 54);
             this.manualSection.Name = "manualSection";
             this.manualSection.Padding = new System.Windows.Forms.Padding(60, 0, 60, 0);
-            this.manualSection.Size = new System.Drawing.Size(900, 680);
+            this.manualSection.Size = new System.Drawing.Size(900, 700);
             this.manualSection.TabIndex = 4;
             // 
             // addQuestionsSection1
@@ -314,14 +314,14 @@
             this.addQuestionsSection1.Location = new System.Drawing.Point(195, 54);
             this.addQuestionsSection1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addQuestionsSection1.Name = "addQuestionsSection1";
-            this.addQuestionsSection1.Size = new System.Drawing.Size(900, 680);
+            this.addQuestionsSection1.Size = new System.Drawing.Size(900, 700);
             this.addQuestionsSection1.TabIndex = 3;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1095, 734);
+            this.ClientSize = new System.Drawing.Size(1095, 754);
             this.Controls.Add(this.manualSection);
             this.Controls.Add(this.addQuestionsSection1);
             this.Controls.Add(this.autoSection1);
@@ -329,7 +329,7 @@
             this.Controls.Add(this.panelTopSection);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(900, 660);
+            this.MinimumSize = new System.Drawing.Size(1111, 793);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Exam Generator";
