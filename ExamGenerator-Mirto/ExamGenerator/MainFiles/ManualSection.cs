@@ -13,7 +13,7 @@ using ExamGenerator.CustomControls;
 
 namespace ExamGenerator.MainFiles
 {
-    public partial class QuestionsSection : UserControl
+    public partial class ManualSection : UserControl
     {
         private Subject CurrentSubject { get; set; }
         private List<QuestionModel> AllQuestionModels { get; set; } = new List<QuestionModel>();
@@ -22,7 +22,7 @@ namespace ExamGenerator.MainFiles
         private int initialWidth;
         private int initialHeight;
 
-        public QuestionsSection()
+        public ManualSection()
         {
             
             InitializeComponent();
@@ -88,9 +88,9 @@ namespace ExamGenerator.MainFiles
 
         }
 
-        static int topDistance = 25;
+        static int topDistance = 10;
         static int leftDistance = 0;
-        static int verticalSpacing = 30;
+        static int verticalSpacing = 10;
         static int horizontalSpacing = 15;
         int maximumModelsNum = 0;
         private void DisplayQuestionModels()
@@ -294,9 +294,9 @@ namespace ExamGenerator.MainFiles
                 {
                     Console.WriteLine(activeTags.Count);
                     if (activeTags.Count > 0)
-                        sortedQuestions = CurrentSubject.SearchQuestions(radio.Text, activeTags);
+                        sortedQuestions = CurrentSubject.SearchQuestions(radio.Text, activeTags, null);
                     else
-                        sortedQuestions = CurrentSubject.SearchQuestions(radio.Text);
+                        sortedQuestions = CurrentSubject.SearchQuestions(radio.Text, null, null);
                 }
 
 
@@ -368,5 +368,19 @@ namespace ExamGenerator.MainFiles
 
         }
 
+        /* Opens the manual generate dialog with the selected questions */
+        private void buttonGenerate_Click(object sender, EventArgs e)
+        {
+            List<Question> questions = new List<Question>();
+            foreach (QuestionModel model in panelQuestions.Controls.OfType<QuestionModel>())
+            {
+                if (model.Checked)
+                    questions.Add(model.Question);
+            }
+
+            FormManualGenerate form = new FormManualGenerate(CurrentSubject.Name, questions);
+            form.ShowDialog();
+
+        }
     }
 }

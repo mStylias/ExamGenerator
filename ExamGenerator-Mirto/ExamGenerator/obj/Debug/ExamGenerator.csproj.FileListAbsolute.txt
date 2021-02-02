@@ -30,13 +30,11 @@ C:\Πανεπιστήμιο\Μαθήματα\2ο Έτος\Μάνατζμεντ\E
 C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\bin\Debug\ExamGenerator.exe.config
 C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\bin\Debug\ExamGenerator.exe
 C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\bin\Debug\ExamGenerator.pdb
-C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.csprojAssemblyReference.cache
 C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.CustomControls.QuestionModel.resources
 C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.FormLogin.resources
 C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.ModernTextbox.resources
 C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.FormMain.resources
 C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.MainFiles.AddQuestionsSection.resources
-C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.MainFiles.QuestionsSection.resources
 C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.Properties.Resources.resources
 C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.csproj.GenerateResource.cache
 C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.csproj.CoreCompileInputs.cache
@@ -59,3 +57,6 @@ C:\Πανεπιστήμιο\Github\ExamGenerator\ExamGenerator-Mirto\ExamGenerat
 C:\Πανεπιστήμιο\Github\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.pdb
 C:\Πανεπιστήμιο\Github\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.AutoSection.resources
 C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.AutoSection.resources
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.MainFiles.ManualSection.resources
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.csprojAssemblyReference.cache
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.MainFiles.FormManualGenerate.resources
