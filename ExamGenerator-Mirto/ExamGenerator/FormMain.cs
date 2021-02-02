@@ -92,20 +92,27 @@ namespace ExamGenerator
         /* Display subjects */
         private void FormMain_Load(object sender, EventArgs e)
         {
+            
+            int counter = 1;
             foreach (KeyValuePair<string, Subject> subject in Subject.Subjects)
             {
-                DisplaySubject(subject.Value);
+                Console.WriteLine("Success");
+                RadioButton radioSubject = DisplaySubject(subject.Value);
+                panelSubjects.Controls.SetChildIndex(radioSubject, counter);
+                counter++;
             }
+            panelSubjects.Controls.SetChildIndex(labelSubjectsList, 12);
+
         }
 
-        private void DisplaySubject(Subject subject)
+        private RadioButton DisplaySubject(Subject subject)
         {
             RadioButton radio = new RadioButton();
 
             radio.Appearance = System.Windows.Forms.Appearance.Button;
             radio.AutoEllipsis = true;
             radio.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            radio.Checked = true;
+            radio.Checked = false;
             radio.Dock = System.Windows.Forms.DockStyle.Top;
             radio.FlatAppearance.BorderSize = 0;
             radio.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
@@ -122,6 +129,12 @@ namespace ExamGenerator
             radio.Text = subject.Name;
             radio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             radio.UseVisualStyleBackColor = true;
+
+            if (this.subject.Equals(subject))
+                radio.Checked = true;
+           
+            panelSubjects.Controls.Add(radio);
+            return radio;
         }
 
         // Responsiveness

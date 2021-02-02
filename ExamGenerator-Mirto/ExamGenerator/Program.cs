@@ -16,8 +16,8 @@ namespace ExamGenerator
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain(new Subject("Jack"), "Jack"));
-            //Application.Run(new FormLogin());
+            //Application.Run(new FormMain(new Subject("Jack"), "Jack"));
+            Application.Run(new FormLogin());
         }
     }
 }
