@@ -30,158 +30,177 @@ namespace ExamGenerator.MainFiles
         private void InitializeComponent()
         {
             this.panelQuestions = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.buttonCreate = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.panelSubmitButton = new System.Windows.Forms.Panel();
+            this.buttonCreateQuestion = new System.Windows.Forms.Button();
+            this.panelAllFields = new System.Windows.Forms.Panel();
+            this.comboBoxDifficulty = new System.Windows.Forms.ComboBox();
+            this.labelDifficulty = new System.Windows.Forms.Label();
             this.richTextBoxCorrectAnswer = new System.Windows.Forms.RichTextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.labelWriteCorrectAnswer = new System.Windows.Forms.Label();
+            this.panelPossibleAnswers = new System.Windows.Forms.Panel();
             this.RemoveAnswerButton = new System.Windows.Forms.Button();
             this.AddAnswerButton = new System.Windows.Forms.Button();
             this.richTextBoxAnswer2 = new System.Windows.Forms.RichTextBox();
             this.richTextBoxAnswer1 = new System.Windows.Forms.RichTextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelWriteAnswers = new System.Windows.Forms.Label();
+            this.richTextBoxCreateTag = new System.Windows.Forms.RichTextBox();
+            this.labelCreateTag = new System.Windows.Forms.Label();
+            this.panelAllTags = new System.Windows.Forms.Panel();
+            this.panelRightTags = new System.Windows.Forms.Panel();
+            this.panelLeftTags = new System.Windows.Forms.Panel();
+            this.labelSelectTags = new System.Windows.Forms.Label();
             this.richTextBoxQuestion = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelQuestion = new System.Windows.Forms.Label();
             this.panelTop = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
+            this.labelTitle = new System.Windows.Forms.Label();
+            this.buttonCreateTag = new System.Windows.Forms.Button();
             this.panelQuestions.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.panelSubmitButton.SuspendLayout();
+            this.panelAllFields.SuspendLayout();
+            this.panelPossibleAnswers.SuspendLayout();
+            this.panelAllTags.SuspendLayout();
             this.panelTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelQuestions
             // 
+            this.panelQuestions.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panelQuestions.AutoScroll = true;
             this.panelQuestions.AutoSize = true;
-            this.panelQuestions.Controls.Add(this.panel2);
-            this.panelQuestions.Controls.Add(this.panel1);
-            this.panelQuestions.Location = new System.Drawing.Point(50, 64);
+            this.panelQuestions.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panelQuestions.Controls.Add(this.panelSubmitButton);
+            this.panelQuestions.Controls.Add(this.panelAllFields);
+            this.panelQuestions.Location = new System.Drawing.Point(273, 72);
+            this.panelQuestions.MinimumSize = new System.Drawing.Size(352, 0);
             this.panelQuestions.Name = "panelQuestions";
-            this.panelQuestions.Size = new System.Drawing.Size(778, 636);
+            this.panelQuestions.Size = new System.Drawing.Size(352, 607);
             this.panelQuestions.TabIndex = 0;
             // 
-            // panel2
+            // panelSubmitButton
             // 
-            this.panel2.Controls.Add(this.buttonCreate);
-            this.panel2.Location = new System.Drawing.Point(264, 515);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(250, 92);
-            this.panel2.TabIndex = 0;
+            this.panelSubmitButton.Controls.Add(this.buttonCreateQuestion);
+            this.panelSubmitButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSubmitButton.Location = new System.Drawing.Point(0, 485);
+            this.panelSubmitButton.Margin = new System.Windows.Forms.Padding(2);
+            this.panelSubmitButton.Name = "panelSubmitButton";
+            this.panelSubmitButton.Size = new System.Drawing.Size(352, 122);
+            this.panelSubmitButton.TabIndex = 0;
             // 
-            // buttonCreate
+            // buttonCreateQuestion
             // 
-            this.buttonCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(166)))), ((int)(((byte)(243)))));
-            this.buttonCreate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonCreate.FlatAppearance.BorderSize = 0;
-            this.buttonCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCreate.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCreate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(247)))));
-            this.buttonCreate.Location = new System.Drawing.Point(16, 20);
-            this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(218, 55);
-            this.buttonCreate.TabIndex = 0;
-            this.buttonCreate.TabStop = false;
-            this.buttonCreate.Text = "Create Question";
-            this.buttonCreate.UseVisualStyleBackColor = false;
-            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
+            this.buttonCreateQuestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(166)))), ((int)(((byte)(243)))));
+            this.buttonCreateQuestion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonCreateQuestion.FlatAppearance.BorderSize = 0;
+            this.buttonCreateQuestion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCreateQuestion.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCreateQuestion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(247)))));
+            this.buttonCreateQuestion.Location = new System.Drawing.Point(0, 34);
+            this.buttonCreateQuestion.Name = "buttonCreateQuestion";
+            this.buttonCreateQuestion.Size = new System.Drawing.Size(352, 55);
+            this.buttonCreateQuestion.TabIndex = 0;
+            this.buttonCreateQuestion.TabStop = false;
+            this.buttonCreateQuestion.Text = "Create Question";
+            this.buttonCreateQuestion.UseVisualStyleBackColor = false;
+            this.buttonCreateQuestion.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
-            // panel1
+            // panelAllFields
             // 
-            this.panel1.AutoSize = true;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.richTextBoxCorrectAnswer);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.richTextBox4);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.listBox1);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.richTextBoxQuestion);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(213, 28);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(352, 464);
-            this.panel1.TabIndex = 0;
+            this.panelAllFields.AutoSize = true;
+            this.panelAllFields.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panelAllFields.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelAllFields.Controls.Add(this.comboBoxDifficulty);
+            this.panelAllFields.Controls.Add(this.labelDifficulty);
+            this.panelAllFields.Controls.Add(this.richTextBoxCorrectAnswer);
+            this.panelAllFields.Controls.Add(this.labelWriteCorrectAnswer);
+            this.panelAllFields.Controls.Add(this.panelPossibleAnswers);
+            this.panelAllFields.Controls.Add(this.labelWriteAnswers);
+            this.panelAllFields.Controls.Add(this.buttonCreateTag);
+            this.panelAllFields.Controls.Add(this.richTextBoxCreateTag);
+            this.panelAllFields.Controls.Add(this.labelCreateTag);
+            this.panelAllFields.Controls.Add(this.panelAllTags);
+            this.panelAllFields.Controls.Add(this.labelSelectTags);
+            this.panelAllFields.Controls.Add(this.richTextBoxQuestion);
+            this.panelAllFields.Controls.Add(this.labelQuestion);
+            this.panelAllFields.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelAllFields.Location = new System.Drawing.Point(0, 0);
+            this.panelAllFields.Margin = new System.Windows.Forms.Padding(2);
+            this.panelAllFields.MinimumSize = new System.Drawing.Size(352, 2);
+            this.panelAllFields.Name = "panelAllFields";
+            this.panelAllFields.Size = new System.Drawing.Size(352, 485);
+            this.panelAllFields.TabIndex = 0;
             // 
-            // comboBox1
+            // comboBoxDifficulty
             // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Century Gothic", 11F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBoxDifficulty.BackColor = System.Drawing.Color.White;
+            this.comboBoxDifficulty.Dock = System.Windows.Forms.DockStyle.Top;
+            this.comboBoxDifficulty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDifficulty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxDifficulty.Font = new System.Drawing.Font("Century Gothic", 11F);
+            this.comboBoxDifficulty.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxDifficulty.FormattingEnabled = true;
+            this.comboBoxDifficulty.Items.AddRange(new object[] {
             "Easy",
             "Medium",
             "Hard"});
-            this.comboBox1.Location = new System.Drawing.Point(0, 390);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(350, 28);
-            this.comboBox1.TabIndex = 12;
+            this.comboBoxDifficulty.Location = new System.Drawing.Point(0, 455);
+            this.comboBoxDifficulty.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxDifficulty.Name = "comboBoxDifficulty";
+            this.comboBoxDifficulty.Size = new System.Drawing.Size(350, 28);
+            this.comboBoxDifficulty.TabIndex = 12;
             // 
-            // label5
+            // labelDifficulty
             // 
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
-            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(0, 362);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(350, 28);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Difficulty";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelDifficulty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
+            this.labelDifficulty.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelDifficulty.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.labelDifficulty.Location = new System.Drawing.Point(0, 427);
+            this.labelDifficulty.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelDifficulty.Name = "labelDifficulty";
+            this.labelDifficulty.Size = new System.Drawing.Size(350, 28);
+            this.labelDifficulty.TabIndex = 11;
+            this.labelDifficulty.Text = "Difficulty";
+            this.labelDifficulty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // richTextBoxCorrectAnswer
             // 
+            this.richTextBoxCorrectAnswer.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxCorrectAnswer.Dock = System.Windows.Forms.DockStyle.Top;
             this.richTextBoxCorrectAnswer.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.richTextBoxCorrectAnswer.Location = new System.Drawing.Point(0, 329);
-            this.richTextBoxCorrectAnswer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.richTextBoxCorrectAnswer.Location = new System.Drawing.Point(0, 394);
+            this.richTextBoxCorrectAnswer.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBoxCorrectAnswer.Multiline = false;
             this.richTextBoxCorrectAnswer.Name = "richTextBoxCorrectAnswer";
             this.richTextBoxCorrectAnswer.Size = new System.Drawing.Size(350, 33);
             this.richTextBoxCorrectAnswer.TabIndex = 10;
             this.richTextBoxCorrectAnswer.Text = "";
             // 
-            // label4
+            // labelWriteCorrectAnswer
             // 
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
-            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(0, 301);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(350, 28);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Write only the Correct Answer";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelWriteCorrectAnswer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
+            this.labelWriteCorrectAnswer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelWriteCorrectAnswer.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.labelWriteCorrectAnswer.Location = new System.Drawing.Point(0, 366);
+            this.labelWriteCorrectAnswer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelWriteCorrectAnswer.Name = "labelWriteCorrectAnswer";
+            this.labelWriteCorrectAnswer.Size = new System.Drawing.Size(350, 28);
+            this.labelWriteCorrectAnswer.TabIndex = 9;
+            this.labelWriteCorrectAnswer.Text = "Write only the correct answer";
+            this.labelWriteCorrectAnswer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel3
+            // panelPossibleAnswers
             // 
-            this.panel3.Controls.Add(this.RemoveAnswerButton);
-            this.panel3.Controls.Add(this.AddAnswerButton);
-            this.panel3.Controls.Add(this.richTextBoxAnswer2);
-            this.panel3.Controls.Add(this.richTextBoxAnswer1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 203);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(350, 98);
-            this.panel3.TabIndex = 8;
+            this.panelPossibleAnswers.AutoSize = true;
+            this.panelPossibleAnswers.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panelPossibleAnswers.Controls.Add(this.RemoveAnswerButton);
+            this.panelPossibleAnswers.Controls.Add(this.AddAnswerButton);
+            this.panelPossibleAnswers.Controls.Add(this.richTextBoxAnswer2);
+            this.panelPossibleAnswers.Controls.Add(this.richTextBoxAnswer1);
+            this.panelPossibleAnswers.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelPossibleAnswers.Location = new System.Drawing.Point(0, 267);
+            this.panelPossibleAnswers.Margin = new System.Windows.Forms.Padding(2);
+            this.panelPossibleAnswers.Name = "panelPossibleAnswers";
+            this.panelPossibleAnswers.Size = new System.Drawing.Size(350, 99);
+            this.panelPossibleAnswers.TabIndex = 8;
             // 
             // RemoveAnswerButton
             // 
@@ -189,8 +208,8 @@ namespace ExamGenerator.MainFiles
             this.RemoveAnswerButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.RemoveAnswerButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.RemoveAnswerButton.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold);
-            this.RemoveAnswerButton.Location = new System.Drawing.Point(316, 37);
-            this.RemoveAnswerButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RemoveAnswerButton.Location = new System.Drawing.Point(316, 36);
+            this.RemoveAnswerButton.Margin = new System.Windows.Forms.Padding(2);
             this.RemoveAnswerButton.Name = "RemoveAnswerButton";
             this.RemoveAnswerButton.Size = new System.Drawing.Size(24, 26);
             this.RemoveAnswerButton.TabIndex = 0;
@@ -202,15 +221,17 @@ namespace ExamGenerator.MainFiles
             // AddAnswerButton
             // 
             this.AddAnswerButton.BackColor = System.Drawing.SystemColors.Window;
+            this.AddAnswerButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AddAnswerButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.AddAnswerButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.AddAnswerButton.FlatAppearance.BorderSize = 0;
-            this.AddAnswerButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.AddAnswerButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.AddAnswerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddAnswerButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             this.AddAnswerButton.Location = new System.Drawing.Point(0, 66);
-            this.AddAnswerButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AddAnswerButton.Margin = new System.Windows.Forms.Padding(2);
             this.AddAnswerButton.Name = "AddAnswerButton";
-            this.AddAnswerButton.Size = new System.Drawing.Size(350, 31);
+            this.AddAnswerButton.Size = new System.Drawing.Size(350, 33);
             this.AddAnswerButton.TabIndex = 0;
             this.AddAnswerButton.Text = "+";
             this.AddAnswerButton.UseVisualStyleBackColor = false;
@@ -218,134 +239,184 @@ namespace ExamGenerator.MainFiles
             // 
             // richTextBoxAnswer2
             // 
+            this.richTextBoxAnswer2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxAnswer2.Dock = System.Windows.Forms.DockStyle.Top;
             this.richTextBoxAnswer2.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.richTextBoxAnswer2.Location = new System.Drawing.Point(0, 33);
-            this.richTextBoxAnswer2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.richTextBoxAnswer2.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBoxAnswer2.Multiline = false;
             this.richTextBoxAnswer2.Name = "richTextBoxAnswer2";
             this.richTextBoxAnswer2.Size = new System.Drawing.Size(350, 33);
             this.richTextBoxAnswer2.TabIndex = 0;
-            this.richTextBoxAnswer2.Text = "2.";
+            this.richTextBoxAnswer2.Text = "2. ";
             // 
             // richTextBoxAnswer1
             // 
+            this.richTextBoxAnswer1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxAnswer1.Dock = System.Windows.Forms.DockStyle.Top;
             this.richTextBoxAnswer1.Font = new System.Drawing.Font("Century Gothic", 11F);
             this.richTextBoxAnswer1.Location = new System.Drawing.Point(0, 0);
-            this.richTextBoxAnswer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.richTextBoxAnswer1.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBoxAnswer1.Multiline = false;
             this.richTextBoxAnswer1.Name = "richTextBoxAnswer1";
             this.richTextBoxAnswer1.Size = new System.Drawing.Size(350, 33);
             this.richTextBoxAnswer1.TabIndex = 0;
-            this.richTextBoxAnswer1.Text = "1.";
+            this.richTextBoxAnswer1.Text = "1. ";
             // 
-            // label3
+            // labelWriteAnswers
             // 
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
-            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(0, 175);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(350, 28);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Write ALL the Answers (Divide them by Enter)";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelWriteAnswers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
+            this.labelWriteAnswers.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelWriteAnswers.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.labelWriteAnswers.Location = new System.Drawing.Point(0, 239);
+            this.labelWriteAnswers.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelWriteAnswers.Name = "labelWriteAnswers";
+            this.labelWriteAnswers.Size = new System.Drawing.Size(350, 28);
+            this.labelWriteAnswers.TabIndex = 7;
+            this.labelWriteAnswers.Text = "Write ALL the answers";
+            this.labelWriteAnswers.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // richTextBox4
+            // richTextBoxCreateTag
             // 
-            this.richTextBox4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.richTextBox4.Font = new System.Drawing.Font("Century Gothic", 11F);
-            this.richTextBox4.Location = new System.Drawing.Point(0, 142);
-            this.richTextBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.richTextBox4.Name = "richTextBox4";
-            this.richTextBox4.Size = new System.Drawing.Size(350, 33);
-            this.richTextBox4.TabIndex = 6;
-            this.richTextBox4.Text = "";
+            this.richTextBoxCreateTag.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxCreateTag.Dock = System.Windows.Forms.DockStyle.Top;
+            this.richTextBoxCreateTag.Font = new System.Drawing.Font("Century Gothic", 11F);
+            this.richTextBoxCreateTag.Location = new System.Drawing.Point(0, 176);
+            this.richTextBoxCreateTag.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBoxCreateTag.Multiline = false;
+            this.richTextBoxCreateTag.Name = "richTextBoxCreateTag";
+            this.richTextBoxCreateTag.Size = new System.Drawing.Size(350, 33);
+            this.richTextBoxCreateTag.TabIndex = 6;
+            this.richTextBoxCreateTag.Text = "";
             // 
-            // label7
+            // labelCreateTag
             // 
-            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
-            this.label7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(0, 114);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(350, 28);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "or Create a new Tag";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelCreateTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
+            this.labelCreateTag.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelCreateTag.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.labelCreateTag.Location = new System.Drawing.Point(0, 148);
+            this.labelCreateTag.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelCreateTag.Name = "labelCreateTag";
+            this.labelCreateTag.Size = new System.Drawing.Size(350, 28);
+            this.labelCreateTag.TabIndex = 5;
+            this.labelCreateTag.Text = "Add a new tag (Optional)";
+            this.labelCreateTag.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // listBox1
+            // panelAllTags
             // 
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.listBox1.Font = new System.Drawing.Font("Century Gothic", 11F);
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(0, 110);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.ScrollAlwaysVisible = true;
-            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listBox1.Size = new System.Drawing.Size(350, 4);
-            this.listBox1.TabIndex = 4;
+            this.panelAllTags.AutoSize = true;
+            this.panelAllTags.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panelAllTags.BackColor = System.Drawing.SystemColors.Window;
+            this.panelAllTags.Controls.Add(this.panelLeftTags);
+            this.panelAllTags.Controls.Add(this.panelRightTags);
+            this.panelAllTags.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelAllTags.Location = new System.Drawing.Point(0, 120);
+            this.panelAllTags.MinimumSize = new System.Drawing.Size(0, 28);
+            this.panelAllTags.Name = "panelAllTags";
+            this.panelAllTags.Size = new System.Drawing.Size(350, 28);
+            this.panelAllTags.TabIndex = 13;
             // 
-            // label2
+            // panelRightTags
             // 
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(0, 82);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(350, 28);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Select from Existing Tags";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panelRightTags.AutoSize = true;
+            this.panelRightTags.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panelRightTags.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelRightTags.Location = new System.Drawing.Point(175, 0);
+            this.panelRightTags.MinimumSize = new System.Drawing.Size(175, 28);
+            this.panelRightTags.Name = "panelRightTags";
+            this.panelRightTags.Padding = new System.Windows.Forms.Padding(30, 0, 10, 0);
+            this.panelRightTags.Size = new System.Drawing.Size(175, 28);
+            this.panelRightTags.TabIndex = 1;
+            // 
+            // panelLeftTags
+            // 
+            this.panelLeftTags.AutoSize = true;
+            this.panelLeftTags.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panelLeftTags.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelLeftTags.Location = new System.Drawing.Point(0, 0);
+            this.panelLeftTags.MinimumSize = new System.Drawing.Size(175, 28);
+            this.panelLeftTags.Name = "panelLeftTags";
+            this.panelLeftTags.Padding = new System.Windows.Forms.Padding(30, 0, 10, 0);
+            this.panelLeftTags.Size = new System.Drawing.Size(175, 28);
+            this.panelLeftTags.TabIndex = 0;
+            // 
+            // labelSelectTags
+            // 
+            this.labelSelectTags.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
+            this.labelSelectTags.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelSelectTags.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.labelSelectTags.Location = new System.Drawing.Point(0, 92);
+            this.labelSelectTags.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelSelectTags.Name = "labelSelectTags";
+            this.labelSelectTags.Size = new System.Drawing.Size(350, 28);
+            this.labelSelectTags.TabIndex = 3;
+            this.labelSelectTags.Text = "Select from existing tags";
+            this.labelSelectTags.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // richTextBoxQuestion
             // 
+            this.richTextBoxQuestion.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxQuestion.Dock = System.Windows.Forms.DockStyle.Top;
             this.richTextBoxQuestion.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold);
             this.richTextBoxQuestion.Location = new System.Drawing.Point(0, 49);
-            this.richTextBoxQuestion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.richTextBoxQuestion.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxQuestion.Name = "richTextBoxQuestion";
-            this.richTextBoxQuestion.Size = new System.Drawing.Size(350, 33);
+            this.richTextBoxQuestion.Size = new System.Drawing.Size(350, 43);
             this.richTextBoxQuestion.TabIndex = 2;
             this.richTextBoxQuestion.Text = "";
             // 
-            // label1
+            // labelQuestion
             // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(215)))), ((int)(((byte)(249)))));
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(350, 49);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Add Question";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelQuestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(215)))), ((int)(((byte)(249)))));
+            this.labelQuestion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelQuestion.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.labelQuestion.Location = new System.Drawing.Point(0, 0);
+            this.labelQuestion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelQuestion.Name = "labelQuestion";
+            this.labelQuestion.Size = new System.Drawing.Size(350, 49);
+            this.labelQuestion.TabIndex = 1;
+            this.labelQuestion.Text = "Question";
+            this.labelQuestion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelTop
             // 
-            this.panelTop.Controls.Add(this.label6);
-            this.panelTop.Location = new System.Drawing.Point(49, -2);
+            this.panelTop.Controls.Add(this.labelTitle);
+            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Margin = new System.Windows.Forms.Padding(0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Padding = new System.Windows.Forms.Padding(20, 25, 0, 0);
-            this.panelTop.Size = new System.Drawing.Size(780, 66);
+            this.panelTop.Size = new System.Drawing.Size(900, 66);
             this.panelTop.TabIndex = 0;
             // 
-            // label6
+            // labelTitle
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century", 21.75F);
-            this.label6.Location = new System.Drawing.Point(295, 25);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(200, 34);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Add Question";
+            this.labelTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelTitle.Font = new System.Drawing.Font("Century", 21.75F);
+            this.labelTitle.Location = new System.Drawing.Point(0, 0);
+            this.labelTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(900, 66);
+            this.labelTitle.TabIndex = 0;
+            this.labelTitle.Text = "Add Question";
+            this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // buttonCreateTag
+            // 
+            this.buttonCreateTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(215)))), ((int)(((byte)(249)))));
+            this.buttonCreateTag.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonCreateTag.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonCreateTag.FlatAppearance.BorderSize = 0;
+            this.buttonCreateTag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCreateTag.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCreateTag.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.buttonCreateTag.Location = new System.Drawing.Point(0, 209);
+            this.buttonCreateTag.Name = "buttonCreateTag";
+            this.buttonCreateTag.Size = new System.Drawing.Size(350, 30);
+            this.buttonCreateTag.TabIndex = 14;
+            this.buttonCreateTag.TabStop = false;
+            this.buttonCreateTag.Text = "Create Tag";
+            this.buttonCreateTag.UseVisualStyleBackColor = false;
+            this.buttonCreateTag.Click += new System.EventHandler(this.buttonCreateTag_Click);
             // 
             // AddQuestionsSection
             // 
@@ -355,17 +426,18 @@ namespace ExamGenerator.MainFiles
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(233)))), ((int)(((byte)(242)))));
             this.Controls.Add(this.panelTop);
             this.Controls.Add(this.panelQuestions);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AddQuestionsSection";
-            this.Size = new System.Drawing.Size(900, 660);
-            this.Load += new System.EventHandler(this.AddQuestionsSection_Load);
+            this.Size = new System.Drawing.Size(900, 680);
             this.panelQuestions.ResumeLayout(false);
             this.panelQuestions.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
+            this.panelSubmitButton.ResumeLayout(false);
+            this.panelAllFields.ResumeLayout(false);
+            this.panelAllFields.PerformLayout();
+            this.panelPossibleAnswers.ResumeLayout(false);
+            this.panelAllTags.ResumeLayout(false);
+            this.panelAllTags.PerformLayout();
             this.panelTop.ResumeLayout(false);
-            this.panelTop.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -374,25 +446,28 @@ namespace ExamGenerator.MainFiles
         #endregion
         private System.Windows.Forms.Panel panelQuestions;
         private System.Windows.Forms.Panel panelTop;
-        private System.Windows.Forms.Button buttonCreate;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RichTextBox richTextBox4;
+        private System.Windows.Forms.Button buttonCreateQuestion;
+        private System.Windows.Forms.Panel panelAllFields;
+        private System.Windows.Forms.Label labelQuestion;
+        private System.Windows.Forms.Label labelSelectTags;
+        private System.Windows.Forms.Label labelDifficulty;
+        private System.Windows.Forms.Label labelWriteCorrectAnswer;
+        private System.Windows.Forms.Label labelWriteAnswers;
+        private System.Windows.Forms.RichTextBox richTextBoxCreateTag;
         private System.Windows.Forms.RichTextBox richTextBoxQuestion;
         private System.Windows.Forms.RichTextBox richTextBoxCorrectAnswer;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ComboBox comboBoxDifficulty;
+        private System.Windows.Forms.Label labelTitle;
+        private System.Windows.Forms.Label labelCreateTag;
+        private System.Windows.Forms.Panel panelSubmitButton;
+        private System.Windows.Forms.Panel panelPossibleAnswers;
         private System.Windows.Forms.Button RemoveAnswerButton;
         private System.Windows.Forms.Button AddAnswerButton;
         private System.Windows.Forms.RichTextBox richTextBoxAnswer2;
         private System.Windows.Forms.RichTextBox richTextBoxAnswer1;
+        private System.Windows.Forms.Panel panelAllTags;
+        private System.Windows.Forms.Panel panelRightTags;
+        private System.Windows.Forms.Panel panelLeftTags;
+        private System.Windows.Forms.Button buttonCreateTag;
     }
 }

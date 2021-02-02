@@ -19,24 +19,92 @@ namespace ExamGenerator.MainFiles
             InitializeComponent();
         }
 
-        private void AddQuestionsSection_Load(object sender, EventArgs e)
-        {
-
+        private enum TagLocation{
+            Left,
+            Right
         }
 
+        TagLocation nextTagLocation = TagLocation.Left;
         public void OnLoad(Subject subject)
         {
-            this.subject = subject;
-            if (!subject.AllTags.Any()) listBox1.Items.Add("You haven't created a tag yet.");
+            //this.subject = subject;
+            //if (!subject.AllTags.Any()) listBoxTags.Items.Add("You haven't created a tag yet.");
 
-            else
+            //else
+            //{
+            //    if (listBoxTags.Items.Contains("You haven't created a tag yet.")) listBoxTags.Items.Remove("You haven't created a tag yet.");
+            //    foreach (string s in subject.AllTags)
+            //    {
+            //        listBoxTags.Items.Add(s);
+            //    }
+            //}
+
+            this.subject = subject;
+            
+            foreach (string tag in subject.AllTags)
             {
-                if (listBox1.Items.Contains("You haven't created a tag yet.")) listBox1.Items.Remove("You haven't created a tag yet.");
-                foreach (string s in subject.AllTags)
+                if (nextTagLocation == TagLocation.Left)
                 {
-                    listBox1.Items.Add(s);
+                    DisplayTag(tag, panelLeftTags);
+                    nextTagLocation = TagLocation.Right;
+                }
+                else
+                {
+                    DisplayTag(tag, panelRightTags);
+                    nextTagLocation = TagLocation.Left;
                 }
             }
+        }
+
+        private void DisplayTag(string name, Panel panel)
+        {
+            CheckBox checkbox = new CheckBox();
+
+            checkbox.Dock = System.Windows.Forms.DockStyle.Top;
+            checkbox.FlatAppearance.BorderSize = 0;
+            checkbox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            checkbox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            checkbox.Location = new System.Drawing.Point(0, 0);
+            checkbox.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            checkbox.Size = new System.Drawing.Size(128, 34);
+            checkbox.TabIndex = 5;
+            checkbox.Text = name;
+            checkbox.AutoEllipsis = true;
+            checkbox.UseVisualStyleBackColor = true;
+
+            panel.Controls.Add(checkbox);
+        }
+
+        private void buttonCreateTag_Click(object sender, EventArgs e)
+        {
+            string tag;
+            if (!string.IsNullOrWhiteSpace(richTextBoxCreateTag.Text))
+                tag = richTextBoxCreateTag.Text;
+            else
+            {
+                MessageBox.Show("Type a tag in the textbox in order to create it", "Unable to create tag",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            
+            if (!subject.AllTags.Contains(tag))
+            {
+                if (nextTagLocation == TagLocation.Left)
+                {
+                    DisplayTag(tag, panelLeftTags);
+                    nextTagLocation = TagLocation.Right;
+                }
+                else
+                {
+                    DisplayTag(tag, panelRightTags);
+                    nextTagLocation = TagLocation.Left;
+                }
+
+                subject.AllTags.Add(tag);
+            }
+            else
+                MessageBox.Show("The tag you typed already exists. Select it instead", "Tag already exists",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void buttonCreate_Click(object sender, EventArgs e)
@@ -44,18 +112,18 @@ namespace ExamGenerator.MainFiles
             try
             {
                 HashSet<string> tags = new HashSet<string>();
-                if(listBox1.SelectedItem != null) tags = (HashSet<string>)listBox1.SelectedItem;
-                if (richTextBox4.Text != null)
+                //if(listBoxTags.SelectedItem != null) tags = (HashSet<string>)listBoxTags.SelectedItem;
+                if (richTextBoxCreateTag.Text != null)
                 {
-                    tags.Add(richTextBox4.Text);
+                    tags.Add(richTextBoxCreateTag.Text);
                 }
                 List<string> answers = new List<string>();
 
-                foreach(RichTextBox textbox in panel3.Controls.OfType<RichTextBox>())
+                foreach(RichTextBox textbox in panelPossibleAnswers.Controls.OfType<RichTextBox>())
                 {
                     answers.Add(textbox.Text);
                 }
-                Question q = new Question(tags, richTextBoxQuestion.Text, answers, richTextBoxCorrectAnswer.Text, comboBox1.SelectedItem.ToString());
+                Question q = new Question(tags, richTextBoxQuestion.Text, answers, richTextBoxCorrectAnswer.Text, comboBoxDifficulty.SelectedItem.ToString());
 
                 if (q != null) MessageBox.Show("Question added successfully!");
             }
@@ -82,6 +150,7 @@ namespace ExamGenerator.MainFiles
             RichTextBox t = new RichTextBox
             {
                 Anchor = AnchorStyles.Top,
+                BorderStyle = BorderStyle.None,
                 Dock = DockStyle.Top,
                 Font = new Font("Century Gothic", 11),
                 Location = new Point(addQuestionX, answerTextboxY),
@@ -92,20 +161,20 @@ namespace ExamGenerator.MainFiles
                 Name = "AnswerTextBox" + textboxCounter,
                 Size = new Size(647, 40),
                 TabIndex = 0,
-                Text = textboxCounter + "."
+                Text = textboxCounter + ". "
             };
 
             // Add the new text box to panelAddQuestion
-            panel3.Controls.Add(t);
-            panel3.Controls.SetChildIndex(t, 2);
-            foreach (Control c in panel1.Controls)
-            {
-                if(c.TabIndex > panel3.TabIndex)
-                {
-                    //MessageBox.Show(c.Name + " " + c.TabIndex);
-                    c.Location = new Point(c.Location.X, c.Location.Y + 40);
-                }
-            }
+            panelPossibleAnswers.Controls.Add(t);
+            panelPossibleAnswers.Controls.SetChildIndex(t, 2);
+            //foreach (Control c in panelAllFields.Controls)
+            //{
+            //    if(c.TabIndex > panelPossibleAnswers.TabIndex)
+            //    {
+            //        //MessageBox.Show(c.Name + " " + c.TabIndex);
+            //        c.Location = new Point(c.Location.X, c.Location.Y + 40);
+            //    }
+            //}
             
             // Make remove button visible
             RemoveAnswerButton.Visible = true;
@@ -116,7 +185,7 @@ namespace ExamGenerator.MainFiles
 
         private void RemoveAnswerButton_Click(object sender, EventArgs e)
         {
-            foreach (Control textBox in panel3.Controls.OfType<RichTextBox>())
+            foreach (Control textBox in panelPossibleAnswers.Controls.OfType<RichTextBox>())
             {
 
                 if (textboxCounter < 3)
@@ -126,7 +195,7 @@ namespace ExamGenerator.MainFiles
                 else if (textBox.Name.Equals("AnswerTextBox" + textboxCounter))
                 {
                     // Remove the textBox
-                    panel3.Controls.Remove(textBox);
+                    panelPossibleAnswers.Controls.Remove(textBox);
                     // Move the AddQuestion button
                     AddAnswerButton.Location = new Point(AddAnswerButton.Location.X, AddAnswerButton.Location.Y - 40);
                     // Move the RemoveAnswer button
@@ -143,5 +212,7 @@ namespace ExamGenerator.MainFiles
                 }
             }
         }
+
+        
     }
 }

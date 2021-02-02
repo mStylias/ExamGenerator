@@ -29,39 +29,43 @@ namespace ExamGenerator.MainFiles
             initialWidth = this.Width;
             initialHeight = this.Height;
 
-            // Temporary load subject
-            CurrentSubject = new Subject("Math");
+            //// Temporary load subject
+            //CurrentSubject = new Subject("Math");
 
-            var possibleAnswers = new List<string>();
-            possibleAnswers.Add("1. Who the fuck knows");
-            possibleAnswers.Add("2. Certainly not me");
-            possibleAnswers.Add("3. Only the people who teach this shit");
-            var correctAnswer = "2. Certainly not me";
-            var difficulty = "Medium";
+            //var possibleAnswers = new List<string>();
+            //possibleAnswers.Add("1. Who the fuck knows");
+            //possibleAnswers.Add("2. Certainly not me");
+            //possibleAnswers.Add("3. Only the people who teach this shit");
+            //var correctAnswer = "2. Certainly not me";
+            //var difficulty = "Medium";
 
-            for (int i = 0; i < 50; i++)
-            {
-                string questionBody = "Test" + i;
+            //for (int i = 0; i < 50; i++)
+            //{
+            //    string questionBody = "Test" + i;
 
-                if (i % 3 == 0)
-                {
-                    difficulty = "Easy";
-                }
-                else if (i % 3 == 2)
-                    difficulty = "Hard";
-                else
-                {
-                    difficulty = "Medium";
-                }
+            //    if (i % 3 == 0)
+            //    {
+            //        difficulty = "Easy";
+            //    }
+            //    else if (i % 3 == 2)
+            //        difficulty = "Hard";
+            //    else
+            //    {
+            //        difficulty = "Medium";
+            //    }
 
-                var tags = new HashSet<string>();
-                tags.Add("Limits");
-                if (i % 5 == 0)
-                    tags.Add("Modulo");
+            //    var tags = new HashSet<string>();
+            //    tags.Add("Limits");
+            //    if (i % 5 == 0)
+            //        tags.Add("Modulo");
 
-                CurrentSubject.AddQuestion(new Question(tags, questionBody, possibleAnswers, correctAnswer, difficulty));
-            }
+            //    CurrentSubject.AddQuestion(new Question(tags, questionBody, possibleAnswers, correctAnswer, difficulty));
+            //}
+        }
 
+        public void OnLoad(Subject subject)
+        {
+            CurrentSubject = subject;
 
             foreach (string tag in CurrentSubject.AllTags)
             {

@@ -46,8 +46,11 @@ namespace ExamGenerator
                     bool areAllTagsPresent = true;
                     foreach (string necessaryTag in tags)
                         if (!question.Tags.Contains(necessaryTag))
+                        {
                             areAllTagsPresent = false;
-
+                            continue;
+                        }
+                            
                     if (!areAllTagsPresent)
                         continue;
                 }
@@ -60,25 +63,6 @@ namespace ExamGenerator
             }
 
             return sortedQuestions;
-
-            //foreach (Question question in Questions)
-            //{
-            //    if (question.Difficulty.Equals(difficulty) || difficulty.Equals("Any"))
-            //    {
-            //        if (tags != null && tags.Count > 0)
-            //        {
-            //            foreach (string tag in tags)
-            //                if (question.Tags.Contains(tag) && question.Body.Contains(typedSearch))
-            //                    sortedQuestions.Add(question);
-            //        }
-            //        else if (typedSearch != null && question.Body.Contains(typedSearch))
-            //            sortedQuestions.Add(question);
-            //        else if (typedSearch == null)
-            //            sortedQuestions.Add(question);
-            //    }
-            //}
-
-            //return sortedQuestions;
         }
 
     }

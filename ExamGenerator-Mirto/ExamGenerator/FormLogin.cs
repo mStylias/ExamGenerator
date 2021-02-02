@@ -174,5 +174,11 @@ namespace ExamGenerator
             form.Show();
             
         }
+
+        /* Stop the user from writting on the dropdown menu */
+        private void dropdownListSubjects_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
     }
 }

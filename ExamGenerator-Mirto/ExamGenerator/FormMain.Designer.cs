@@ -49,6 +49,8 @@
             this.autoSection1 = new ExamGenerator.AutoSection();
             this.manualSection = new ExamGenerator.MainFiles.ManualSection();
             this.addQuestionsSection1 = new ExamGenerator.MainFiles.AddQuestionsSection();
+            this.radioSubject1 = new System.Windows.Forms.RadioButton();
+            this.panelSubjects = new System.Windows.Forms.Panel();
             this.panelTopSection.SuspendLayout();
             this.panelTitlebar.SuspendLayout();
             this.panelSearchQuestions.SuspendLayout();
@@ -56,6 +58,7 @@
             this.panelAppTitle.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelMenuButtons.SuspendLayout();
+            this.panelSubjects.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTopSection
@@ -149,7 +152,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.White;
-            this.panelMenu.Controls.Add(this.labelSubjectsList);
+            this.panelMenu.Controls.Add(this.panelSubjects);
             this.panelMenu.Controls.Add(this.panelMenuButtons);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 54);
@@ -164,7 +167,8 @@
             this.labelSubjectsList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelSubjectsList.Font = new System.Drawing.Font("Pristina", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSubjectsList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(166)))), ((int)(((byte)(243)))));
-            this.labelSubjectsList.Location = new System.Drawing.Point(0, 276);
+            this.labelSubjectsList.Location = new System.Drawing.Point(0, 0);
+            this.labelSubjectsList.MinimumSize = new System.Drawing.Size(195, 72);
             this.labelSubjectsList.Name = "labelSubjectsList";
             this.labelSubjectsList.Padding = new System.Windows.Forms.Padding(0, 30, 0, 0);
             this.labelSubjectsList.Size = new System.Drawing.Size(195, 72);
@@ -317,13 +321,51 @@
             this.addQuestionsSection1.Size = new System.Drawing.Size(900, 700);
             this.addQuestionsSection1.TabIndex = 3;
             // 
+            // radioSubject1
+            // 
+            this.radioSubject1.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioSubject1.AutoEllipsis = true;
+            this.radioSubject1.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radioSubject1.Checked = true;
+            this.radioSubject1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.radioSubject1.FlatAppearance.BorderSize = 0;
+            this.radioSubject1.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
+            this.radioSubject1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
+            this.radioSubject1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
+            this.radioSubject1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.radioSubject1.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioSubject1.Location = new System.Drawing.Point(0, 72);
+            this.radioSubject1.Margin = new System.Windows.Forms.Padding(0);
+            this.radioSubject1.MinimumSize = new System.Drawing.Size(195, 50);
+            this.radioSubject1.Name = "radioSubject1";
+            this.radioSubject1.Size = new System.Drawing.Size(195, 50);
+            this.radioSubject1.TabIndex = 10;
+            this.radioSubject1.TabStop = true;
+            this.radioSubject1.Text = "Sample Subject";
+            this.radioSubject1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radioSubject1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.radioSubject1.UseVisualStyleBackColor = true;
+            // 
+            // panelSubjects
+            // 
+            this.panelSubjects.AutoScroll = true;
+            this.panelSubjects.AutoSize = true;
+            this.panelSubjects.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panelSubjects.Controls.Add(this.radioSubject1);
+            this.panelSubjects.Controls.Add(this.labelSubjectsList);
+            this.panelSubjects.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelSubjects.Location = new System.Drawing.Point(0, 276);
+            this.panelSubjects.Name = "panelSubjects";
+            this.panelSubjects.Size = new System.Drawing.Size(195, 424);
+            this.panelSubjects.TabIndex = 11;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1095, 754);
-            this.Controls.Add(this.manualSection);
             this.Controls.Add(this.addQuestionsSection1);
+            this.Controls.Add(this.manualSection);
             this.Controls.Add(this.autoSection1);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelTopSection);
@@ -333,6 +375,7 @@
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Exam Generator";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResizeEnd += new System.EventHandler(this.FormMain_ResizeEnd);
             this.Resize += new System.EventHandler(this.FormMain_Resize);
             this.panelTopSection.ResumeLayout(false);
@@ -342,7 +385,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSearch)).EndInit();
             this.panelAppTitle.ResumeLayout(false);
             this.panelMenu.ResumeLayout(false);
+            this.panelMenu.PerformLayout();
             this.panelMenuButtons.ResumeLayout(false);
+            this.panelSubjects.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -369,5 +414,7 @@
         private MainFiles.AddQuestionsSection addQuestionsSection1;
         private MainFiles.ManualSection manualSection;
         private AutoSection autoSection1;
+        private System.Windows.Forms.Panel panelSubjects;
+        private System.Windows.Forms.RadioButton radioSubject1;
     }
 }
