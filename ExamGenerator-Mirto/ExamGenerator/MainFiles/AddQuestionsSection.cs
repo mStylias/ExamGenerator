@@ -28,6 +28,7 @@ namespace ExamGenerator.MainFiles
         {
             this.subject = subject;
             if (!subject.SubjectTags.Any()) listBox1.Items.Add("You haven't created a tag yet.");
+
             else
             {
                 if (listBox1.Items.Contains("You haven't created a tag yet.")) listBox1.Items.Remove("You haven't created a tag yet.");
@@ -49,11 +50,13 @@ namespace ExamGenerator.MainFiles
                     tags.Add(richTextBox4.Text);
                 }
                 List<string> answers = new List<string>();
+
                 foreach(RichTextBox textbox in panel3.Controls.OfType<RichTextBox>())
                 {
                     answers.Add(textbox.Text);
                 }
-                Question q = new Question(subject, tags, richTextBoxQuestion.Text, answers, richTextBoxCorrectAnswer.Text, comboBox1.SelectedItem.ToString());
+                Question q = new Question(tags, richTextBoxQuestion.Text, answers, richTextBoxCorrectAnswer.Text, comboBox1.SelectedItem.ToString());
+
                 if (q != null) MessageBox.Show("Question added successfully!");
             }
             catch(Exception ex)

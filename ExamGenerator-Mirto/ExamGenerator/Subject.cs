@@ -12,35 +12,90 @@ namespace ExamGenerator
     public class Subject
     {
         public string Name { get; set; }
-        public List<Question> Questions { get; set; } = new List<Question>();
+        public List<Question> Questions { get; private set; } = new List<Question>();
         public static Dictionary<string, Subject> Subjects { get; set; } = new Dictionary<string, Subject>();
-        public HashSet<string> SubjectTags { get; set; } = new HashSet<string>();
+        public HashSet<string> AllTags { get; set; } = new HashSet<string>();
 
         public Subject(string name)
         {
             Name = name;
         }
 
-        public List<Question> SortQuestionsByTag(string tag)
+        public void AddQuestion(Question question)
         {
-            var sortedList = new List<Question>();
-            foreach (Question question in Questions)
+            Questions.Add(question);
+            foreach (string tag in question.Tags)
             {
-                if (question.QuestionTags.Contains(tag))
-                    sortedList.Add(question);
+                if (AllTags.Contains(tag))
+                    continue;
+                else
+                    AllTags.Add(tag);
             }
-            return sortedList;
         }
 
-        public List<Question> SortQuestionsByDifficulty(string difficulty)
+        public List<Question> SearchQuestions(string difficulty)
         {
-            var sortedList = new List<Question>();
+            if (difficulty.Equals("Any"))
+            {
+                return Questions;
+            }
+                
+
+            var sortedQuestions = new List<Question>();
             foreach (Question question in Questions)
             {
                 if (question.Difficulty.Equals(difficulty))
-                    sortedList.Add(question);
+                    sortedQuestions.Add(question);
+                    
             }
-            return sortedList;
+
+            return sortedQuestions;
         }
+
+        public List<Question> SearchQuestions(string difficulty, HashSet<string> tags)
+        {
+            var sortedQuestions = new List<Question>();
+            foreach (Question question in Questions)
+            {
+                if (question.Difficulty.Equals(difficulty) || difficulty.Equals("Any"))
+                    foreach (string tag in tags)
+                        if (question.Tags.Contains(tag))
+                            sortedQuestions.Add(question);
+            }
+
+            return sortedQuestions;
+        }
+
+        public List<Question> SearchQuestions(string difficulty, HashSet<string> tags, string typedSearch)
+        {
+            var sortedQuestions = new List<Question>();
+            foreach (Question question in Questions)
+            {
+                if (question.Difficulty.Equals(difficulty) || difficulty.Equals("Any"))
+                {
+                    if (tags.Count > 0)
+                    {
+                        foreach (string tag in tags)
+                            if (question.Tags.Contains(tag) && question.Body.Contains(typedSearch))
+                                sortedQuestions.Add(question);
+                    }
+                    else if (question.Body.Contains(typedSearch))
+                        sortedQuestions.Add(question);
+                }
+            }
+
+            return sortedQuestions;
+        }
+
+        //public List<Question> SearchQuestionsByDifficulty(string difficulty)
+        //{
+        //    var sortedList = new List<Question>();
+        //    foreach (Question question in Questions)
+        //    {
+        //        if (question.Difficulty.Equals(difficulty))
+        //            sortedList.Add(question);
+        //    }
+        //    return sortedList;
+        //}
     }
 }
