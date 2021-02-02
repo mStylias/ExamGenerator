@@ -77,7 +77,7 @@ namespace ExamGenerator
 
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
-            manualSection.SearchAndDisplayQuestions(textBoxSearch.Text);
+            manualSection.SearchQuestions(textBoxSearch.Text);
         }
 
     }

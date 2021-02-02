@@ -68,7 +68,6 @@ namespace ExamGenerator.MainFiles
                 DisplayTag(tag);
             }
 
-            Console.WriteLine(CurrentSubject.Questions.Count);
             InitializeQuestionModels();
             DisplayQuestionModels();
             ToggleNavigationButtons();
@@ -211,7 +210,7 @@ namespace ExamGenerator.MainFiles
                     button.BackColor = Color.FromArgb(255, 255, 255);
         }
 
-        private void Tags_Click(object sender, EventArgs e)
+        private void TagsButton_Click(object sender, EventArgs e)
         {
             if (IsTagsPanelVisible)
             {
@@ -286,17 +285,19 @@ namespace ExamGenerator.MainFiles
             SearchAndDisplayQuestions();
         }
 
+        string searchBarText = null;
+        public void SearchQuestions(string searchBarText)
+        {
+            this.searchBarText = searchBarText;
+            SearchAndDisplayQuestions();
+        }
         private void SearchAndDisplayQuestions()
         {
             List<Question> sortedQuestions = null;
             foreach (RadioButton radio in togglePanelDifficulty.Controls.OfType<RadioButton>())
                 if (radio.Checked)
                 {
-                    Console.WriteLine(activeTags.Count);
-                    if (activeTags.Count > 0)
-                        sortedQuestions = CurrentSubject.SearchQuestions(radio.Text, activeTags, null);
-                    else
-                        sortedQuestions = CurrentSubject.SearchQuestions(radio.Text, null, null);
+                    sortedQuestions = CurrentSubject.SearchQuestions(radio.Text, activeTags, searchBarText);
                 }
 
 
@@ -314,73 +315,22 @@ namespace ExamGenerator.MainFiles
 
             }
 
-
-
-            //foreach (QuestionModel model in ActiveQuestionModels)
-            //{
-            //    if (!sortedQuestions.Contains(model.Question))
-            //    {
-
-            //    }
-            //}
-
             DisplayQuestionModels();
             ToggleNavigationButtons();
-            
-        }
-
-        public void SearchAndDisplayQuestions(string search)
-        {
-            List<Question> sortedQuestions = null;
-            foreach (RadioButton radio in togglePanelDifficulty.Controls.OfType<RadioButton>())
-                if (radio.Checked)
-                {
-                    sortedQuestions = CurrentSubject.SearchQuestions(radio.Text, activeTags, search);
-                }
-
-
-            page = 1;
-
-            ActiveQuestionModels = AllQuestionModels.ToList();
-
-            for (int i = ActiveQuestionModels.Count - 1; i >= 0; i--)
-            {
-                if (!sortedQuestions.Contains(CurrentSubject.Questions[i]))
-                {
-                    ActiveQuestionModels[i].Hide();
-                    ActiveQuestionModels.RemoveAt(i);
-                }
-
-            }
-
-
-
-            //foreach (QuestionModel model in ActiveQuestionModels)
-            //{
-            //    if (!sortedQuestions.Contains(model.Question))
-            //    {
-
-            //    }
-            //}
-
-            DisplayQuestionModels();
-            ToggleNavigationButtons();
-
         }
 
         /* Opens the manual generate dialog with the selected questions */
         private void buttonGenerate_Click(object sender, EventArgs e)
         {
             var questions = new List<Question>();
-            foreach (QuestionModel model in AllQuestionModels)
+            foreach (QuestionModel model in ActiveQuestionModels)
             {
-                if (model.Checked)
+                if (model.Selected)
                     questions.Add(model.Question);
             }
 
             if (questions.Count > 0)
             {
-                Console.WriteLine("Hello?");
                 FormManualGenerate form = new FormManualGenerate(CurrentSubject.Name, questions);
                 form.ShowDialog();
             }

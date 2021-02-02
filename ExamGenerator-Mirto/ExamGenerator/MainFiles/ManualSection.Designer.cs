@@ -134,7 +134,7 @@
             this.labelTagsArrow.Size = new System.Drawing.Size(27, 41);
             this.labelTagsArrow.TabIndex = 0;
             this.labelTagsArrow.Text = "6";
-            this.labelTagsArrow.Click += new System.EventHandler(this.Tags_Click);
+            this.labelTagsArrow.Click += new System.EventHandler(this.TagsButton_Click);
             this.labelTagsArrow.MouseEnter += new System.EventHandler(this.buttonSort_MouseEnter);
             this.labelTagsArrow.MouseLeave += new System.EventHandler(this.buttonSort_MouseLeave);
             // 
@@ -152,7 +152,7 @@
             this.buttonSortTags.TabIndex = 6;
             this.buttonSortTags.Text = "Tags";
             this.buttonSortTags.UseVisualStyleBackColor = true;
-            this.buttonSortTags.Click += new System.EventHandler(this.Tags_Click);
+            this.buttonSortTags.Click += new System.EventHandler(this.TagsButton_Click);
             this.buttonSortTags.MouseEnter += new System.EventHandler(this.buttonSort_MouseEnter);
             this.buttonSortTags.MouseLeave += new System.EventHandler(this.buttonSort_MouseLeave);
             // 

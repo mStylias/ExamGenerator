@@ -38,31 +38,48 @@ namespace ExamGenerator
             var sortedQuestions = new List<Question>();
             foreach (Question question in Questions)
             {
-                if (question.Difficulty.Equals(difficulty) || difficulty.Equals("Any"))
+                if (!(difficulty.Equals("Any") || question.Difficulty.Equals(difficulty)))
+                    continue;
+
+                if (tags != null)
                 {
-                    if (tags != null && tags.Count > 0)
-                    {
-                        foreach (string tag in tags)
-                            if (question.Tags.Contains(tag) && question.Body.Contains(typedSearch))
-                                sortedQuestions.Add(question);
-                    }
-                    else if (typedSearch != null && question.Body.Contains(typedSearch))
-                        sortedQuestions.Add(question);
+                    bool areAllTagsPresent = true;
+                    foreach (string necessaryTag in tags)
+                        if (!question.Tags.Contains(necessaryTag))
+                            areAllTagsPresent = false;
+
+                    if (!areAllTagsPresent)
+                        continue;
                 }
+                    
+
+                if (typedSearch != null && !question.Body.Contains(typedSearch))
+                    continue;
+
+                sortedQuestions.Add(question);
             }
 
             return sortedQuestions;
+
+            //foreach (Question question in Questions)
+            //{
+            //    if (question.Difficulty.Equals(difficulty) || difficulty.Equals("Any"))
+            //    {
+            //        if (tags != null && tags.Count > 0)
+            //        {
+            //            foreach (string tag in tags)
+            //                if (question.Tags.Contains(tag) && question.Body.Contains(typedSearch))
+            //                    sortedQuestions.Add(question);
+            //        }
+            //        else if (typedSearch != null && question.Body.Contains(typedSearch))
+            //            sortedQuestions.Add(question);
+            //        else if (typedSearch == null)
+            //            sortedQuestions.Add(question);
+            //    }
+            //}
+
+            //return sortedQuestions;
         }
 
-        //public List<Question> SearchQuestionsByDifficulty(string difficulty)
-        //{
-        //    var sortedList = new List<Question>();
-        //    foreach (Question question in Questions)
-        //    {
-        //        if (question.Difficulty.Equals(difficulty))
-        //            sortedList.Add(question);
-        //    }
-        //    return sortedList;
-        //}
     }
 }
