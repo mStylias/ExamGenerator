@@ -14,8 +14,20 @@ namespace ExamGenerator.CustomControls
 {
     public partial class QuestionModel : UserControl
     {
+        public static int SelectedModelsNum { get; set; } = 0;
         public Question Question { get; set; }
-        public bool Selected { get; set; } = false;
+        public bool Selected
+        {
+            get { return checkBox.Checked; }
+            set 
+            { 
+                checkBox.Checked = value;
+                if (value == true)
+                    SelectedModelsNum++;
+                else if (SelectedModelsNum > 0)
+                    SelectedModelsNum--;
+            }
+        }
         public QuestionModel(Question question)
         {
             this.Question = question;
@@ -49,20 +61,22 @@ namespace ExamGenerator.CustomControls
 
             // Difficulty
             labelDifficulty.Text = Question.Difficulty;
-
         }
 
         private void AllControlsCheck_Click(object sender, EventArgs e)
         {
-            if (checkBox.Checked)
-                checkBox.Checked = false;
+            if (Selected)
+                Selected = false;
             else
-                checkBox.Checked = true;
+                Selected = true;
         }
 
-        private void checkBox_CheckedChanged(object sender, EventArgs e)
+        public void AddClickEvent(EventHandler e)
         {
-            Selected = checkBox.Checked;
+            foreach (Control control in this.Controls)
+            {
+                control.Click += e;
+            }
         }
     }
 }

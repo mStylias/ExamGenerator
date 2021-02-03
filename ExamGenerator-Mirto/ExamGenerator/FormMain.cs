@@ -25,7 +25,7 @@ namespace ExamGenerator
             this.username = username;
             labelUsername.Text = username;
 
-            // Temporary load subject
+            //Temporary load subject
             subject = new Subject("Math");
 
             var possibleAnswers = new List<string>();
@@ -64,9 +64,10 @@ namespace ExamGenerator
         }
 
         /* Updates the ui of all user controls using the subject */
-        public void UpdateUI()
+        public void UpdateAndSave()
         {
             manualSection.UpdateUI();
+            Serialize.SaveSubjects(Subject.Subjects);
         }
 
         /* Gives the focus to the search textbox when a control in 

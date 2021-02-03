@@ -22,44 +22,10 @@ namespace ExamGenerator.MainFiles
         private int initialHeight;
 
         public ManualSection()
-        {
-            
+        { 
             InitializeComponent();
             initialWidth = this.Width;
             initialHeight = this.Height;
-
-            //// Temporary load subject
-            //CurrentSubject = new Subject("Math");
-
-            //var possibleAnswers = new List<string>();
-            //possibleAnswers.Add("1. Who the fuck knows");
-            //possibleAnswers.Add("2. Certainly not me");
-            //possibleAnswers.Add("3. Only the people who teach this shit");
-            //var correctAnswer = "2. Certainly not me";
-            //var difficulty = "Medium";
-
-            //for (int i = 0; i < 50; i++)
-            //{
-            //    string questionBody = "Test" + i;
-
-            //    if (i % 3 == 0)
-            //    {
-            //        difficulty = "Easy";
-            //    }
-            //    else if (i % 3 == 2)
-            //        difficulty = "Hard";
-            //    else
-            //    {
-            //        difficulty = "Medium";
-            //    }
-
-            //    var tags = new HashSet<string>();
-            //    tags.Add("Limits");
-            //    if (i % 5 == 0)
-            //        tags.Add("Modulo");
-
-            //    CurrentSubject.AddQuestion(new Question(tags, questionBody, possibleAnswers, correctAnswer, difficulty));
-            //}
         }
 
         public void OnLoad(Subject subject)
@@ -79,10 +45,10 @@ namespace ExamGenerator.MainFiles
         public void UpdateUI()
         {
             // Update tags
-            foreach (CheckBox checkBoxTag in togglePanelTags.Controls.OfType<CheckBox>())
+            togglePanelTags.Controls.Clear();
+            foreach (string tag in CurrentSubject.AllTags)
             {
-                if (!CurrentSubject.AllTags.Contains(checkBoxTag.Text))
-                    DisplayTag(checkBoxTag.Text);
+                DisplayTag(tag);
             }
 
             // Update question models
@@ -116,8 +82,26 @@ namespace ExamGenerator.MainFiles
         {
             QuestionModel model = new QuestionModel(question);
             model.Visible = false;
+            model.AddClickEvent(QuestionModelClick);
             AllQuestionModels.Add(model);
             panelQuestions.Controls.Add(model);
+        }
+
+        private void QuestionModelClick(object sender, EventArgs e)
+        {
+            if (QuestionModel.SelectedModelsNum > 0)
+            {
+                buttonDeleteQuestions.Show();
+                if (QuestionModel.SelectedModelsNum == SortedQuestionModels.Count)
+                    checkBoxSectionTitle.Checked = true;
+                else
+                    checkBoxSectionTitle.Checked = false;
+            }
+            else
+            {
+                buttonDeleteQuestions.Hide();
+                checkBoxSectionTitle.Checked = false;
+            }    
         }
 
         static int topDistance = 10;
@@ -215,7 +199,6 @@ namespace ExamGenerator.MainFiles
             for (int i = 0; i < SortedQuestionModels.Count; i++)
                 if (i < (page - 1) * maximumModelsNum || i >= page * maximumModelsNum)
                     SortedQuestionModels[i].Hide();
-                
         }
 
 
@@ -317,6 +300,11 @@ namespace ExamGenerator.MainFiles
             }
 
             SearchAndDisplayQuestions();
+
+            // Perform the question model click event to identify weather the 
+            // delete button should be visible and the questions checkbox checked
+            if (SortedQuestionModels.Count > 0)
+                QuestionModelClick(SortedQuestionModels[0], EventArgs.Empty);
         }
 
         string Difficulty { get; set; } = "Any";
@@ -324,6 +312,11 @@ namespace ExamGenerator.MainFiles
         {
             Difficulty = ((RadioButton)sender).Text;
             SearchAndDisplayQuestions();
+
+            // Perform the question model click event to identify weather the 
+            // delete button should be visible and the questions checkbox checked
+            if (SortedQuestionModels.Count > 0)
+                QuestionModelClick(SortedQuestionModels[0], EventArgs.Empty);
         }
 
         string SearchBarText { get; set; } = null;
@@ -331,6 +324,11 @@ namespace ExamGenerator.MainFiles
         {
             SearchBarText = searchBarText;
             SearchAndDisplayQuestions();
+
+            // Perform the question model click event to identify weather the 
+            // delete button should be visible and the questions checkbox checked
+            if (SortedQuestionModels.Count > 0)
+                QuestionModelClick(SortedQuestionModels[0], EventArgs.Empty);
         }
         private void SearchAndDisplayQuestions()
         {
@@ -345,7 +343,13 @@ namespace ExamGenerator.MainFiles
                 if (sortedQuestions.Contains(model.Question))
                     SortedQuestionModels.Add(model);
                 model.Hide();
+                model.Selected = false;
             }
+
+            // Perform the click event to identify weather the delete button 
+            // should be visible and the questions checkbox checked
+            if (SortedQuestionModels.Count > 0)
+                QuestionModelClick(SortedQuestionModels[0], EventArgs.Empty);
 
             DisplayQuestionModels();
             ToggleNavigationButtons();
@@ -370,6 +374,48 @@ namespace ExamGenerator.MainFiles
                 MessageBox.Show("No questions were selected. Select at least 1 question and try again", "No selected questions",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
+        }
+
+        /* Check or unckeck everything that corresponds to search criteria */
+        private void checkBoxSectionTitle_Click(object sender, EventArgs e)
+        {
+            if (SortedQuestionModels.Count > 0)
+                if (checkBoxSectionTitle.Checked)
+                    foreach (QuestionModel model in SortedQuestionModels)
+                    {
+                        model.Selected = true;
+                        buttonDeleteQuestions.Show();
+                    }
+                else
+                    foreach (QuestionModel model in SortedQuestionModels)
+                    {
+                        model.Selected = false;
+                        buttonDeleteQuestions.Hide();
+                    }
+            else
+                checkBoxSectionTitle.Checked = false;
+        }
+
+
+        private void buttonDeleteQuestions_Click(object sender, EventArgs e)
+        {
+            var userResponse = MessageBox.Show("Are you sure you want to delete the selected questions? This action is not reversible!", "Confirmation", 
+                                                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (userResponse == DialogResult.Yes)
+            {
+                foreach (QuestionModel model in SortedQuestionModels)
+                {
+                    CurrentSubject.Questions.Remove(model.Question);
+                    QuestionModel.SelectedModelsNum--;
+                }
+
+                checkBoxSectionTitle.Checked = false;
+                buttonDeleteQuestions.Hide();
+
+                FormMain form = (FormMain)Application.OpenForms["formMain"];
+                form.UpdateAndSave();
+            }
         }
     }
 }

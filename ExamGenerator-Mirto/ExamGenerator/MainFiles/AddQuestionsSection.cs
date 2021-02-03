@@ -46,12 +46,12 @@ namespace ExamGenerator.MainFiles
             {
                 if (nextTagLocation == TagLocation.Left)
                 {
-                    DisplayTag(tag, panelLeftTags);
+                    DisplayTag(tag, panelLeftTags, false);
                     nextTagLocation = TagLocation.Right;
                 }
                 else
                 {
-                    DisplayTag(tag, panelRightTags);
+                    DisplayTag(tag, panelRightTags, false);
                     nextTagLocation = TagLocation.Left;
                 }
             }
@@ -63,7 +63,7 @@ namespace ExamGenerator.MainFiles
 
         }
 
-        private void DisplayTag(string name, Panel panel)
+        private void DisplayTag(string name, Panel panel, bool IsCheckedOnStart)
         {
             CheckBox checkbox = new CheckBox();
 
@@ -78,7 +78,7 @@ namespace ExamGenerator.MainFiles
             checkbox.Text = name;
             checkbox.AutoEllipsis = true;
             checkbox.UseVisualStyleBackColor = true;
-            checkbox.Checked = true;
+            checkbox.Checked = IsCheckedOnStart;
 
             panel.Controls.Add(checkbox);
         }
@@ -101,12 +101,12 @@ namespace ExamGenerator.MainFiles
 
                 if (nextTagLocation == TagLocation.Left)
                 {
-                    DisplayTag(tag, panelLeftTags);
+                    DisplayTag(tag, panelLeftTags, true);
                     nextTagLocation = TagLocation.Right;
                 }
                 else
                 {
-                    DisplayTag(tag, panelRightTags);
+                    DisplayTag(tag, panelRightTags, true);
                     nextTagLocation = TagLocation.Left;
                 }     
             }
@@ -257,7 +257,7 @@ namespace ExamGenerator.MainFiles
                 currentSubject.AddQuestion(q);
 
                 FormMain formMain = (FormMain)Application.OpenForms["formMain"];
-                formMain.UpdateUI();
+                formMain.UpdateAndSave();
 
                 if (q != null) MessageBox.Show("Question added successfully!", "Success");
             }

@@ -204,7 +204,6 @@
             this.checkBox.TabIndex = 12;
             this.checkBox.Text = "Selected";
             this.checkBox.UseVisualStyleBackColor = false;
-            this.checkBox.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
             // 
             // QuestionModel
             // 

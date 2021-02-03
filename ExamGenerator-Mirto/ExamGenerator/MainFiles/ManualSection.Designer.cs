@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelSectionTitle = new System.Windows.Forms.Label();
+            this.checkBoxSectionTitle = new System.Windows.Forms.CheckBox();
             this.panelTop = new System.Windows.Forms.Panel();
+            this.buttonDeleteQuestions = new System.Windows.Forms.Button();
             this.panelFilters = new System.Windows.Forms.Panel();
             this.labelFilters = new System.Windows.Forms.Label();
             this.panelSortTags = new System.Windows.Forms.Panel();
@@ -59,22 +60,23 @@
             this.togglePanelDifficulty.SuspendLayout();
             this.SuspendLayout();
             // 
-            // labelSectionTitle
+            // checkBoxSectionTitle
             // 
-            this.labelSectionTitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSectionTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelSectionTitle.Font = new System.Drawing.Font("Century", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSectionTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(28)))), ((int)(((byte)(32)))));
-            this.labelSectionTitle.Location = new System.Drawing.Point(20, 25);
-            this.labelSectionTitle.Name = "labelSectionTitle";
-            this.labelSectionTitle.Size = new System.Drawing.Size(280, 41);
-            this.labelSectionTitle.TabIndex = 1;
-            this.labelSectionTitle.Text = "Questions";
-            this.labelSectionTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.checkBoxSectionTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxSectionTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBoxSectionTitle.Font = new System.Drawing.Font("Century", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxSectionTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(28)))), ((int)(((byte)(32)))));
+            this.checkBoxSectionTitle.Location = new System.Drawing.Point(20, 25);
+            this.checkBoxSectionTitle.Name = "checkBoxSectionTitle";
+            this.checkBoxSectionTitle.Size = new System.Drawing.Size(186, 41);
+            this.checkBoxSectionTitle.TabIndex = 1;
+            this.checkBoxSectionTitle.Text = "Questions";
+            this.checkBoxSectionTitle.Click += new System.EventHandler(this.checkBoxSectionTitle_Click);
             // 
             // panelTop
             // 
-            this.panelTop.Controls.Add(this.labelSectionTitle);
+            this.panelTop.Controls.Add(this.checkBoxSectionTitle);
+            this.panelTop.Controls.Add(this.buttonDeleteQuestions);
             this.panelTop.Controls.Add(this.panelFilters);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(60, 0);
@@ -84,6 +86,23 @@
             this.panelTop.Size = new System.Drawing.Size(780, 66);
             this.panelTop.TabIndex = 2;
             // 
+            // buttonDeleteQuestions
+            // 
+            this.buttonDeleteQuestions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(166)))), ((int)(((byte)(243)))));
+            this.buttonDeleteQuestions.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonDeleteQuestions.FlatAppearance.BorderSize = 0;
+            this.buttonDeleteQuestions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeleteQuestions.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDeleteQuestions.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(247)))));
+            this.buttonDeleteQuestions.Location = new System.Drawing.Point(206, 25);
+            this.buttonDeleteQuestions.Name = "buttonDeleteQuestions";
+            this.buttonDeleteQuestions.Size = new System.Drawing.Size(150, 41);
+            this.buttonDeleteQuestions.TabIndex = 7;
+            this.buttonDeleteQuestions.Text = "Delete Selected";
+            this.buttonDeleteQuestions.UseVisualStyleBackColor = false;
+            this.buttonDeleteQuestions.Visible = false;
+            this.buttonDeleteQuestions.Click += new System.EventHandler(this.buttonDeleteQuestions_Click);
+            // 
             // panelFilters
             // 
             this.panelFilters.Controls.Add(this.labelFilters);
@@ -91,9 +110,9 @@
             this.panelFilters.Controls.Add(this.panelBarrier1);
             this.panelFilters.Controls.Add(this.panelSortDifficulty);
             this.panelFilters.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelFilters.Location = new System.Drawing.Point(300, 25);
+            this.panelFilters.Location = new System.Drawing.Point(356, 25);
             this.panelFilters.Name = "panelFilters";
-            this.panelFilters.Size = new System.Drawing.Size(480, 41);
+            this.panelFilters.Size = new System.Drawing.Size(424, 41);
             this.panelFilters.TabIndex = 2;
             // 
             // labelFilters
@@ -105,7 +124,7 @@
             this.labelFilters.Location = new System.Drawing.Point(0, 0);
             this.labelFilters.Name = "labelFilters";
             this.labelFilters.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.labelFilters.Size = new System.Drawing.Size(192, 41);
+            this.labelFilters.Size = new System.Drawing.Size(136, 41);
             this.labelFilters.TabIndex = 8;
             this.labelFilters.Text = "Filters:";
             this.labelFilters.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -116,7 +135,7 @@
             this.panelSortTags.Controls.Add(this.labelTagsArrow);
             this.panelSortTags.Controls.Add(this.buttonSortTags);
             this.panelSortTags.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelSortTags.Location = new System.Drawing.Point(192, 0);
+            this.panelSortTags.Location = new System.Drawing.Point(136, 0);
             this.panelSortTags.Name = "panelSortTags";
             this.panelSortTags.Size = new System.Drawing.Size(128, 41);
             this.panelSortTags.TabIndex = 7;
@@ -159,7 +178,7 @@
             // panelBarrier1
             // 
             this.panelBarrier1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelBarrier1.Location = new System.Drawing.Point(320, 0);
+            this.panelBarrier1.Location = new System.Drawing.Point(264, 0);
             this.panelBarrier1.Name = "panelBarrier1";
             this.panelBarrier1.Size = new System.Drawing.Size(32, 41);
             this.panelBarrier1.TabIndex = 5;
@@ -170,7 +189,7 @@
             this.panelSortDifficulty.Controls.Add(this.labelDifficultyArrow);
             this.panelSortDifficulty.Controls.Add(this.buttonSortDifficulty);
             this.panelSortDifficulty.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelSortDifficulty.Location = new System.Drawing.Point(352, 0);
+            this.panelSortDifficulty.Location = new System.Drawing.Point(296, 0);
             this.panelSortDifficulty.Name = "panelSortDifficulty";
             this.panelSortDifficulty.Size = new System.Drawing.Size(128, 41);
             this.panelSortDifficulty.TabIndex = 6;
@@ -406,7 +425,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label labelSectionTitle;
+        private System.Windows.Forms.CheckBox checkBoxSectionTitle;
         private System.Windows.Forms.Panel panelTop;
         private System.Windows.Forms.Panel panelFilters;
         private System.Windows.Forms.Panel panelSortTags;
@@ -428,5 +447,6 @@
         private System.Windows.Forms.RadioButton radioDifficultyEasy;
         private System.Windows.Forms.RadioButton radioDifficultyAny;
         private System.Windows.Forms.Button buttonGenerate;
+        private System.Windows.Forms.Button buttonDeleteQuestions;
     }
 }

@@ -11,9 +11,9 @@ namespace ExamGenerator
     [Serializable]
     public class Subject
     {
-        public string Name { get; set; }
-        public List<Question> Questions { get; private set; } = new List<Question>();
         public static Dictionary<string, Subject> Subjects { get; set; } = new Dictionary<string, Subject>();
+        public string Name { get; set; }
+        public List<Question> Questions { get; private set; } = new List<Question>();      
         public HashSet<string> AllTags { get; set; } = new HashSet<string>();
 
         public Subject(string name)

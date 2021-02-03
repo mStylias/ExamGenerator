@@ -156,7 +156,7 @@ namespace ExamGenerator
 
             if (IsDropdownUsed())
             {
-                subject = Subject.Subjects[dropdownListSubjects.SelectedItem.ToString()];
+                subject = Subject.Subjects[dropdownListSubjects.Text];
             }
             // Make sure that the given subject doesn't already exist in the list
             else if (!Subject.Subjects.TryGetValue(textBoxSubject.Text, out subject))
