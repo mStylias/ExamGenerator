@@ -41,7 +41,7 @@ namespace ExamGenerator
                 if (!(difficulty.Equals("Any") || question.Difficulty.Equals(difficulty)))
                     continue;
 
-                if (tags != null)
+                if (tags != null && tags.Count > 0)
                 {
                     bool areAllTagsPresent = true;
                     foreach (string necessaryTag in tags)
@@ -56,7 +56,7 @@ namespace ExamGenerator
                 }
                     
 
-                if (typedSearch != null && !question.Body.Contains(typedSearch))
+                if (!string.IsNullOrWhiteSpace(typedSearch) && !question.Body.Contains(typedSearch))
                     continue;
 
                 sortedQuestions.Add(question);

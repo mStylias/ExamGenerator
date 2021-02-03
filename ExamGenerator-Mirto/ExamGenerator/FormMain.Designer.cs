@@ -31,29 +31,33 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.panelTopSection = new System.Windows.Forms.Panel();
             this.panelTitlebar = new System.Windows.Forms.Panel();
-            this.panelUserSettings = new System.Windows.Forms.Panel();
             this.panelSearchQuestions = new System.Windows.Forms.Panel();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.pictureBoxSearch = new System.Windows.Forms.PictureBox();
+            this.panelUserSettings = new System.Windows.Forms.Panel();
+            this.labelUsername = new System.Windows.Forms.Label();
+            this.pictureBoxUserProfile = new System.Windows.Forms.PictureBox();
             this.panelAppTitle = new System.Windows.Forms.Panel();
             this.labelAppTitle = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.panelSubjects = new System.Windows.Forms.Panel();
             this.labelSubjectsList = new System.Windows.Forms.Label();
             this.panelMenuButtons = new System.Windows.Forms.Panel();
+            this.panelAutoActive = new ExamGenerator.CustomControls.TogglablePanel();
+            this.panelAddQuestionsActive = new ExamGenerator.CustomControls.TogglablePanel();
+            this.panelManualActive = new ExamGenerator.CustomControls.TogglablePanel();
             this.radioMenuAuto = new System.Windows.Forms.RadioButton();
             this.radioMenuManual = new System.Windows.Forms.RadioButton();
             this.radioMenuAddQuestions = new System.Windows.Forms.RadioButton();
             this.addQuestionsSection1 = new ExamGenerator.MainFiles.AddQuestionsSection();
             this.manualSection = new ExamGenerator.MainFiles.ManualSection();
             this.autoSection1 = new ExamGenerator.AutoSection();
-            this.panelAutoActive = new ExamGenerator.CustomControls.TogglablePanel();
-            this.panelAddQuestionsActive = new ExamGenerator.CustomControls.TogglablePanel();
-            this.panelManualActive = new ExamGenerator.CustomControls.TogglablePanel();
             this.panelTopSection.SuspendLayout();
             this.panelTitlebar.SuspendLayout();
             this.panelSearchQuestions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSearch)).BeginInit();
+            this.panelUserSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUserProfile)).BeginInit();
             this.panelAppTitle.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelSubjects.SuspendLayout();
@@ -73,43 +77,36 @@
             // 
             // panelTitlebar
             // 
-            this.panelTitlebar.Controls.Add(this.panelUserSettings);
             this.panelTitlebar.Controls.Add(this.panelSearchQuestions);
+            this.panelTitlebar.Controls.Add(this.panelUserSettings);
             this.panelTitlebar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTitlebar.Location = new System.Drawing.Point(195, 0);
             this.panelTitlebar.Name = "panelTitlebar";
             this.panelTitlebar.Size = new System.Drawing.Size(900, 54);
             this.panelTitlebar.TabIndex = 1;
             // 
-            // panelUserSettings
-            // 
-            this.panelUserSettings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelUserSettings.Location = new System.Drawing.Point(732, 0);
-            this.panelUserSettings.MinimumSize = new System.Drawing.Size(170, 0);
-            this.panelUserSettings.Name = "panelUserSettings";
-            this.panelUserSettings.Size = new System.Drawing.Size(170, 54);
-            this.panelUserSettings.TabIndex = 1;
-            // 
             // panelSearchQuestions
             // 
             this.panelSearchQuestions.Controls.Add(this.textBoxSearch);
             this.panelSearchQuestions.Controls.Add(this.pictureBoxSearch);
             this.panelSearchQuestions.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.panelSearchQuestions.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelSearchQuestions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSearchQuestions.Location = new System.Drawing.Point(0, 0);
             this.panelSearchQuestions.Name = "panelSearchQuestions";
-            this.panelSearchQuestions.Size = new System.Drawing.Size(732, 54);
+            this.panelSearchQuestions.Padding = new System.Windows.Forms.Padding(0, 15, 0, 13);
+            this.panelSearchQuestions.Size = new System.Drawing.Size(730, 54);
             this.panelSearchQuestions.TabIndex = 0;
             this.panelSearchQuestions.Click += new System.EventHandler(this.searchArea_Click);
             // 
             // textBoxSearch
             // 
             this.textBoxSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxSearch.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSearch.Location = new System.Drawing.Point(54, 16);
+            this.textBoxSearch.Location = new System.Drawing.Point(54, 15);
             this.textBoxSearch.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxSearch.Name = "textBoxSearch";
-            this.textBoxSearch.Size = new System.Drawing.Size(678, 22);
+            this.textBoxSearch.Size = new System.Drawing.Size(676, 22);
             this.textBoxSearch.TabIndex = 1;
             this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
             // 
@@ -117,14 +114,49 @@
             // 
             this.pictureBoxSearch.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBoxSearch.Image = global::ExamGenerator.Properties.Resources.search_54px;
-            this.pictureBoxSearch.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxSearch.Location = new System.Drawing.Point(0, 15);
             this.pictureBoxSearch.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBoxSearch.Name = "pictureBoxSearch";
-            this.pictureBoxSearch.Size = new System.Drawing.Size(54, 54);
+            this.pictureBoxSearch.Size = new System.Drawing.Size(54, 26);
             this.pictureBoxSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxSearch.TabIndex = 0;
             this.pictureBoxSearch.TabStop = false;
             this.pictureBoxSearch.Click += new System.EventHandler(this.searchArea_Click);
+            // 
+            // panelUserSettings
+            // 
+            this.panelUserSettings.Controls.Add(this.labelUsername);
+            this.panelUserSettings.Controls.Add(this.pictureBoxUserProfile);
+            this.panelUserSettings.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelUserSettings.Location = new System.Drawing.Point(730, 0);
+            this.panelUserSettings.MinimumSize = new System.Drawing.Size(170, 0);
+            this.panelUserSettings.Name = "panelUserSettings";
+            this.panelUserSettings.Size = new System.Drawing.Size(170, 54);
+            this.panelUserSettings.TabIndex = 1;
+            // 
+            // labelUsername
+            // 
+            this.labelUsername.AutoEllipsis = true;
+            this.labelUsername.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelUsername.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelUsername.Font = new System.Drawing.Font("Pristina", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(166)))), ((int)(((byte)(243)))));
+            this.labelUsername.Location = new System.Drawing.Point(0, 0);
+            this.labelUsername.Name = "labelUsername";
+            this.labelUsername.Size = new System.Drawing.Size(123, 54);
+            this.labelUsername.TabIndex = 1;
+            this.labelUsername.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // pictureBoxUserProfile
+            // 
+            this.pictureBoxUserProfile.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBoxUserProfile.Image = global::ExamGenerator.Properties.Resources.user_30px;
+            this.pictureBoxUserProfile.Location = new System.Drawing.Point(123, 0);
+            this.pictureBoxUserProfile.Name = "pictureBoxUserProfile";
+            this.pictureBoxUserProfile.Size = new System.Drawing.Size(47, 54);
+            this.pictureBoxUserProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxUserProfile.TabIndex = 2;
+            this.pictureBoxUserProfile.TabStop = false;
             // 
             // panelAppTitle
             // 
@@ -200,6 +232,32 @@
             this.panelMenuButtons.Name = "panelMenuButtons";
             this.panelMenuButtons.Size = new System.Drawing.Size(195, 216);
             this.panelMenuButtons.TabIndex = 0;
+            // 
+            // panelAutoActive
+            // 
+            this.panelAutoActive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(68)))), ((int)(((byte)(77)))));
+            this.panelAutoActive.Location = new System.Drawing.Point(190, 116);
+            this.panelAutoActive.Name = "panelAutoActive";
+            this.panelAutoActive.Size = new System.Drawing.Size(5, 58);
+            this.panelAutoActive.TabIndex = 7;
+            this.panelAutoActive.Visible = false;
+            // 
+            // panelAddQuestionsActive
+            // 
+            this.panelAddQuestionsActive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(68)))), ((int)(((byte)(77)))));
+            this.panelAddQuestionsActive.Location = new System.Drawing.Point(190, 0);
+            this.panelAddQuestionsActive.Name = "panelAddQuestionsActive";
+            this.panelAddQuestionsActive.Size = new System.Drawing.Size(5, 58);
+            this.panelAddQuestionsActive.TabIndex = 5;
+            // 
+            // panelManualActive
+            // 
+            this.panelManualActive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(68)))), ((int)(((byte)(77)))));
+            this.panelManualActive.Location = new System.Drawing.Point(190, 58);
+            this.panelManualActive.Name = "panelManualActive";
+            this.panelManualActive.Size = new System.Drawing.Size(5, 58);
+            this.panelManualActive.TabIndex = 6;
+            this.panelManualActive.Visible = false;
             // 
             // radioMenuAuto
             // 
@@ -306,32 +364,6 @@
             this.autoSection1.Size = new System.Drawing.Size(900, 700);
             this.autoSection1.TabIndex = 4;
             // 
-            // panelAutoActive
-            // 
-            this.panelAutoActive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(68)))), ((int)(((byte)(77)))));
-            this.panelAutoActive.Location = new System.Drawing.Point(190, 116);
-            this.panelAutoActive.Name = "panelAutoActive";
-            this.panelAutoActive.Size = new System.Drawing.Size(5, 58);
-            this.panelAutoActive.TabIndex = 7;
-            this.panelAutoActive.Visible = false;
-            // 
-            // panelAddQuestionsActive
-            // 
-            this.panelAddQuestionsActive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(68)))), ((int)(((byte)(77)))));
-            this.panelAddQuestionsActive.Location = new System.Drawing.Point(190, 0);
-            this.panelAddQuestionsActive.Name = "panelAddQuestionsActive";
-            this.panelAddQuestionsActive.Size = new System.Drawing.Size(5, 58);
-            this.panelAddQuestionsActive.TabIndex = 5;
-            // 
-            // panelManualActive
-            // 
-            this.panelManualActive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(68)))), ((int)(((byte)(77)))));
-            this.panelManualActive.Location = new System.Drawing.Point(190, 58);
-            this.panelManualActive.Name = "panelManualActive";
-            this.panelManualActive.Size = new System.Drawing.Size(5, 58);
-            this.panelManualActive.TabIndex = 6;
-            this.panelManualActive.Visible = false;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -348,6 +380,7 @@
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Exam Generator";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResizeEnd += new System.EventHandler(this.FormMain_ResizeEnd);
             this.Resize += new System.EventHandler(this.FormMain_Resize);
@@ -356,6 +389,8 @@
             this.panelSearchQuestions.ResumeLayout(false);
             this.panelSearchQuestions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSearch)).EndInit();
+            this.panelUserSettings.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUserProfile)).EndInit();
             this.panelAppTitle.ResumeLayout(false);
             this.panelMenu.ResumeLayout(false);
             this.panelMenu.PerformLayout();
@@ -388,5 +423,7 @@
         private MainFiles.ManualSection manualSection;
         private AutoSection autoSection1;
         private System.Windows.Forms.Panel panelSubjects;
+        private System.Windows.Forms.Label labelUsername;
+        private System.Windows.Forms.PictureBox pictureBoxUserProfile;
     }
 }

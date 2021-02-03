@@ -60,3 +60,4 @@ C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerat
 C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.MainFiles.ManualSection.resources
 C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.MainFiles.FormManualGenerate.resources
 C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.csprojAssemblyReference.cache
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Debug\ExamGenerator.FormLoad.resources

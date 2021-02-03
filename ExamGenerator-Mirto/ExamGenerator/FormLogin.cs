@@ -169,10 +169,8 @@ namespace ExamGenerator
             }
 
             this.Hide();
-            var form = new FormMain(subject, textboxUsername.Text);
-            form.FormClosed += (sender, e) => this.Close();
-            form.Show();
-            
+            var formLoad = new FormLoad(subject, textboxUsername.Text);
+            formLoad.Show();   
         }
 
         /* Stop the user from writting on the dropdown menu */

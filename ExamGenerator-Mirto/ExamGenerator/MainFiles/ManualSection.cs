@@ -17,8 +17,7 @@ namespace ExamGenerator.MainFiles
     {
         private Subject CurrentSubject { get; set; }
         private List<QuestionModel> AllQuestionModels { get; set; } = new List<QuestionModel>();
-        private List<QuestionModel> ActiveQuestionModels { get; set; }
-        private HashSet<string> activeTags = new HashSet<string>();
+        private List<QuestionModel> SortedQuestionModels { get; set; }
         private int initialWidth;
         private int initialHeight;
 
@@ -77,18 +76,48 @@ namespace ExamGenerator.MainFiles
             ToggleNavigationButtons();
         }
 
+        public void UpdateUI()
+        {
+            // Update tags
+            foreach (CheckBox checkBoxTag in togglePanelTags.Controls.OfType<CheckBox>())
+            {
+                if (!CurrentSubject.AllTags.Contains(checkBoxTag.Text))
+                    DisplayTag(checkBoxTag.Text);
+            }
+
+            // Update question models
+            var previousQuestions = new List<Question>();
+            foreach (QuestionModel model in AllQuestionModels)
+            {
+                previousQuestions.Add(model.Question);
+            }
+
+            foreach (Question question in CurrentSubject.Questions)
+            {
+                if (!previousQuestions.Contains(question))
+                    CreateAndAddQuestionModel(question);
+            }
+
+            // Display new models
+            page = 1;
+            SearchAndDisplayQuestions();
+        }
+
         private void InitializeQuestionModels()
         {
-            var tempQuestions = CurrentSubject.Questions.ToList();
-            foreach (Question question in tempQuestions)
+            foreach (Question question in CurrentSubject.Questions)
             {
-                QuestionModel model = new QuestionModel(question);
-                model.Visible = false;
-                AllQuestionModels.Add(model);
-                panelQuestions.Controls.Add(model);
+                CreateAndAddQuestionModel(question);
             }
-            ActiveQuestionModels = AllQuestionModels.ToList();
+            SortedQuestionModels = AllQuestionModels.ToList();
+        }
 
+        private void CreateAndAddQuestionModel(Question question)
+        {
+            QuestionModel model = new QuestionModel(question);
+            model.Visible = false;
+            AllQuestionModels.Add(model);
+            panelQuestions.Controls.Add(model);
         }
 
         static int topDistance = 10;
@@ -98,18 +127,18 @@ namespace ExamGenerator.MainFiles
         int maximumModelsNum = 0;
         private void DisplayQuestionModels()
         {
-            if (ActiveQuestionModels.Count > 0)
+            if (SortedQuestionModels.Count > 0)
             {
                 // With default size only 3 questions can be displayed per line and 2 per row
                 int modelsPerLine = 3;
                 int modelsPerRow = 2;
 
                 // Determine how many models fit in the current screen
-                modelsPerLine += (this.Width - initialWidth) / ActiveQuestionModels[0].Width;
-                modelsPerRow += (this.Height - initialHeight) / ActiveQuestionModels[0].Height;
+                modelsPerLine += (this.Width - initialWidth) / SortedQuestionModels[0].Width;
+                modelsPerRow += (this.Height - initialHeight) / SortedQuestionModels[0].Height;
 
                 // Modify the position values to keep models centered
-                horizontalSpacing = (panelControlQuestions.Width - (modelsPerLine * ActiveQuestionModels[0].Width)) / modelsPerLine;
+                horizontalSpacing = (panelControlQuestions.Width - (modelsPerLine * SortedQuestionModels[0].Width)) / modelsPerLine;
 
                 // Currently displayed models number
                 int modelsDisplayedOnCurrentLine = 0;
@@ -120,16 +149,16 @@ namespace ExamGenerator.MainFiles
                 // Determines which model is going to be displayed next
                 int i = (page-1) * maximumModelsNum;
 
-                while (i < maximumModelsNum * page && i < ActiveQuestionModels.Count)
+                while (i < maximumModelsNum * page && i < SortedQuestionModels.Count)
                 {
 
-                    ActiveQuestionModels[i].Left = ActiveQuestionModels[i].Width * modelsDisplayedOnCurrentLine +
+                    SortedQuestionModels[i].Left = SortedQuestionModels[i].Width * modelsDisplayedOnCurrentLine +
                                              horizontalSpacing * modelsDisplayedOnCurrentLine + leftDistance;
 
-                    ActiveQuestionModels[i].Top = ActiveQuestionModels[i].Height * modelsDisplayedOnCurrentRow +
+                    SortedQuestionModels[i].Top = SortedQuestionModels[i].Height * modelsDisplayedOnCurrentRow +
                                             verticalSpacing * modelsDisplayedOnCurrentRow + topDistance;
 
-                    ActiveQuestionModels[i].Show();
+                    SortedQuestionModels[i].Show();
 
                     modelsDisplayedOnCurrentLine++;
                     if (modelsDisplayedOnCurrentLine % modelsPerLine == 0)
@@ -150,8 +179,8 @@ namespace ExamGenerator.MainFiles
             DisplayQuestionModels();
             ToggleNavigationButtons();
 
-            for (int i = (page - 2) * maximumModelsNum; i < (page-1) * maximumModelsNum && i < ActiveQuestionModels.Count; i++)
-                ActiveQuestionModels[i].Hide();
+            for (int i = (page - 2) * maximumModelsNum; i < (page-1) * maximumModelsNum && i < SortedQuestionModels.Count; i++)
+                SortedQuestionModels[i].Hide();
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
@@ -160,13 +189,13 @@ namespace ExamGenerator.MainFiles
             DisplayQuestionModels();
             ToggleNavigationButtons();
 
-            for (int i = page * maximumModelsNum; i < (page+1) * maximumModelsNum && i < ActiveQuestionModels.Count; i++)
-                ActiveQuestionModels[i].Hide();
+            for (int i = page * maximumModelsNum; i < (page+1) * maximumModelsNum && i < SortedQuestionModels.Count; i++)
+                SortedQuestionModels[i].Hide();
         }
 
         private void ToggleNavigationButtons()
         {
-            if (ActiveQuestionModels.Count > page * maximumModelsNum)
+            if (SortedQuestionModels.Count > page * maximumModelsNum)
                 buttonForward.Show();
             else
                 buttonForward.Hide();
@@ -183,9 +212,9 @@ namespace ExamGenerator.MainFiles
             ToggleNavigationButtons();
 
             // Hide all the models except for the ones currently on screen
-            for (int i = 0; i < ActiveQuestionModels.Count; i++)
+            for (int i = 0; i < SortedQuestionModels.Count; i++)
                 if (i < (page - 1) * maximumModelsNum || i >= page * maximumModelsNum)
-                    ActiveQuestionModels[i].Hide();
+                    SortedQuestionModels[i].Hide();
                 
         }
 
@@ -267,56 +296,55 @@ namespace ExamGenerator.MainFiles
             checkbox.UseVisualStyleBackColor = true;
             checkbox.Click += Tag_Click;
 
-            togglePanelTags.Controls.Add(checkbox);
+            if (!togglePanelTags.Controls.Contains(checkbox))
+                togglePanelTags.Controls.Add(checkbox);
         }
 
+        HashSet<string> ActiveTags { get; set; } = new HashSet<string>();
         private void Tag_Click(object sender, EventArgs e)
         {
-            activeTags.Clear();
             foreach (CheckBox checkBox in togglePanelTags.Controls.OfType<CheckBox>())
             {
-                if (checkBox.Checked)
+                if (!checkBox.Checked)
                 {
-                    activeTags.Add(checkBox.Text);
+                    ActiveTags.Remove(checkBox.Text);
+                    continue;
                 }
+                else if (!ActiveTags.Contains(checkBox.Text))
+                {
+                    ActiveTags.Add(checkBox.Text);
+                }  
             }
 
             SearchAndDisplayQuestions();
         }
 
+        string Difficulty { get; set; } = "Any";
         private void radioDifficultyAll_Click(object sender, EventArgs e)
         {
+            Difficulty = ((RadioButton)sender).Text;
             SearchAndDisplayQuestions();
         }
 
-        string searchBarText = null;
+        string SearchBarText { get; set; } = null;
         public void SearchQuestions(string searchBarText)
         {
-            this.searchBarText = searchBarText;
+            SearchBarText = searchBarText;
             SearchAndDisplayQuestions();
         }
         private void SearchAndDisplayQuestions()
         {
-            List<Question> sortedQuestions = null;
-            foreach (RadioButton radio in togglePanelDifficulty.Controls.OfType<RadioButton>())
-                if (radio.Checked)
-                {
-                    sortedQuestions = CurrentSubject.SearchQuestions(radio.Text, activeTags, searchBarText);
-                }
-
+            List<Question> sortedQuestions;
+            sortedQuestions = CurrentSubject.SearchQuestions(Difficulty, ActiveTags, SearchBarText);
 
             page = 1;
 
-            ActiveQuestionModels = AllQuestionModels.ToList();
-
-            for (int i = ActiveQuestionModels.Count - 1; i >= 0; i--)
+            SortedQuestionModels.Clear();
+            foreach (QuestionModel model in AllQuestionModels)
             {
-                if (!sortedQuestions.Contains(CurrentSubject.Questions[i]))
-                {
-                    ActiveQuestionModels[i].Hide();
-                    ActiveQuestionModels.RemoveAt(i);
-                }
-
+                if (sortedQuestions.Contains(model.Question))
+                    SortedQuestionModels.Add(model);
+                model.Hide();
             }
 
             DisplayQuestionModels();
@@ -327,7 +355,7 @@ namespace ExamGenerator.MainFiles
         private void buttonGenerate_Click(object sender, EventArgs e)
         {
             var questions = new List<Question>();
-            foreach (QuestionModel model in ActiveQuestionModels)
+            foreach (QuestionModel model in SortedQuestionModels)
             {
                 if (model.Selected)
                     questions.Add(model.Question);

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,7 +13,7 @@ namespace ExamGenerator.MainFiles
 {
     public partial class AddQuestionsSection : UserControl
     {
-        public Subject subject;
+        public Subject currentSubject;
 
         public AddQuestionsSection()
         {
@@ -39,7 +40,7 @@ namespace ExamGenerator.MainFiles
             //    }
             //}
 
-            this.subject = subject;
+            this.currentSubject = subject;
             
             foreach (string tag in subject.AllTags)
             {
@@ -54,6 +55,12 @@ namespace ExamGenerator.MainFiles
                     nextTagLocation = TagLocation.Left;
                 }
             }
+
+            textboxCounter = 2; // Used when creating new richTextBoxes for the possible answers
+            comboBoxCorrectAnswer.Items.Add(richTextBoxAnswer1.Text);
+            comboBoxCorrectAnswer.Items.Add(richTextBoxAnswer2.Text);
+            comboBoxDifficulty.SelectedIndex = 0;
+
         }
 
         private void DisplayTag(string name, Panel panel)
@@ -71,6 +78,7 @@ namespace ExamGenerator.MainFiles
             checkbox.Text = name;
             checkbox.AutoEllipsis = true;
             checkbox.UseVisualStyleBackColor = true;
+            checkbox.Checked = true;
 
             panel.Controls.Add(checkbox);
         }
@@ -87,8 +95,10 @@ namespace ExamGenerator.MainFiles
                 return;
             }
             
-            if (!subject.AllTags.Contains(tag))
+            if (!currentSubject.AllTags.Contains(tag))
             {
+                currentSubject.AllTags.Add(tag);
+
                 if (nextTagLocation == TagLocation.Left)
                 {
                     DisplayTag(tag, panelLeftTags);
@@ -98,42 +108,14 @@ namespace ExamGenerator.MainFiles
                 {
                     DisplayTag(tag, panelRightTags);
                     nextTagLocation = TagLocation.Left;
-                }
-
-                subject.AllTags.Add(tag);
+                }     
             }
             else
                 MessageBox.Show("The tag you typed already exists. Select it instead", "Tag already exists",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
+        }       
 
-        private void buttonCreate_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                HashSet<string> tags = new HashSet<string>();
-                //if(listBoxTags.SelectedItem != null) tags = (HashSet<string>)listBoxTags.SelectedItem;
-                if (richTextBoxCreateTag.Text != null)
-                {
-                    tags.Add(richTextBoxCreateTag.Text);
-                }
-                List<string> answers = new List<string>();
-
-                foreach(RichTextBox textbox in panelPossibleAnswers.Controls.OfType<RichTextBox>())
-                {
-                    answers.Add(textbox.Text);
-                }
-                Question q = new Question(tags, richTextBoxQuestion.Text, answers, richTextBoxCorrectAnswer.Text, comboBoxDifficulty.SelectedItem.ToString());
-
-                if (q != null) MessageBox.Show("Question added successfully!");
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        static int textboxCounter = 2; // Used to name the new textboxes correctly
+        int textboxCounter = 2; // Used to name the new textboxes correctly
         private void AddAnswerButton_Click(object sender, EventArgs e)
         {
             // Locations
@@ -158,15 +140,19 @@ namespace ExamGenerator.MainFiles
                 Multiline = true,
 
                 // Make the new textbox
-                Name = "AnswerTextBox" + textboxCounter,
+                Name = "richTextBoxAnswer" + textboxCounter,
                 Size = new Size(647, 40),
                 TabIndex = 0,
-                Text = textboxCounter + ". "
+                Text = textboxCounter + ". ",
+                
             };
+            comboBoxCorrectAnswer.Items.Add(t.Text);
+            t.TextChanged += richTextBoxAnswer_TextChanged;
 
             // Add the new text box to panelAddQuestion
             panelPossibleAnswers.Controls.Add(t);
             panelPossibleAnswers.Controls.SetChildIndex(t, 2);
+
             //foreach (Control c in panelAllFields.Controls)
             //{
             //    if(c.TabIndex > panelPossibleAnswers.TabIndex)
@@ -175,12 +161,21 @@ namespace ExamGenerator.MainFiles
             //        c.Location = new Point(c.Location.X, c.Location.Y + 40);
             //    }
             //}
-            
+
             // Make remove button visible
             RemoveAnswerButton.Visible = true;
 
             // Move remove button
             RemoveAnswerButton.Location = new Point(RemoveAnswerButton.Location.X, RemoveAnswerButton.Location.Y + 40);
+        }
+
+        private void richTextBoxAnswer_TextChanged(object sender, EventArgs e)
+        {
+            var richTextBox = (RichTextBox)sender;
+            int textBoxNumber = Convert.ToInt32(Regex.Match(richTextBox.Name, @"\d+").Value);
+            // Find the corresponding item of the combobox with the textBoxNumber - 1
+            // because the enumeration of richTextBoxes starts from 1, not 0
+            comboBoxCorrectAnswer.Items[textBoxNumber-1] = richTextBox.Text;    
         }
 
         private void RemoveAnswerButton_Click(object sender, EventArgs e)
@@ -192,10 +187,11 @@ namespace ExamGenerator.MainFiles
                 {
                     break;
                 }
-                else if (textBox.Name.Equals("AnswerTextBox" + textboxCounter))
+                else if (textBox.Name.Equals("richTextBoxAnswer" + textboxCounter))
                 {
                     // Remove the textBox
                     panelPossibleAnswers.Controls.Remove(textBox);
+                    comboBoxCorrectAnswer.Items.Remove(textBox.Text);
                     // Move the AddQuestion button
                     AddAnswerButton.Location = new Point(AddAnswerButton.Location.X, AddAnswerButton.Location.Y - 40);
                     // Move the RemoveAnswer button
@@ -213,6 +209,63 @@ namespace ExamGenerator.MainFiles
             }
         }
 
-        
+        private void buttonCreateQuestion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Iterate through the tags and add the selected ones
+                HashSet<string> tags = new HashSet<string>();
+                foreach (Panel panel in panelAllTags.Controls.OfType<Panel>())
+                {
+                    foreach (CheckBox tagCheckBox in panel.Controls.OfType<CheckBox>())
+                        if (tagCheckBox.Checked)
+                            tags.Add(tagCheckBox.Text);
+                }
+
+                if (tags.Count == 0)
+                {
+                    MessageBox.Show("No tags were selected. Select or create tags and try again", "Failed to add question",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                    
+
+                // Iterate through the answer rich textboxes and add them to the list of questions
+                List<string> answers = new List<string>();
+                foreach (RichTextBox textbox in panelPossibleAnswers.Controls.OfType<RichTextBox>())
+                {
+                    answers.Add(textbox.Text);
+                }
+
+                if (string.IsNullOrWhiteSpace(richTextBoxQuestion.Text))
+                {
+                    MessageBox.Show("The question body can't be empty. Type a question and try again.", "Failed to add question", 
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(comboBoxCorrectAnswer.Text))
+                {
+                    MessageBox.Show("No correct answer was selected. Select one from the list.", "Failed to add question", 
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                Console.WriteLine(comboBoxCorrectAnswer.SelectedItem.ToString());
+
+                Question q = new Question(tags, richTextBoxQuestion.Text, answers, comboBoxCorrectAnswer.Text, 
+                                          comboBoxDifficulty.SelectedItem.ToString());
+                currentSubject.AddQuestion(q);
+
+                FormMain formMain = (FormMain)Application.OpenForms["formMain"];
+                formMain.UpdateUI();
+
+                if (q != null) MessageBox.Show("Question added successfully!", "Success");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
     }
 }

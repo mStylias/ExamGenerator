@@ -35,7 +35,7 @@ namespace ExamGenerator.MainFiles
             this.panelAllFields = new System.Windows.Forms.Panel();
             this.comboBoxDifficulty = new System.Windows.Forms.ComboBox();
             this.labelDifficulty = new System.Windows.Forms.Label();
-            this.richTextBoxCorrectAnswer = new System.Windows.Forms.RichTextBox();
+            this.comboBoxCorrectAnswer = new System.Windows.Forms.ComboBox();
             this.labelWriteCorrectAnswer = new System.Windows.Forms.Label();
             this.panelPossibleAnswers = new System.Windows.Forms.Panel();
             this.RemoveAnswerButton = new System.Windows.Forms.Button();
@@ -43,17 +43,17 @@ namespace ExamGenerator.MainFiles
             this.richTextBoxAnswer2 = new System.Windows.Forms.RichTextBox();
             this.richTextBoxAnswer1 = new System.Windows.Forms.RichTextBox();
             this.labelWriteAnswers = new System.Windows.Forms.Label();
+            this.buttonCreateTag = new System.Windows.Forms.Button();
             this.richTextBoxCreateTag = new System.Windows.Forms.RichTextBox();
             this.labelCreateTag = new System.Windows.Forms.Label();
             this.panelAllTags = new System.Windows.Forms.Panel();
-            this.panelRightTags = new System.Windows.Forms.Panel();
             this.panelLeftTags = new System.Windows.Forms.Panel();
+            this.panelRightTags = new System.Windows.Forms.Panel();
             this.labelSelectTags = new System.Windows.Forms.Label();
             this.richTextBoxQuestion = new System.Windows.Forms.RichTextBox();
             this.labelQuestion = new System.Windows.Forms.Label();
             this.panelTop = new System.Windows.Forms.Panel();
             this.labelTitle = new System.Windows.Forms.Label();
-            this.buttonCreateTag = new System.Windows.Forms.Button();
             this.panelQuestions.SuspendLayout();
             this.panelSubmitButton.SuspendLayout();
             this.panelAllFields.SuspendLayout();
@@ -73,14 +73,14 @@ namespace ExamGenerator.MainFiles
             this.panelQuestions.Location = new System.Drawing.Point(273, 72);
             this.panelQuestions.MinimumSize = new System.Drawing.Size(352, 0);
             this.panelQuestions.Name = "panelQuestions";
-            this.panelQuestions.Size = new System.Drawing.Size(352, 607);
+            this.panelQuestions.Size = new System.Drawing.Size(352, 602);
             this.panelQuestions.TabIndex = 0;
             // 
             // panelSubmitButton
             // 
             this.panelSubmitButton.Controls.Add(this.buttonCreateQuestion);
             this.panelSubmitButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSubmitButton.Location = new System.Drawing.Point(0, 485);
+            this.panelSubmitButton.Location = new System.Drawing.Point(0, 480);
             this.panelSubmitButton.Margin = new System.Windows.Forms.Padding(2);
             this.panelSubmitButton.Name = "panelSubmitButton";
             this.panelSubmitButton.Size = new System.Drawing.Size(352, 122);
@@ -101,7 +101,7 @@ namespace ExamGenerator.MainFiles
             this.buttonCreateQuestion.TabStop = false;
             this.buttonCreateQuestion.Text = "Create Question";
             this.buttonCreateQuestion.UseVisualStyleBackColor = false;
-            this.buttonCreateQuestion.Click += new System.EventHandler(this.buttonCreate_Click);
+            this.buttonCreateQuestion.Click += new System.EventHandler(this.buttonCreateQuestion_Click);
             // 
             // panelAllFields
             // 
@@ -110,7 +110,7 @@ namespace ExamGenerator.MainFiles
             this.panelAllFields.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelAllFields.Controls.Add(this.comboBoxDifficulty);
             this.panelAllFields.Controls.Add(this.labelDifficulty);
-            this.panelAllFields.Controls.Add(this.richTextBoxCorrectAnswer);
+            this.panelAllFields.Controls.Add(this.comboBoxCorrectAnswer);
             this.panelAllFields.Controls.Add(this.labelWriteCorrectAnswer);
             this.panelAllFields.Controls.Add(this.panelPossibleAnswers);
             this.panelAllFields.Controls.Add(this.labelWriteAnswers);
@@ -126,7 +126,7 @@ namespace ExamGenerator.MainFiles
             this.panelAllFields.Margin = new System.Windows.Forms.Padding(2);
             this.panelAllFields.MinimumSize = new System.Drawing.Size(352, 2);
             this.panelAllFields.Name = "panelAllFields";
-            this.panelAllFields.Size = new System.Drawing.Size(352, 485);
+            this.panelAllFields.Size = new System.Drawing.Size(352, 480);
             this.panelAllFields.TabIndex = 0;
             // 
             // comboBoxDifficulty
@@ -142,7 +142,7 @@ namespace ExamGenerator.MainFiles
             "Easy",
             "Medium",
             "Hard"});
-            this.comboBoxDifficulty.Location = new System.Drawing.Point(0, 455);
+            this.comboBoxDifficulty.Location = new System.Drawing.Point(0, 450);
             this.comboBoxDifficulty.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxDifficulty.Name = "comboBoxDifficulty";
             this.comboBoxDifficulty.Size = new System.Drawing.Size(350, 28);
@@ -153,7 +153,7 @@ namespace ExamGenerator.MainFiles
             this.labelDifficulty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
             this.labelDifficulty.Dock = System.Windows.Forms.DockStyle.Top;
             this.labelDifficulty.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.labelDifficulty.Location = new System.Drawing.Point(0, 427);
+            this.labelDifficulty.Location = new System.Drawing.Point(0, 422);
             this.labelDifficulty.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelDifficulty.Name = "labelDifficulty";
             this.labelDifficulty.Size = new System.Drawing.Size(350, 28);
@@ -161,18 +161,20 @@ namespace ExamGenerator.MainFiles
             this.labelDifficulty.Text = "Difficulty";
             this.labelDifficulty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // richTextBoxCorrectAnswer
+            // comboBoxCorrectAnswer
             // 
-            this.richTextBoxCorrectAnswer.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxCorrectAnswer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.richTextBoxCorrectAnswer.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.richTextBoxCorrectAnswer.Location = new System.Drawing.Point(0, 394);
-            this.richTextBoxCorrectAnswer.Margin = new System.Windows.Forms.Padding(2);
-            this.richTextBoxCorrectAnswer.Multiline = false;
-            this.richTextBoxCorrectAnswer.Name = "richTextBoxCorrectAnswer";
-            this.richTextBoxCorrectAnswer.Size = new System.Drawing.Size(350, 33);
-            this.richTextBoxCorrectAnswer.TabIndex = 10;
-            this.richTextBoxCorrectAnswer.Text = "";
+            this.comboBoxCorrectAnswer.BackColor = System.Drawing.Color.White;
+            this.comboBoxCorrectAnswer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.comboBoxCorrectAnswer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCorrectAnswer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxCorrectAnswer.Font = new System.Drawing.Font("Century Gothic", 11F);
+            this.comboBoxCorrectAnswer.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxCorrectAnswer.FormattingEnabled = true;
+            this.comboBoxCorrectAnswer.Location = new System.Drawing.Point(0, 394);
+            this.comboBoxCorrectAnswer.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxCorrectAnswer.Name = "comboBoxCorrectAnswer";
+            this.comboBoxCorrectAnswer.Size = new System.Drawing.Size(350, 28);
+            this.comboBoxCorrectAnswer.TabIndex = 15;
             // 
             // labelWriteCorrectAnswer
             // 
@@ -184,7 +186,7 @@ namespace ExamGenerator.MainFiles
             this.labelWriteCorrectAnswer.Name = "labelWriteCorrectAnswer";
             this.labelWriteCorrectAnswer.Size = new System.Drawing.Size(350, 28);
             this.labelWriteCorrectAnswer.TabIndex = 9;
-            this.labelWriteCorrectAnswer.Text = "Write only the correct answer";
+            this.labelWriteCorrectAnswer.Text = "Select the correct answer";
             this.labelWriteCorrectAnswer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelPossibleAnswers
@@ -244,11 +246,11 @@ namespace ExamGenerator.MainFiles
             this.richTextBoxAnswer2.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.richTextBoxAnswer2.Location = new System.Drawing.Point(0, 33);
             this.richTextBoxAnswer2.Margin = new System.Windows.Forms.Padding(2);
-            this.richTextBoxAnswer2.Multiline = false;
             this.richTextBoxAnswer2.Name = "richTextBoxAnswer2";
             this.richTextBoxAnswer2.Size = new System.Drawing.Size(350, 33);
             this.richTextBoxAnswer2.TabIndex = 0;
             this.richTextBoxAnswer2.Text = "2. ";
+            this.richTextBoxAnswer2.TextChanged += new System.EventHandler(this.richTextBoxAnswer_TextChanged);
             // 
             // richTextBoxAnswer1
             // 
@@ -257,11 +259,11 @@ namespace ExamGenerator.MainFiles
             this.richTextBoxAnswer1.Font = new System.Drawing.Font("Century Gothic", 11F);
             this.richTextBoxAnswer1.Location = new System.Drawing.Point(0, 0);
             this.richTextBoxAnswer1.Margin = new System.Windows.Forms.Padding(2);
-            this.richTextBoxAnswer1.Multiline = false;
             this.richTextBoxAnswer1.Name = "richTextBoxAnswer1";
             this.richTextBoxAnswer1.Size = new System.Drawing.Size(350, 33);
             this.richTextBoxAnswer1.TabIndex = 0;
             this.richTextBoxAnswer1.Text = "1. ";
+            this.richTextBoxAnswer1.TextChanged += new System.EventHandler(this.richTextBoxAnswer_TextChanged);
             // 
             // labelWriteAnswers
             // 
@@ -275,6 +277,24 @@ namespace ExamGenerator.MainFiles
             this.labelWriteAnswers.TabIndex = 7;
             this.labelWriteAnswers.Text = "Write ALL the answers";
             this.labelWriteAnswers.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // buttonCreateTag
+            // 
+            this.buttonCreateTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(215)))), ((int)(((byte)(249)))));
+            this.buttonCreateTag.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonCreateTag.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonCreateTag.FlatAppearance.BorderSize = 0;
+            this.buttonCreateTag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCreateTag.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCreateTag.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.buttonCreateTag.Location = new System.Drawing.Point(0, 209);
+            this.buttonCreateTag.Name = "buttonCreateTag";
+            this.buttonCreateTag.Size = new System.Drawing.Size(350, 30);
+            this.buttonCreateTag.TabIndex = 14;
+            this.buttonCreateTag.TabStop = false;
+            this.buttonCreateTag.Text = "Create Tag";
+            this.buttonCreateTag.UseVisualStyleBackColor = false;
+            this.buttonCreateTag.Click += new System.EventHandler(this.buttonCreateTag_Click);
             // 
             // richTextBoxCreateTag
             // 
@@ -316,18 +336,6 @@ namespace ExamGenerator.MainFiles
             this.panelAllTags.Size = new System.Drawing.Size(350, 28);
             this.panelAllTags.TabIndex = 13;
             // 
-            // panelRightTags
-            // 
-            this.panelRightTags.AutoSize = true;
-            this.panelRightTags.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panelRightTags.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelRightTags.Location = new System.Drawing.Point(175, 0);
-            this.panelRightTags.MinimumSize = new System.Drawing.Size(175, 28);
-            this.panelRightTags.Name = "panelRightTags";
-            this.panelRightTags.Padding = new System.Windows.Forms.Padding(30, 0, 10, 0);
-            this.panelRightTags.Size = new System.Drawing.Size(175, 28);
-            this.panelRightTags.TabIndex = 1;
-            // 
             // panelLeftTags
             // 
             this.panelLeftTags.AutoSize = true;
@@ -339,6 +347,18 @@ namespace ExamGenerator.MainFiles
             this.panelLeftTags.Padding = new System.Windows.Forms.Padding(30, 0, 10, 0);
             this.panelLeftTags.Size = new System.Drawing.Size(175, 28);
             this.panelLeftTags.TabIndex = 0;
+            // 
+            // panelRightTags
+            // 
+            this.panelRightTags.AutoSize = true;
+            this.panelRightTags.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panelRightTags.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelRightTags.Location = new System.Drawing.Point(175, 0);
+            this.panelRightTags.MinimumSize = new System.Drawing.Size(175, 28);
+            this.panelRightTags.Name = "panelRightTags";
+            this.panelRightTags.Padding = new System.Windows.Forms.Padding(30, 0, 10, 0);
+            this.panelRightTags.Size = new System.Drawing.Size(175, 28);
+            this.panelRightTags.TabIndex = 1;
             // 
             // labelSelectTags
             // 
@@ -400,24 +420,6 @@ namespace ExamGenerator.MainFiles
             this.labelTitle.Text = "Add Question";
             this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // buttonCreateTag
-            // 
-            this.buttonCreateTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(215)))), ((int)(((byte)(249)))));
-            this.buttonCreateTag.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonCreateTag.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonCreateTag.FlatAppearance.BorderSize = 0;
-            this.buttonCreateTag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCreateTag.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCreateTag.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.buttonCreateTag.Location = new System.Drawing.Point(0, 209);
-            this.buttonCreateTag.Name = "buttonCreateTag";
-            this.buttonCreateTag.Size = new System.Drawing.Size(350, 30);
-            this.buttonCreateTag.TabIndex = 14;
-            this.buttonCreateTag.TabStop = false;
-            this.buttonCreateTag.Text = "Create Tag";
-            this.buttonCreateTag.UseVisualStyleBackColor = false;
-            this.buttonCreateTag.Click += new System.EventHandler(this.buttonCreateTag_Click);
-            // 
             // AddQuestionsSection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -455,7 +457,6 @@ namespace ExamGenerator.MainFiles
         private System.Windows.Forms.Label labelWriteAnswers;
         private System.Windows.Forms.RichTextBox richTextBoxCreateTag;
         private System.Windows.Forms.RichTextBox richTextBoxQuestion;
-        private System.Windows.Forms.RichTextBox richTextBoxCorrectAnswer;
         private System.Windows.Forms.ComboBox comboBoxDifficulty;
         private System.Windows.Forms.Label labelTitle;
         private System.Windows.Forms.Label labelCreateTag;
@@ -469,5 +470,6 @@ namespace ExamGenerator.MainFiles
         private System.Windows.Forms.Panel panelRightTags;
         private System.Windows.Forms.Panel panelLeftTags;
         private System.Windows.Forms.Button buttonCreateTag;
+        private System.Windows.Forms.ComboBox comboBoxCorrectAnswer;
     }
 }

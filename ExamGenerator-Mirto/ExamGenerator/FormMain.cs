@@ -23,6 +23,7 @@ namespace ExamGenerator
             previousSize = Size; // Used to make user controls responsive
             this.subject = subject;
             this.username = username;
+            labelUsername.Text = username;
 
             // Temporary load subject
             subject = new Subject("Math");
@@ -57,10 +58,15 @@ namespace ExamGenerator
                 subject.AddQuestion(new Question(tags, questionBody, possibleAnswers, correctAnswer, difficulty));
             }
 
-            //questionsSection.CurrentSubject = subject;
             autoSection1.subject = subject;
             addQuestionsSection1.OnLoad(subject);
             manualSection.OnLoad(subject);
+        }
+
+        /* Updates the ui of all user controls using the subject */
+        public void UpdateUI()
+        {
+            manualSection.UpdateUI();
         }
 
         /* Gives the focus to the search textbox when a control in 
@@ -101,7 +107,7 @@ namespace ExamGenerator
                 panelSubjects.Controls.SetChildIndex(radioSubject, counter);
                 counter++;
             }
-            panelSubjects.Controls.SetChildIndex(labelSubjectsList, 12);
+            panelSubjects.Controls.SetChildIndex(labelSubjectsList, panelSubjects.Controls.Count + 1);
 
         }
 
@@ -164,6 +170,9 @@ namespace ExamGenerator
             manualSection.SearchQuestions(textBoxSearch.Text);
         }
 
-        
+        private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(Environment.ExitCode);
+        }
     }
 }
