@@ -78,5 +78,6 @@ namespace ExamGenerator.CustomControls
                 control.Click += e;
             }
         }
+
     }
 }

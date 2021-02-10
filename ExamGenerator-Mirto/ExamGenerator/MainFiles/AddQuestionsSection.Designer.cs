@@ -428,6 +428,7 @@ namespace ExamGenerator.MainFiles
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(233)))), ((int)(((byte)(242)))));
             this.Controls.Add(this.panelTop);
             this.Controls.Add(this.panelQuestions);
+            this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AddQuestionsSection";
             this.Size = new System.Drawing.Size(900, 680);

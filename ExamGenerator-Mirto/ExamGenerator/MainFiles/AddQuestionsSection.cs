@@ -18,6 +18,7 @@ namespace ExamGenerator.MainFiles
         public AddQuestionsSection()
         {
             InitializeComponent();
+            RemoveAnswerButtonInitialLocation = RemoveAnswerButton.Location; // Used for reseting the RemoveAnswerButton location
         }
 
         private enum TagLocation{
@@ -28,18 +29,6 @@ namespace ExamGenerator.MainFiles
         TagLocation nextTagLocation = TagLocation.Left;
         public void OnLoad(Subject subject)
         {
-            //this.subject = subject;
-            //if (!subject.AllTags.Any()) listBoxTags.Items.Add("You haven't created a tag yet.");
-
-            //else
-            //{
-            //    if (listBoxTags.Items.Contains("You haven't created a tag yet.")) listBoxTags.Items.Remove("You haven't created a tag yet.");
-            //    foreach (string s in subject.AllTags)
-            //    {
-            //        listBoxTags.Items.Add(s);
-            //    }
-            //}
-
             this.currentSubject = subject;
             
             foreach (string tag in subject.AllTags)
@@ -57,10 +46,37 @@ namespace ExamGenerator.MainFiles
             }
 
             textboxCounter = 2; // Used when creating new richTextBoxes for the possible answers
+
             comboBoxCorrectAnswer.Items.Add(richTextBoxAnswer1.Text);
             comboBoxCorrectAnswer.Items.Add(richTextBoxAnswer2.Text);
             comboBoxDifficulty.SelectedIndex = 0;
 
+            richTextBoxAnswer1.Text = "1. ";
+            richTextBoxAnswer2.Text = "2. ";
+
+        }
+
+        Point RemoveAnswerButtonInitialLocation;
+        public void UpdateUI()
+        {
+            panelLeftTags.Controls.Clear();
+            panelRightTags.Controls.Clear();
+
+            for (int i = panelPossibleAnswers.Controls.Count - 1; i >= 0; i--)
+            {
+                Control control = panelPossibleAnswers.Controls[i];
+                if (control is RichTextBox && (RichTextBox)control != richTextBoxAnswer1
+                                           && (RichTextBox)control != richTextBoxAnswer2)
+                    control.Dispose();
+            }
+
+            richTextBoxQuestion.Text = "";
+            comboBoxCorrectAnswer.Items.Clear();
+
+            RemoveAnswerButton.Location = RemoveAnswerButtonInitialLocation;
+            RemoveAnswerButton.Hide();
+
+            OnLoad(currentSubject);
         }
 
         private void DisplayTag(string name, Panel panel, bool IsCheckedOnStart)
@@ -98,6 +114,7 @@ namespace ExamGenerator.MainFiles
             if (!currentSubject.AllTags.Contains(tag))
             {
                 currentSubject.AllTags.Add(tag);
+                currentSubject.TagsNum.Add(tag, 0);
 
                 if (nextTagLocation == TagLocation.Left)
                 {
@@ -113,17 +130,19 @@ namespace ExamGenerator.MainFiles
             else
                 MessageBox.Show("The tag you typed already exists. Select it instead", "Tag already exists",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            richTextBoxCreateTag.Text = "";
         }       
 
-        int textboxCounter = 2; // Used to name the new textboxes correctly
+        int textboxCounter; // Used to name the new textboxes correctly
         private void AddAnswerButton_Click(object sender, EventArgs e)
         {
             // Locations
-            int addQuestionY = AddAnswerButton.Location.Y + 70;
-            int addQuestionX = AddAnswerButton.Location.X;
-            AddAnswerButton.Location = new Point(addQuestionX, addQuestionY);
+            //int addQuestionY = AddAnswerButton.Location.Y + 70;
+            //int addQuestionX = AddAnswerButton.Location.X;
+            //AddAnswerButton.Location = new Point(addQuestionX, addQuestionY);
 
-            int answerTextboxY = addQuestionY - 70;
+            //int answerTextboxY = addQuestionY - 70;
 
             // Advance the counter
             textboxCounter++;
@@ -135,7 +154,7 @@ namespace ExamGenerator.MainFiles
                 BorderStyle = BorderStyle.None,
                 Dock = DockStyle.Top,
                 Font = new Font("Century Gothic", 11),
-                Location = new Point(addQuestionX, answerTextboxY),
+                //Location = new Point(addQuestionX, answerTextboxY),
                 Margin = new Padding(3, 0, 3, 0),
                 Multiline = true,
 
@@ -256,14 +275,14 @@ namespace ExamGenerator.MainFiles
                                           comboBoxDifficulty.SelectedItem.ToString());
                 currentSubject.AddQuestion(q);
 
+                if (q != null) MessageBox.Show("Question added successfully!", "Success");
+
                 FormMain formMain = (FormMain)Application.OpenForms["formMain"];
                 formMain.UpdateAndSave();
-
-                if (q != null) MessageBox.Show("Question added successfully!", "Success");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
 

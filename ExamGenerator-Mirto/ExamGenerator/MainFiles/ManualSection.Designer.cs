@@ -62,7 +62,7 @@
             // 
             // checkBoxSectionTitle
             // 
-            this.checkBoxSectionTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxSectionTitle.Dock = System.Windows.Forms.DockStyle.Left;
             this.checkBoxSectionTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBoxSectionTitle.Font = new System.Drawing.Font("Century", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxSectionTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(28)))), ((int)(((byte)(32)))));
@@ -75,8 +75,8 @@
             // 
             // panelTop
             // 
-            this.panelTop.Controls.Add(this.checkBoxSectionTitle);
             this.panelTop.Controls.Add(this.buttonDeleteQuestions);
+            this.panelTop.Controls.Add(this.checkBoxSectionTitle);
             this.panelTop.Controls.Add(this.panelFilters);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(60, 0);
@@ -89,7 +89,7 @@
             // buttonDeleteQuestions
             // 
             this.buttonDeleteQuestions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(166)))), ((int)(((byte)(243)))));
-            this.buttonDeleteQuestions.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonDeleteQuestions.Dock = System.Windows.Forms.DockStyle.Left;
             this.buttonDeleteQuestions.FlatAppearance.BorderSize = 0;
             this.buttonDeleteQuestions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDeleteQuestions.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -117,7 +117,7 @@
             // 
             // labelFilters
             // 
-            this.labelFilters.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelFilters.Dock = System.Windows.Forms.DockStyle.Right;
             this.labelFilters.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelFilters.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFilters.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(28)))), ((int)(((byte)(32)))));

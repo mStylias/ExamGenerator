@@ -191,6 +191,7 @@
             // 
             // checkBox
             // 
+            this.checkBox.AutoCheck = false;
             this.checkBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
             this.checkBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.checkBox.Dock = System.Windows.Forms.DockStyle.Top;
@@ -204,6 +205,7 @@
             this.checkBox.TabIndex = 12;
             this.checkBox.Text = "Selected";
             this.checkBox.UseVisualStyleBackColor = false;
+            this.checkBox.Click += new System.EventHandler(this.AllControlsCheck_Click);
             // 
             // QuestionModel
             // 

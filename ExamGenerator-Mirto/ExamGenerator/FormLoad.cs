@@ -36,6 +36,7 @@ namespace ExamGenerator
             Invoke((Action)(() => this.Hide()));
             Invoke((Action)(() => pictureBox1.Enabled = false));
             Application.Run();
+            Invoke((Action)(() => Application.Exit()));
         }
     }
 }

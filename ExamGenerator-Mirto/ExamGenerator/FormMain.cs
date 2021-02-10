@@ -66,6 +66,7 @@ namespace ExamGenerator
         /* Updates the ui of all user controls using the subject */
         public void UpdateAndSave()
         {
+            addQuestionsSection1.UpdateUI();
             manualSection.UpdateUI();
             Serialize.SaveSubjects(Subject.Subjects);
         }
@@ -103,8 +104,7 @@ namespace ExamGenerator
             int counter = 1;
             foreach (KeyValuePair<string, Subject> subject in Subject.Subjects)
             {
-                Console.WriteLine("Success");
-                RadioButton radioSubject = DisplaySubject(subject.Value);
+                Button radioSubject = DisplaySubject(subject.Value);
                 panelSubjects.Controls.SetChildIndex(radioSubject, counter);
                 counter++;
             }
@@ -112,37 +112,43 @@ namespace ExamGenerator
 
         }
 
-        private RadioButton DisplaySubject(Subject subject)
+        private Button DisplaySubject(Subject subject)
         {
-            RadioButton radio = new RadioButton();
+            Button button = new Button();
 
-            radio.Appearance = System.Windows.Forms.Appearance.Button;
-            radio.AutoEllipsis = true;
-            radio.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            radio.Checked = false;
-            radio.Dock = System.Windows.Forms.DockStyle.Top;
-            radio.FlatAppearance.BorderSize = 0;
-            radio.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
-            radio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
-            radio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
-            radio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            radio.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            radio.Location = new System.Drawing.Point(0, 72);
-            radio.Margin = new System.Windows.Forms.Padding(0);
-            radio.MinimumSize = new System.Drawing.Size(195, 50);
-            radio.Size = new System.Drawing.Size(195, 50);
-            radio.TabIndex = 10;
-            radio.TabStop = true;
-            radio.Text = subject.Name;
-            radio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            radio.UseVisualStyleBackColor = true;
+            button.AutoEllipsis = true;
+            button.Dock = System.Windows.Forms.DockStyle.Top;
+            button.FlatAppearance.BorderSize = 0;
+            button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
+            button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
+            button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            button.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            button.Location = new System.Drawing.Point(0, 72);
+            button.Margin = new System.Windows.Forms.Padding(0);
+            button.MinimumSize = new System.Drawing.Size(195, 50);
+            button.Size = new System.Drawing.Size(195, 50);
+            button.TabIndex = 10;
+            button.TabStop = true;
+            button.Text = subject.Name;
+            button.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            button.UseVisualStyleBackColor = true;
+            button.Click += ChangeSubject_CheckedChanged;
 
             if (this.subject.Equals(subject))
-                radio.Checked = true;
+                button.BackColor = Color.FromArgb(241, 241, 253);
            
-            panelSubjects.Controls.Add(radio);
-            return radio;
+            panelSubjects.Controls.Add(button);
+            return button;
         }
+
+        private void ChangeSubject_CheckedChanged(object sender, EventArgs e)
+        {
+            Subject subject = Subject.Subjects[((Button)sender).Text];
+
+            this.Hide();
+            FormLoad form = new FormLoad(subject, username);
+            form.Show();
+        } 
 
         // Responsiveness
         Size previousSize;

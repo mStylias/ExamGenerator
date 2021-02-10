@@ -192,6 +192,8 @@ namespace ExamGenerator.MainFiles
 
         public void OnResizeEnd()
         {
+            page = 1;
+
             DisplayQuestionModels();
             ToggleNavigationButtons();
 
@@ -383,14 +385,21 @@ namespace ExamGenerator.MainFiles
                 if (checkBoxSectionTitle.Checked)
                     foreach (QuestionModel model in SortedQuestionModels)
                     {
-                        model.Selected = true;
-                        buttonDeleteQuestions.Show();
+                        if (!model.Selected)
+                        {
+                            model.Selected = true;
+                            buttonDeleteQuestions.Show();
+                        }
+                        
                     }
                 else
                     foreach (QuestionModel model in SortedQuestionModels)
                     {
-                        model.Selected = false;
-                        buttonDeleteQuestions.Hide();
+                        if (model.Selected)
+                        {
+                            model.Selected = false;
+                            buttonDeleteQuestions.Hide();
+                        }
                     }
             else
                 checkBoxSectionTitle.Checked = false;
@@ -406,8 +415,11 @@ namespace ExamGenerator.MainFiles
             {
                 foreach (QuestionModel model in SortedQuestionModels)
                 {
-                    CurrentSubject.Questions.Remove(model.Question);
-                    QuestionModel.SelectedModelsNum--;
+                    if (model.Selected)
+                    {
+                        CurrentSubject.RemoveQuestion(model.Question);
+                        QuestionModel.SelectedModelsNum--;
+                    }    
                 }
 
                 checkBoxSectionTitle.Checked = false;

@@ -13,8 +13,9 @@ namespace ExamGenerator
     {
         public static Dictionary<string, Subject> Subjects { get; set; } = new Dictionary<string, Subject>();
         public string Name { get; set; }
-        public List<Question> Questions { get; private set; } = new List<Question>();      
+        public List<Question> Questions { get; private set; } = new List<Question>();
         public HashSet<string> AllTags { get; set; } = new HashSet<string>();
+        public Dictionary<string, int> TagsNum { get; set; } = new Dictionary<string, int>(); // Contains how many times a tag exists in all questions
 
         public Subject(string name)
         {
@@ -27,10 +28,34 @@ namespace ExamGenerator
             foreach (string tag in question.Tags)
             {
                 if (AllTags.Contains(tag))
+                {
+                    TagsNum[tag]++;
                     continue;
+                }
                 else
+                {
+                    TagsNum.Add(tag, 1);
                     AllTags.Add(tag);
+                }  
             }
+        }
+
+        public void RemoveQuestion(Question question)
+        {
+            // Decrement the number of every tag in the dictionary that counts the tags
+            // and completely remove the tag if neccessary
+            foreach (string tag in question.Tags)
+            {
+                TagsNum[tag]--;
+                if (TagsNum[tag] == 0)
+                {
+                    TagsNum.Remove(tag);
+                    AllTags.Remove(tag);
+                }
+            }
+
+            Questions.Remove(question);
+
         }
 
         public List<Question> SearchQuestions(string difficulty, HashSet<string> tags, string typedSearch)
