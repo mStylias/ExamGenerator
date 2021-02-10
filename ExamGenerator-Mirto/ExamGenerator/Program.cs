@@ -19,6 +19,7 @@ namespace ExamGenerator
             Application.Run(new FormLogin());
             //Application.Run(new FormMain(new Subject("Jack"), "Jack"));
             //Application.Run(new FormLogin());
+            //Application.Run(new FormLoad(new Subject("Math"), "His"));
         }
     }
 }

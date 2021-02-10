@@ -119,6 +119,7 @@
             this.dropdownListSubjects.TabIndex = 7;
             this.dropdownListSubjects.TabStop = false;
             this.dropdownListSubjects.Text = "No subject is selected";
+            this.dropdownListSubjects.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dropdownListSubjects_KeyDown);
             // 
             // labelSelectSubject
             // 

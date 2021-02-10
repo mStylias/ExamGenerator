@@ -73,6 +73,26 @@ namespace ExamGenerator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ajax_loader {
+            get {
+                object obj = ResourceManager.GetObject("ajax-loader", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ajax_loader_1_ {
+            get {
+                object obj = ResourceManager.GetObject("ajax-loader(1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap artificial_intelligence_25px {
             get {
                 object obj = ResourceManager.GetObject("artificial_intelligence_25px", resourceCulture);
@@ -156,6 +176,16 @@ namespace ExamGenerator.Properties {
         internal static System.Drawing.Bitmap search_54px {
             get {
                 object obj = ResourceManager.GetObject("search_54px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user_30px {
+            get {
+                object obj = ResourceManager.GetObject("user_30px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -14,8 +14,20 @@ namespace ExamGenerator.CustomControls
 {
     public partial class QuestionModel : UserControl
     {
+        public static int SelectedModelsNum { get; set; } = 0;
         public Question Question { get; set; }
-        public bool Checked { get; set; } = false;
+        public bool Selected
+        {
+            get { return checkBox.Checked; }
+            set 
+            { 
+                checkBox.Checked = value;
+                if (value == true)
+                    SelectedModelsNum++;
+                else if (SelectedModelsNum > 0)
+                    SelectedModelsNum--;
+            }
+        }
         public QuestionModel(Question question)
         {
             this.Question = question;
@@ -32,7 +44,7 @@ namespace ExamGenerator.CustomControls
             foreach (string tag in Question.Tags)
                 sb.Append(tag).Append(", ");
             // Remove the last "," and white space
-            sb.Remove(sb.Length-2, 2);
+            sb.Remove(sb.Length - 2, 2);
             labelTags.Text = sb.ToString();
 
             // Possible answers
@@ -41,7 +53,7 @@ namespace ExamGenerator.CustomControls
             {
                 sb.AppendLine(answer);
             }
-            
+
             labelAnswers.Text = sb.ToString();
 
             // Correct answer
@@ -51,9 +63,20 @@ namespace ExamGenerator.CustomControls
             labelDifficulty.Text = Question.Difficulty;
         }
 
-        private void checkBox_CheckedChanged(object sender, EventArgs e)
+        private void AllControlsCheck_Click(object sender, EventArgs e)
         {
-            Checked = checkBox.Checked;
+            if (Selected)
+                Selected = false;
+            else
+                Selected = true;
+        }
+
+        public void AddClickEvent(EventHandler e)
+        {
+            foreach (Control control in this.Controls)
+            {
+                control.Click += e;
+            }
         }
     }
 }

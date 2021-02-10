@@ -156,7 +156,7 @@ namespace ExamGenerator
 
             if (IsDropdownUsed())
             {
-                subject = Subject.Subjects[dropdownListSubjects.SelectedItem.ToString()];
+                subject = Subject.Subjects[dropdownListSubjects.Text];
             }
             // Make sure that the given subject doesn't already exist in the list
             else if (!Subject.Subjects.TryGetValue(textBoxSubject.Text, out subject))
@@ -169,10 +169,14 @@ namespace ExamGenerator
             }
 
             this.Hide();
-            var form = new FormMain(subject, textboxUsername.Text);
-            form.FormClosed += (sender, e) => this.Close();
-            form.Show();
-            
+            var formLoad = new FormLoad(subject, textboxUsername.Text);
+            formLoad.Show();   
+        }
+
+        /* Stop the user from writting on the dropdown menu */
+        private void dropdownListSubjects_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
         }
     }
 }

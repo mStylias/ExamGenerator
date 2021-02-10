@@ -1,0 +1,17 @@
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\bin\Release\ExamGenerator.exe.config
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\bin\Release\ExamGenerator.exe
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\bin\Release\ExamGenerator.pdb
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Release\ExamGenerator.csprojAssemblyReference.cache
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Release\ExamGenerator.AutoSection.resources
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Release\ExamGenerator.CustomControls.QuestionModel.resources
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Release\ExamGenerator.FormLogin.resources
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Release\ExamGenerator.ModernTextbox.resources
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Release\ExamGenerator.FormMain.resources
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Release\ExamGenerator.MainFiles.AddQuestionsSection.resources
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Release\ExamGenerator.MainFiles.FormManualGenerate.resources
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Release\ExamGenerator.MainFiles.ManualSection.resources
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Release\ExamGenerator.Properties.Resources.resources
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Release\ExamGenerator.csproj.GenerateResource.cache
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Release\ExamGenerator.csproj.CoreCompileInputs.cache
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Release\ExamGenerator.exe
+C:\Users\Michalis\Documents\GitHub\ExamGenerator\ExamGenerator-Mirto\ExamGenerator\obj\Release\ExamGenerator.pdb

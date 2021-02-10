@@ -54,6 +54,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions.cs" />
+    <Compile Include="FormLoad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLoad.Designer.cs">
+      <DependentUpon>FormLoad.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainFiles\AutoSection.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     <Compile Include="MainFiles\Question.cs" />
     <Compile Include="Serialize.cs" />
     <Compile Include="Subject.cs" />
+    <EmbeddedResource Include="FormLoad.resx">
+      <DependentUpon>FormLoad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainFiles\AutoSection.resx">
       <DependentUpon>AutoSection.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,6 +170,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icons8_book_shelf.ico" />
+    <None Include="Resources\ajax-loader%281%29.gif" />
+    <None Include="Resources\ajax-loader.gif" />
+    <None Include="Resources\user_30px.png" />
     <None Include="Resources\delete_16px.png" />
     <None Include="Resources\left_25px.png" />
     <None Include="Resources\right_25px.png" />

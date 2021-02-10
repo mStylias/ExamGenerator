@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelSectionTitle = new System.Windows.Forms.Label();
+            this.checkBoxSectionTitle = new System.Windows.Forms.CheckBox();
             this.panelTop = new System.Windows.Forms.Panel();
+            this.buttonDeleteQuestions = new System.Windows.Forms.Button();
             this.panelFilters = new System.Windows.Forms.Panel();
             this.labelFilters = new System.Windows.Forms.Label();
             this.panelSortTags = new System.Windows.Forms.Panel();
@@ -41,6 +42,7 @@
             this.buttonSortDifficulty = new System.Windows.Forms.Button();
             this.panelQuestions = new System.Windows.Forms.Panel();
             this.panelControlQuestions = new System.Windows.Forms.Panel();
+            this.buttonGenerate = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonForward = new System.Windows.Forms.Button();
             this.togglePanelDifficulty = new ExamGenerator.CustomControls.TogglablePanel();
@@ -58,31 +60,48 @@
             this.togglePanelDifficulty.SuspendLayout();
             this.SuspendLayout();
             // 
-            // labelSectionTitle
+            // checkBoxSectionTitle
             // 
-            this.labelSectionTitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSectionTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelSectionTitle.Font = new System.Drawing.Font("Century", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSectionTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(28)))), ((int)(((byte)(32)))));
-            this.labelSectionTitle.Location = new System.Drawing.Point(27, 31);
-            this.labelSectionTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelSectionTitle.Name = "labelSectionTitle";
-            this.labelSectionTitle.Size = new System.Drawing.Size(373, 50);
-            this.labelSectionTitle.TabIndex = 1;
-            this.labelSectionTitle.Text = "Questions";
-            this.labelSectionTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.checkBoxSectionTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxSectionTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBoxSectionTitle.Font = new System.Drawing.Font("Century", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxSectionTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(28)))), ((int)(((byte)(32)))));
+            this.checkBoxSectionTitle.Location = new System.Drawing.Point(20, 25);
+            this.checkBoxSectionTitle.Name = "checkBoxSectionTitle";
+            this.checkBoxSectionTitle.Size = new System.Drawing.Size(186, 41);
+            this.checkBoxSectionTitle.TabIndex = 1;
+            this.checkBoxSectionTitle.Text = "Questions";
+            this.checkBoxSectionTitle.Click += new System.EventHandler(this.checkBoxSectionTitle_Click);
             // 
             // panelTop
             // 
-            this.panelTop.Controls.Add(this.labelSectionTitle);
+            this.panelTop.Controls.Add(this.checkBoxSectionTitle);
+            this.panelTop.Controls.Add(this.buttonDeleteQuestions);
             this.panelTop.Controls.Add(this.panelFilters);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTop.Location = new System.Drawing.Point(80, 0);
+            this.panelTop.Location = new System.Drawing.Point(60, 0);
             this.panelTop.Margin = new System.Windows.Forms.Padding(0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Padding = new System.Windows.Forms.Padding(27, 31, 0, 0);
-            this.panelTop.Size = new System.Drawing.Size(1040, 81);
+            this.panelTop.Padding = new System.Windows.Forms.Padding(20, 25, 0, 0);
+            this.panelTop.Size = new System.Drawing.Size(780, 66);
             this.panelTop.TabIndex = 2;
+            // 
+            // buttonDeleteQuestions
+            // 
+            this.buttonDeleteQuestions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(166)))), ((int)(((byte)(243)))));
+            this.buttonDeleteQuestions.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonDeleteQuestions.FlatAppearance.BorderSize = 0;
+            this.buttonDeleteQuestions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeleteQuestions.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDeleteQuestions.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(247)))));
+            this.buttonDeleteQuestions.Location = new System.Drawing.Point(206, 25);
+            this.buttonDeleteQuestions.Name = "buttonDeleteQuestions";
+            this.buttonDeleteQuestions.Size = new System.Drawing.Size(150, 41);
+            this.buttonDeleteQuestions.TabIndex = 7;
+            this.buttonDeleteQuestions.Text = "Delete Selected";
+            this.buttonDeleteQuestions.UseVisualStyleBackColor = false;
+            this.buttonDeleteQuestions.Visible = false;
+            this.buttonDeleteQuestions.Click += new System.EventHandler(this.buttonDeleteQuestions_Click);
             // 
             // panelFilters
             // 
@@ -91,10 +110,9 @@
             this.panelFilters.Controls.Add(this.panelBarrier1);
             this.panelFilters.Controls.Add(this.panelSortDifficulty);
             this.panelFilters.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelFilters.Location = new System.Drawing.Point(400, 31);
-            this.panelFilters.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelFilters.Location = new System.Drawing.Point(356, 25);
             this.panelFilters.Name = "panelFilters";
-            this.panelFilters.Size = new System.Drawing.Size(640, 50);
+            this.panelFilters.Size = new System.Drawing.Size(424, 41);
             this.panelFilters.TabIndex = 2;
             // 
             // labelFilters
@@ -104,10 +122,9 @@
             this.labelFilters.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFilters.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(28)))), ((int)(((byte)(32)))));
             this.labelFilters.Location = new System.Drawing.Point(0, 0);
-            this.labelFilters.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelFilters.Name = "labelFilters";
-            this.labelFilters.Padding = new System.Windows.Forms.Padding(0, 0, 13, 0);
-            this.labelFilters.Size = new System.Drawing.Size(255, 50);
+            this.labelFilters.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.labelFilters.Size = new System.Drawing.Size(136, 41);
             this.labelFilters.TabIndex = 8;
             this.labelFilters.Text = "Filters:";
             this.labelFilters.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -118,10 +135,9 @@
             this.panelSortTags.Controls.Add(this.labelTagsArrow);
             this.panelSortTags.Controls.Add(this.buttonSortTags);
             this.panelSortTags.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelSortTags.Location = new System.Drawing.Point(255, 0);
-            this.panelSortTags.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelSortTags.Location = new System.Drawing.Point(136, 0);
             this.panelSortTags.Name = "panelSortTags";
-            this.panelSortTags.Size = new System.Drawing.Size(171, 50);
+            this.panelSortTags.Size = new System.Drawing.Size(128, 41);
             this.panelSortTags.TabIndex = 7;
             // 
             // labelTagsArrow
@@ -132,13 +148,12 @@
             this.labelTagsArrow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.labelTagsArrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelTagsArrow.Font = new System.Drawing.Font("Marlett", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.labelTagsArrow.Location = new System.Drawing.Point(135, 0);
-            this.labelTagsArrow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelTagsArrow.Location = new System.Drawing.Point(101, 0);
             this.labelTagsArrow.Name = "labelTagsArrow";
-            this.labelTagsArrow.Size = new System.Drawing.Size(36, 50);
+            this.labelTagsArrow.Size = new System.Drawing.Size(27, 41);
             this.labelTagsArrow.TabIndex = 0;
             this.labelTagsArrow.Text = "6";
-            this.labelTagsArrow.Click += new System.EventHandler(this.Tags_Click);
+            this.labelTagsArrow.Click += new System.EventHandler(this.TagsButton_Click);
             this.labelTagsArrow.MouseEnter += new System.EventHandler(this.buttonSort_MouseEnter);
             this.labelTagsArrow.MouseLeave += new System.EventHandler(this.buttonSort_MouseLeave);
             // 
@@ -151,23 +166,21 @@
             this.buttonSortTags.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSortTags.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSortTags.Location = new System.Drawing.Point(0, 0);
-            this.buttonSortTags.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonSortTags.Name = "buttonSortTags";
-            this.buttonSortTags.Size = new System.Drawing.Size(171, 50);
+            this.buttonSortTags.Size = new System.Drawing.Size(128, 41);
             this.buttonSortTags.TabIndex = 6;
             this.buttonSortTags.Text = "Tags";
             this.buttonSortTags.UseVisualStyleBackColor = true;
-            this.buttonSortTags.Click += new System.EventHandler(this.Tags_Click);
+            this.buttonSortTags.Click += new System.EventHandler(this.TagsButton_Click);
             this.buttonSortTags.MouseEnter += new System.EventHandler(this.buttonSort_MouseEnter);
             this.buttonSortTags.MouseLeave += new System.EventHandler(this.buttonSort_MouseLeave);
             // 
             // panelBarrier1
             // 
             this.panelBarrier1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelBarrier1.Location = new System.Drawing.Point(426, 0);
-            this.panelBarrier1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelBarrier1.Location = new System.Drawing.Point(264, 0);
             this.panelBarrier1.Name = "panelBarrier1";
-            this.panelBarrier1.Size = new System.Drawing.Size(43, 50);
+            this.panelBarrier1.Size = new System.Drawing.Size(32, 41);
             this.panelBarrier1.TabIndex = 5;
             // 
             // panelSortDifficulty
@@ -176,10 +189,9 @@
             this.panelSortDifficulty.Controls.Add(this.labelDifficultyArrow);
             this.panelSortDifficulty.Controls.Add(this.buttonSortDifficulty);
             this.panelSortDifficulty.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelSortDifficulty.Location = new System.Drawing.Point(469, 0);
-            this.panelSortDifficulty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelSortDifficulty.Location = new System.Drawing.Point(296, 0);
             this.panelSortDifficulty.Name = "panelSortDifficulty";
-            this.panelSortDifficulty.Size = new System.Drawing.Size(171, 50);
+            this.panelSortDifficulty.Size = new System.Drawing.Size(128, 41);
             this.panelSortDifficulty.TabIndex = 6;
             // 
             // labelDifficultyArrow
@@ -190,10 +202,9 @@
             this.labelDifficultyArrow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.labelDifficultyArrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelDifficultyArrow.Font = new System.Drawing.Font("Marlett", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.labelDifficultyArrow.Location = new System.Drawing.Point(135, 0);
-            this.labelDifficultyArrow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelDifficultyArrow.Location = new System.Drawing.Point(101, 0);
             this.labelDifficultyArrow.Name = "labelDifficultyArrow";
-            this.labelDifficultyArrow.Size = new System.Drawing.Size(36, 50);
+            this.labelDifficultyArrow.Size = new System.Drawing.Size(27, 41);
             this.labelDifficultyArrow.TabIndex = 0;
             this.labelDifficultyArrow.Text = "6";
             this.labelDifficultyArrow.Click += new System.EventHandler(this.Difficulty_Click);
@@ -209,9 +220,8 @@
             this.buttonSortDifficulty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSortDifficulty.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSortDifficulty.Location = new System.Drawing.Point(0, 0);
-            this.buttonSortDifficulty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonSortDifficulty.Name = "buttonSortDifficulty";
-            this.buttonSortDifficulty.Size = new System.Drawing.Size(171, 50);
+            this.buttonSortDifficulty.Size = new System.Drawing.Size(128, 41);
             this.buttonSortDifficulty.TabIndex = 6;
             this.buttonSortDifficulty.Text = "Difficulty";
             this.buttonSortDifficulty.UseVisualStyleBackColor = true;
@@ -223,23 +233,40 @@
             // 
             this.panelQuestions.Controls.Add(this.panelControlQuestions);
             this.panelQuestions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelQuestions.Location = new System.Drawing.Point(80, 81);
-            this.panelQuestions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelQuestions.Location = new System.Drawing.Point(60, 66);
             this.panelQuestions.Name = "panelQuestions";
-            this.panelQuestions.Size = new System.Drawing.Size(1040, 731);
+            this.panelQuestions.Size = new System.Drawing.Size(780, 614);
             this.panelQuestions.TabIndex = 12;
             // 
             // panelControlQuestions
             // 
+            this.panelControlQuestions.Controls.Add(this.buttonGenerate);
             this.panelControlQuestions.Controls.Add(this.buttonBack);
             this.panelControlQuestions.Controls.Add(this.buttonForward);
             this.panelControlQuestions.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControlQuestions.Location = new System.Drawing.Point(0, 677);
-            this.panelControlQuestions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelControlQuestions.Location = new System.Drawing.Point(0, 550);
             this.panelControlQuestions.Name = "panelControlQuestions";
-            this.panelControlQuestions.Padding = new System.Windows.Forms.Padding(0, 0, 0, 17);
-            this.panelControlQuestions.Size = new System.Drawing.Size(1040, 54);
+            this.panelControlQuestions.Padding = new System.Windows.Forms.Padding(0, 0, 0, 14);
+            this.panelControlQuestions.Size = new System.Drawing.Size(780, 64);
             this.panelControlQuestions.TabIndex = 9;
+            // 
+            // buttonGenerate
+            // 
+            this.buttonGenerate.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonGenerate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(164)))), ((int)(((byte)(166)))), ((int)(((byte)(243)))));
+            this.buttonGenerate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonGenerate.FlatAppearance.BorderSize = 0;
+            this.buttonGenerate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGenerate.Font = new System.Drawing.Font("Impact", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonGenerate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(247)))));
+            this.buttonGenerate.Location = new System.Drawing.Point(274, 7);
+            this.buttonGenerate.Name = "buttonGenerate";
+            this.buttonGenerate.Size = new System.Drawing.Size(232, 40);
+            this.buttonGenerate.TabIndex = 12;
+            this.buttonGenerate.TabStop = false;
+            this.buttonGenerate.Text = "Generate Exam";
+            this.buttonGenerate.UseVisualStyleBackColor = false;
+            this.buttonGenerate.Click += new System.EventHandler(this.buttonGenerate_Click);
             // 
             // buttonBack
             // 
@@ -250,9 +277,9 @@
             this.buttonBack.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBack.Image = global::ExamGenerator.Properties.Resources.left_25px;
             this.buttonBack.Location = new System.Drawing.Point(0, 0);
-            this.buttonBack.Margin = new System.Windows.Forms.Padding(7, 6, 0, 15);
+            this.buttonBack.Margin = new System.Windows.Forms.Padding(5, 5, 0, 12);
             this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(40, 37);
+            this.buttonBack.Size = new System.Drawing.Size(30, 50);
             this.buttonBack.TabIndex = 8;
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Visible = false;
@@ -266,10 +293,10 @@
             this.buttonForward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonForward.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonForward.Image = global::ExamGenerator.Properties.Resources.right_25px;
-            this.buttonForward.Location = new System.Drawing.Point(1000, 0);
-            this.buttonForward.Margin = new System.Windows.Forms.Padding(7, 6, 0, 15);
+            this.buttonForward.Location = new System.Drawing.Point(750, 0);
+            this.buttonForward.Margin = new System.Windows.Forms.Padding(5, 5, 0, 12);
             this.buttonForward.Name = "buttonForward";
-            this.buttonForward.Size = new System.Drawing.Size(40, 37);
+            this.buttonForward.Size = new System.Drawing.Size(30, 50);
             this.buttonForward.TabIndex = 7;
             this.buttonForward.UseVisualStyleBackColor = true;
             this.buttonForward.Visible = false;
@@ -285,11 +312,11 @@
             this.togglePanelDifficulty.Controls.Add(this.radioDifficultyMedium);
             this.togglePanelDifficulty.Controls.Add(this.radioDifficultyEasy);
             this.togglePanelDifficulty.Controls.Add(this.radioDifficultyAny);
-            this.togglePanelDifficulty.Location = new System.Drawing.Point(949, 81);
+            this.togglePanelDifficulty.Location = new System.Drawing.Point(712, 66);
             this.togglePanelDifficulty.Margin = new System.Windows.Forms.Padding(0);
-            this.togglePanelDifficulty.MinimumSize = new System.Drawing.Size(171, 167);
+            this.togglePanelDifficulty.MinimumSize = new System.Drawing.Size(128, 136);
             this.togglePanelDifficulty.Name = "togglePanelDifficulty";
-            this.togglePanelDifficulty.Size = new System.Drawing.Size(171, 168);
+            this.togglePanelDifficulty.Size = new System.Drawing.Size(128, 136);
             this.togglePanelDifficulty.TabIndex = 4;
             this.togglePanelDifficulty.Visible = false;
             // 
@@ -299,11 +326,10 @@
             this.checkBoxHard.FlatAppearance.BorderSize = 0;
             this.checkBoxHard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBoxHard.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxHard.Location = new System.Drawing.Point(0, 126);
-            this.checkBoxHard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBoxHard.Location = new System.Drawing.Point(0, 102);
             this.checkBoxHard.Name = "checkBoxHard";
-            this.checkBoxHard.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.checkBoxHard.Size = new System.Drawing.Size(171, 42);
+            this.checkBoxHard.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.checkBoxHard.Size = new System.Drawing.Size(128, 34);
             this.checkBoxHard.TabIndex = 3;
             this.checkBoxHard.Text = "Hard";
             this.checkBoxHard.UseVisualStyleBackColor = true;
@@ -315,11 +341,10 @@
             this.radioDifficultyMedium.FlatAppearance.BorderSize = 0;
             this.radioDifficultyMedium.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioDifficultyMedium.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioDifficultyMedium.Location = new System.Drawing.Point(0, 84);
-            this.radioDifficultyMedium.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioDifficultyMedium.Location = new System.Drawing.Point(0, 68);
             this.radioDifficultyMedium.Name = "radioDifficultyMedium";
-            this.radioDifficultyMedium.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.radioDifficultyMedium.Size = new System.Drawing.Size(171, 42);
+            this.radioDifficultyMedium.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.radioDifficultyMedium.Size = new System.Drawing.Size(128, 34);
             this.radioDifficultyMedium.TabIndex = 2;
             this.radioDifficultyMedium.Text = "Medium";
             this.radioDifficultyMedium.UseVisualStyleBackColor = true;
@@ -331,11 +356,10 @@
             this.radioDifficultyEasy.FlatAppearance.BorderSize = 0;
             this.radioDifficultyEasy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioDifficultyEasy.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioDifficultyEasy.Location = new System.Drawing.Point(0, 42);
-            this.radioDifficultyEasy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioDifficultyEasy.Location = new System.Drawing.Point(0, 34);
             this.radioDifficultyEasy.Name = "radioDifficultyEasy";
-            this.radioDifficultyEasy.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.radioDifficultyEasy.Size = new System.Drawing.Size(171, 42);
+            this.radioDifficultyEasy.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.radioDifficultyEasy.Size = new System.Drawing.Size(128, 34);
             this.radioDifficultyEasy.TabIndex = 1;
             this.radioDifficultyEasy.Text = "Easy";
             this.radioDifficultyEasy.UseVisualStyleBackColor = true;
@@ -349,10 +373,9 @@
             this.radioDifficultyAny.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioDifficultyAny.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioDifficultyAny.Location = new System.Drawing.Point(0, 0);
-            this.radioDifficultyAny.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioDifficultyAny.Name = "radioDifficultyAny";
-            this.radioDifficultyAny.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.radioDifficultyAny.Size = new System.Drawing.Size(171, 42);
+            this.radioDifficultyAny.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.radioDifficultyAny.Size = new System.Drawing.Size(128, 34);
             this.radioDifficultyAny.TabIndex = 4;
             this.radioDifficultyAny.TabStop = true;
             this.radioDifficultyAny.Text = "Any";
@@ -366,18 +389,18 @@
             this.togglePanelTags.AutoSize = true;
             this.togglePanelTags.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.togglePanelTags.BackColor = System.Drawing.Color.White;
-            this.togglePanelTags.Location = new System.Drawing.Point(736, 81);
+            this.togglePanelTags.Location = new System.Drawing.Point(552, 66);
             this.togglePanelTags.Margin = new System.Windows.Forms.Padding(0);
-            this.togglePanelTags.MaximumSize = new System.Drawing.Size(171, 167);
-            this.togglePanelTags.MinimumSize = new System.Drawing.Size(171, 42);
+            this.togglePanelTags.MaximumSize = new System.Drawing.Size(128, 136);
+            this.togglePanelTags.MinimumSize = new System.Drawing.Size(128, 34);
             this.togglePanelTags.Name = "togglePanelTags";
-            this.togglePanelTags.Size = new System.Drawing.Size(171, 42);
+            this.togglePanelTags.Size = new System.Drawing.Size(128, 34);
             this.togglePanelTags.TabIndex = 3;
             this.togglePanelTags.Visible = false;
             // 
-            // QuestionsSection
+            // ManualSection
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(233)))), ((int)(((byte)(242)))));
             this.Controls.Add(this.togglePanelDifficulty);
@@ -385,10 +408,9 @@
             this.Controls.Add(this.panelQuestions);
             this.Controls.Add(this.panelTop);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "QuestionsSection";
-            this.Padding = new System.Windows.Forms.Padding(80, 0, 80, 0);
-            this.Size = new System.Drawing.Size(1200, 812);
+            this.Name = "ManualSection";
+            this.Padding = new System.Windows.Forms.Padding(60, 0, 60, 0);
+            this.Size = new System.Drawing.Size(900, 680);
             this.panelTop.ResumeLayout(false);
             this.panelFilters.ResumeLayout(false);
             this.panelSortTags.ResumeLayout(false);
@@ -403,7 +425,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label labelSectionTitle;
+        private System.Windows.Forms.CheckBox checkBoxSectionTitle;
         private System.Windows.Forms.Panel panelTop;
         private System.Windows.Forms.Panel panelFilters;
         private System.Windows.Forms.Panel panelSortTags;
@@ -424,5 +446,7 @@
         private System.Windows.Forms.RadioButton radioDifficultyMedium;
         private System.Windows.Forms.RadioButton radioDifficultyEasy;
         private System.Windows.Forms.RadioButton radioDifficultyAny;
+        private System.Windows.Forms.Button buttonGenerate;
+        private System.Windows.Forms.Button buttonDeleteQuestions;
     }
 }
