@@ -23,7 +23,7 @@ namespace ExamGenerator
             this.subject = subject;
             this.username = username;
             //questionsSection.CurrentSubject = subject;
-            autoSection1.subject = subject;
+            autoSection1.OnLoad(subject);
             addQuestionsSection1.OnLoad(subject);
         }
 

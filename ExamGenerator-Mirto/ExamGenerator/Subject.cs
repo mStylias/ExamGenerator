@@ -36,33 +36,22 @@ namespace ExamGenerator
         public List<Question> SearchQuestions(string difficulty, HashSet<string> tags, string typedSearch)
         {
             var sortedQuestions = new List<Question>();
-            foreach (Question question in Questions)
-            {
-                if (question.Difficulty.Equals(difficulty) || difficulty.Equals("Any"))
+                foreach (Question question in Questions)
                 {
-                    if (tags != null && tags.Count > 0)
+                    if (question.Difficulty.Equals(difficulty) || difficulty.Equals("Any"))
                     {
-                        foreach (string tag in tags)
-                            if (question.Tags.Contains(tag) && question.Body.Contains(typedSearch))
-                                sortedQuestions.Add(question);
+                        if (tags != null && tags.Count > 0)
+                        {
+                            foreach (string tag in tags)
+                                if (question.Tags.Contains(tag) && question.Body.Contains(typedSearch))
+                                    sortedQuestions.Add(question);
+                        }
+                        else if (typedSearch != null && question.Body.Contains(typedSearch))
+                            sortedQuestions.Add(question);
                     }
-                    else if (typedSearch != null && question.Body.Contains(typedSearch))
-                        sortedQuestions.Add(question);
                 }
-            }
-
+            
             return sortedQuestions;
         }
-
-        //public List<Question> SearchQuestionsByDifficulty(string difficulty)
-        //{
-        //    var sortedList = new List<Question>();
-        //    foreach (Question question in Questions)
-        //    {
-        //        if (question.Difficulty.Equals(difficulty))
-        //            sortedList.Add(question);
-        //    }
-        //    return sortedList;
-        //}
     }
 }

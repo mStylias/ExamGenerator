@@ -52,10 +52,14 @@ namespace ExamGenerator
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.togglablePanel1 = new ExamGenerator.CustomControls.TogglablePanel();
+            this.togglePanelDifficulty = new ExamGenerator.CustomControls.TogglablePanel();
+            this.EasyNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.HardNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.MediumNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.EasyButton = new System.Windows.Forms.Button();
+            this.MediumButton = new System.Windows.Forms.Button();
+            this.HardButton = new System.Windows.Forms.Button();
+            this.togglePanelTags = new ExamGenerator.CustomControls.TogglablePanel();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -66,22 +70,21 @@ namespace ExamGenerator
             this.button1 = new System.Windows.Forms.Button();
             this.QuestionsNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
-            this.togglablePanel2 = new ExamGenerator.CustomControls.TogglablePanel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panelTop.SuspendLayout();
             this.panelQuestions.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.togglePanelDifficulty.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EasyNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HardNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MediumNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LayoutNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QuestionsNumericUpDown)).BeginInit();
-            this.togglablePanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTop
@@ -261,7 +264,7 @@ namespace ExamGenerator
             // richTextBoxAnswer1
             // 
             this.richTextBoxAnswer1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.richTextBoxAnswer1.Font = new System.Drawing.Font("Century Gothic", 11F);
+            this.richTextBoxAnswer1.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.richTextBoxAnswer1.Location = new System.Drawing.Point(0, 0);
             this.richTextBoxAnswer1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBoxAnswer1.Name = "richTextBoxAnswer1";
@@ -367,8 +370,10 @@ namespace ExamGenerator
             // 
             this.panel4.AutoScroll = true;
             this.panel4.AutoSize = true;
-            this.panel4.Controls.Add(this.togglablePanel2);
-            this.panel4.Controls.Add(this.togglablePanel1);
+            this.panel4.Controls.Add(this.textBox1);
+            this.panel4.Controls.Add(this.label11);
+            this.panel4.Controls.Add(this.togglePanelDifficulty);
+            this.panel4.Controls.Add(this.togglePanelTags);
             this.panel4.Controls.Add(this.button5);
             this.panel4.Controls.Add(this.button4);
             this.panel4.Controls.Add(this.button3);
@@ -382,40 +387,100 @@ namespace ExamGenerator
             this.panel4.Location = new System.Drawing.Point(65, 79);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1040, 758);
+            this.panel4.Size = new System.Drawing.Size(1040, 1048);
             this.panel4.TabIndex = 2;
             // 
-            // numericUpDown3
+            // togglePanelDifficulty
             // 
-            this.numericUpDown3.Font = new System.Drawing.Font("Century", 12F);
-            this.numericUpDown3.Location = new System.Drawing.Point(123, 88);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(48, 32);
-            this.numericUpDown3.TabIndex = 17;
+            this.togglePanelDifficulty.BackColor = System.Drawing.Color.White;
+            this.togglePanelDifficulty.Controls.Add(this.EasyNumericUpDown);
+            this.togglePanelDifficulty.Controls.Add(this.HardNumericUpDown);
+            this.togglePanelDifficulty.Controls.Add(this.MediumNumericUpDown);
+            this.togglePanelDifficulty.Controls.Add(this.EasyButton);
+            this.togglePanelDifficulty.Controls.Add(this.MediumButton);
+            this.togglePanelDifficulty.Controls.Add(this.HardButton);
+            this.togglePanelDifficulty.Location = new System.Drawing.Point(594, 320);
+            this.togglePanelDifficulty.Name = "togglePanelDifficulty";
+            this.togglePanelDifficulty.Size = new System.Drawing.Size(171, 132);
+            this.togglePanelDifficulty.TabIndex = 19;
+            this.togglePanelDifficulty.Visible = false;
+            this.togglePanelDifficulty.MouseLeave += new System.EventHandler(this.togglablePanel2_MouseLeave);
             // 
-            // numericUpDown2
+            // EasyNumericUpDown
             // 
-            this.numericUpDown2.Font = new System.Drawing.Font("Century", 12F);
-            this.numericUpDown2.Location = new System.Drawing.Point(123, 44);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(48, 32);
-            this.numericUpDown2.TabIndex = 16;
+            this.EasyNumericUpDown.Font = new System.Drawing.Font("Century", 12F);
+            this.EasyNumericUpDown.Location = new System.Drawing.Point(123, 0);
+            this.EasyNumericUpDown.Name = "EasyNumericUpDown";
+            this.EasyNumericUpDown.Size = new System.Drawing.Size(48, 32);
+            this.EasyNumericUpDown.TabIndex = 15;
             // 
-            // numericUpDown1
+            // HardNumericUpDown
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Century", 12F);
-            this.numericUpDown1.Location = new System.Drawing.Point(123, 0);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(48, 32);
-            this.numericUpDown1.TabIndex = 15;
+            this.HardNumericUpDown.Font = new System.Drawing.Font("Century", 12F);
+            this.HardNumericUpDown.Location = new System.Drawing.Point(123, 88);
+            this.HardNumericUpDown.Name = "HardNumericUpDown";
+            this.HardNumericUpDown.Size = new System.Drawing.Size(48, 32);
+            this.HardNumericUpDown.TabIndex = 17;
             // 
-            // togglablePanel1
+            // MediumNumericUpDown
             // 
-            this.togglablePanel1.BackColor = System.Drawing.Color.White;
-            this.togglablePanel1.Location = new System.Drawing.Point(267, 320);
-            this.togglablePanel1.Name = "togglablePanel1";
-            this.togglablePanel1.Size = new System.Drawing.Size(171, 44);
-            this.togglablePanel1.TabIndex = 14;
+            this.MediumNumericUpDown.Font = new System.Drawing.Font("Century", 12F);
+            this.MediumNumericUpDown.Location = new System.Drawing.Point(123, 44);
+            this.MediumNumericUpDown.Name = "MediumNumericUpDown";
+            this.MediumNumericUpDown.Size = new System.Drawing.Size(48, 32);
+            this.MediumNumericUpDown.TabIndex = 16;
+            // 
+            // EasyButton
+            // 
+            this.EasyButton.BackColor = System.Drawing.Color.White;
+            this.EasyButton.FlatAppearance.BorderSize = 0;
+            this.EasyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EasyButton.Font = new System.Drawing.Font("Century", 12F);
+            this.EasyButton.Location = new System.Drawing.Point(0, 0);
+            this.EasyButton.Name = "EasyButton";
+            this.EasyButton.Size = new System.Drawing.Size(171, 44);
+            this.EasyButton.TabIndex = 20;
+            this.EasyButton.Text = "   Easy";
+            this.EasyButton.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.EasyButton.UseVisualStyleBackColor = false;
+            // 
+            // MediumButton
+            // 
+            this.MediumButton.BackColor = System.Drawing.Color.White;
+            this.MediumButton.FlatAppearance.BorderSize = 0;
+            this.MediumButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MediumButton.Font = new System.Drawing.Font("Century", 12F);
+            this.MediumButton.Location = new System.Drawing.Point(0, 44);
+            this.MediumButton.Name = "MediumButton";
+            this.MediumButton.Size = new System.Drawing.Size(171, 44);
+            this.MediumButton.TabIndex = 21;
+            this.MediumButton.Text = "   Medium";
+            this.MediumButton.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.MediumButton.UseVisualStyleBackColor = false;
+            // 
+            // HardButton
+            // 
+            this.HardButton.BackColor = System.Drawing.Color.White;
+            this.HardButton.FlatAppearance.BorderSize = 0;
+            this.HardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HardButton.Font = new System.Drawing.Font("Century", 12F);
+            this.HardButton.Location = new System.Drawing.Point(0, 88);
+            this.HardButton.Name = "HardButton";
+            this.HardButton.Size = new System.Drawing.Size(171, 44);
+            this.HardButton.TabIndex = 22;
+            this.HardButton.Text = "   Hard";
+            this.HardButton.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.HardButton.UseVisualStyleBackColor = false;
+            // 
+            // togglePanelTags
+            // 
+            this.togglePanelTags.BackColor = System.Drawing.Color.White;
+            this.togglePanelTags.Location = new System.Drawing.Point(267, 320);
+            this.togglePanelTags.Name = "togglePanelTags";
+            this.togglePanelTags.Size = new System.Drawing.Size(171, 44);
+            this.togglePanelTags.TabIndex = 14;
+            this.togglePanelTags.Visible = false;
+            this.togglePanelTags.MouseLeave += new System.EventHandler(this.togglablePanel1_MouseLeave);
             // 
             // button5
             // 
@@ -429,6 +494,7 @@ namespace ExamGenerator
             this.button5.TabIndex = 9;
             this.button5.Text = "6";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -455,6 +521,7 @@ namespace ExamGenerator
             this.button3.TabIndex = 7;
             this.button3.Text = "6";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -507,7 +574,7 @@ namespace ExamGenerator
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Impact", 20F);
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(247)))));
-            this.button1.Location = new System.Drawing.Point(375, 675);
+            this.button1.Location = new System.Drawing.Point(375, 911);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(291, 68);
@@ -535,71 +602,35 @@ namespace ExamGenerator
             this.label8.TabIndex = 0;
             this.label8.Text = "Please, choose the number of questions your test will have:";
             // 
-            // togglablePanel2
+            // label11
             // 
-            this.togglablePanel2.BackColor = System.Drawing.Color.White;
-            this.togglablePanel2.Controls.Add(this.numericUpDown1);
-            this.togglablePanel2.Controls.Add(this.numericUpDown3);
-            this.togglablePanel2.Controls.Add(this.numericUpDown2);
-            this.togglablePanel2.Controls.Add(this.button6);
-            this.togglablePanel2.Controls.Add(this.button7);
-            this.togglablePanel2.Controls.Add(this.button8);
-            this.togglablePanel2.Location = new System.Drawing.Point(594, 320);
-            this.togglablePanel2.Name = "togglablePanel2";
-            this.togglablePanel2.Size = new System.Drawing.Size(171, 132);
-            this.togglablePanel2.TabIndex = 19;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Century", 18F);
+            this.label11.Location = new System.Drawing.Point(238, 696);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(564, 35);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "Please, choose the filename of your test:";
             // 
-            // button6
+            // textBox1
             // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Century", 12F);
-            this.button6.Location = new System.Drawing.Point(0, 0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(171, 44);
-            this.button6.TabIndex = 20;
-            this.button6.Text = "   Easy";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button6.UseVisualStyleBackColor = false;
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.White;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Century", 12F);
-            this.button7.Location = new System.Drawing.Point(0, 44);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(171, 44);
-            this.button7.TabIndex = 21;
-            this.button7.Text = "   Medium";
-            this.button7.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button7.UseVisualStyleBackColor = false;
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.White;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Century", 12F);
-            this.button8.Location = new System.Drawing.Point(0, 88);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(171, 44);
-            this.button8.TabIndex = 22;
-            this.button8.Text = "   Hard";
-            this.button8.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button8.UseVisualStyleBackColor = false;
+            this.textBox1.Font = new System.Drawing.Font("Century", 18F);
+            this.textBox1.Location = new System.Drawing.Point(384, 761);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(273, 36);
+            this.textBox1.TabIndex = 21;
             // 
             // AutoSection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(233)))), ((int)(((byte)(242)))));
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panelTop);
             this.Name = "AutoSection";
-            this.Size = new System.Drawing.Size(1171, 841);
+            this.Size = new System.Drawing.Size(1150, 841);
             this.Load += new System.EventHandler(this.AutoSection_Load);
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
@@ -610,12 +641,12 @@ namespace ExamGenerator
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.togglePanelDifficulty.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.EasyNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HardNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MediumNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LayoutNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.QuestionsNumericUpDown)).EndInit();
-            this.togglablePanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -656,13 +687,16 @@ namespace ExamGenerator
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
-        private CustomControls.TogglablePanel togglablePanel1;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private CustomControls.TogglablePanel togglablePanel2;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
+        private CustomControls.TogglablePanel togglePanelTags;
+        private System.Windows.Forms.NumericUpDown HardNumericUpDown;
+        private System.Windows.Forms.NumericUpDown MediumNumericUpDown;
+        private System.Windows.Forms.NumericUpDown EasyNumericUpDown;
+        private CustomControls.TogglablePanel togglePanelDifficulty;
+        private System.Windows.Forms.Button EasyButton;
+        private System.Windows.Forms.Button MediumButton;
+        private System.Windows.Forms.Button HardButton;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label11;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace ExamGenerator.MainFiles
 {
-    partial class QuestionsSection
+    partial class ManualSection
     {
         /// <summary> 
         /// Required designer variable.

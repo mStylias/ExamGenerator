@@ -46,9 +46,9 @@
             this.radioMenuAuto = new System.Windows.Forms.RadioButton();
             this.radioMenuManual = new System.Windows.Forms.RadioButton();
             this.radioMenuAddQuestions = new System.Windows.Forms.RadioButton();
-            this.autoSection1 = new ExamGenerator.AutoSection();
             this.manualSection = new ExamGenerator.MainFiles.ManualSection();
             this.addQuestionsSection1 = new ExamGenerator.MainFiles.AddQuestionsSection();
+            this.autoSection1 = new ExamGenerator.AutoSection();
             this.panelTopSection.SuspendLayout();
             this.panelTitlebar.SuspendLayout();
             this.panelSearchQuestions.SuspendLayout();
@@ -65,7 +65,7 @@
             this.panelTopSection.Controls.Add(this.panelAppTitle);
             this.panelTopSection.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTopSection.Location = new System.Drawing.Point(0, 0);
-            this.panelTopSection.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelTopSection.Margin = new System.Windows.Forms.Padding(4);
             this.panelTopSection.Name = "panelTopSection";
             this.panelTopSection.Size = new System.Drawing.Size(1460, 66);
             this.panelTopSection.TabIndex = 0;
@@ -76,7 +76,7 @@
             this.panelTitlebar.Controls.Add(this.panelSearchQuestions);
             this.panelTitlebar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTitlebar.Location = new System.Drawing.Point(260, 0);
-            this.panelTitlebar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelTitlebar.Margin = new System.Windows.Forms.Padding(4);
             this.panelTitlebar.Name = "panelTitlebar";
             this.panelTitlebar.Size = new System.Drawing.Size(1200, 66);
             this.panelTitlebar.TabIndex = 1;
@@ -85,7 +85,7 @@
             // 
             this.panelUserSettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelUserSettings.Location = new System.Drawing.Point(976, 0);
-            this.panelUserSettings.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelUserSettings.Margin = new System.Windows.Forms.Padding(4);
             this.panelUserSettings.MinimumSize = new System.Drawing.Size(227, 0);
             this.panelUserSettings.Name = "panelUserSettings";
             this.panelUserSettings.Size = new System.Drawing.Size(227, 66);
@@ -98,7 +98,7 @@
             this.panelSearchQuestions.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.panelSearchQuestions.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSearchQuestions.Location = new System.Drawing.Point(0, 0);
-            this.panelSearchQuestions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelSearchQuestions.Margin = new System.Windows.Forms.Padding(4);
             this.panelSearchQuestions.Name = "panelSearchQuestions";
             this.panelSearchQuestions.Size = new System.Drawing.Size(976, 66);
             this.panelSearchQuestions.TabIndex = 0;
@@ -133,7 +133,7 @@
             this.panelAppTitle.Controls.Add(this.labelAppTitle);
             this.panelAppTitle.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelAppTitle.Location = new System.Drawing.Point(0, 0);
-            this.panelAppTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelAppTitle.Margin = new System.Windows.Forms.Padding(4);
             this.panelAppTitle.Name = "panelAppTitle";
             this.panelAppTitle.Size = new System.Drawing.Size(260, 66);
             this.panelAppTitle.TabIndex = 0;
@@ -159,7 +159,7 @@
             this.panelMenu.Controls.Add(this.panelMenuButtons);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 66);
-            this.panelMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelMenu.Margin = new System.Windows.Forms.Padding(4);
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Padding = new System.Windows.Forms.Padding(0, 74, 0, 0);
             this.panelMenu.Size = new System.Drawing.Size(260, 837);
@@ -190,7 +190,7 @@
             this.panelMenuButtons.Controls.Add(this.radioMenuAddQuestions);
             this.panelMenuButtons.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMenuButtons.Location = new System.Drawing.Point(0, 74);
-            this.panelMenuButtons.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelMenuButtons.Margin = new System.Windows.Forms.Padding(4);
             this.panelMenuButtons.Name = "panelMenuButtons";
             this.panelMenuButtons.Size = new System.Drawing.Size(260, 266);
             this.panelMenuButtons.TabIndex = 0;
@@ -199,7 +199,7 @@
             // 
             this.panelAutoActive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(68)))), ((int)(((byte)(77)))));
             this.panelAutoActive.Location = new System.Drawing.Point(253, 143);
-            this.panelAutoActive.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelAutoActive.Margin = new System.Windows.Forms.Padding(4);
             this.panelAutoActive.Name = "panelAutoActive";
             this.panelAutoActive.Size = new System.Drawing.Size(7, 71);
             this.panelAutoActive.TabIndex = 7;
@@ -209,7 +209,7 @@
             // 
             this.panelAddQuestionsActive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(68)))), ((int)(((byte)(77)))));
             this.panelAddQuestionsActive.Location = new System.Drawing.Point(253, 0);
-            this.panelAddQuestionsActive.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelAddQuestionsActive.Margin = new System.Windows.Forms.Padding(4);
             this.panelAddQuestionsActive.Name = "panelAddQuestionsActive";
             this.panelAddQuestionsActive.Size = new System.Drawing.Size(7, 71);
             this.panelAddQuestionsActive.TabIndex = 5;
@@ -218,7 +218,7 @@
             // 
             this.panelManualActive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(68)))), ((int)(((byte)(77)))));
             this.panelManualActive.Location = new System.Drawing.Point(253, 71);
-            this.panelManualActive.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelManualActive.Margin = new System.Windows.Forms.Padding(4);
             this.panelManualActive.Name = "panelManualActive";
             this.panelManualActive.Size = new System.Drawing.Size(7, 71);
             this.panelManualActive.TabIndex = 6;
@@ -298,22 +298,12 @@
             this.radioMenuAddQuestions.UseVisualStyleBackColor = true;
             this.radioMenuAddQuestions.Click += new System.EventHandler(this.radioMenuAddQuestions_Click);
             // 
-            // autoSection1
-            // 
-            this.autoSection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(233)))), ((int)(((byte)(242)))));
-            this.autoSection1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.autoSection1.Location = new System.Drawing.Point(260, 66);
-            this.autoSection1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.autoSection1.Name = "autoSection1";
-            this.autoSection1.Size = new System.Drawing.Size(1200, 837);
-            this.autoSection1.TabIndex = 4;
-            // 
             // manualSection
             // 
             this.manualSection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(233)))), ((int)(((byte)(242)))));
             this.manualSection.Dock = System.Windows.Forms.DockStyle.Fill;
             this.manualSection.Location = new System.Drawing.Point(260, 66);
-            this.manualSection.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.manualSection.Margin = new System.Windows.Forms.Padding(5);
             this.manualSection.Name = "manualSection";
             this.manualSection.Padding = new System.Windows.Forms.Padding(80, 0, 80, 0);
             this.manualSection.Size = new System.Drawing.Size(1200, 837);
@@ -330,6 +320,16 @@
             this.addQuestionsSection1.Size = new System.Drawing.Size(1200, 837);
             this.addQuestionsSection1.TabIndex = 3;
             // 
+            // autoSection1
+            // 
+            this.autoSection1.AutoScroll = true;
+            this.autoSection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(233)))), ((int)(((byte)(242)))));
+            this.autoSection1.CurrentSubject = null;
+            this.autoSection1.Location = new System.Drawing.Point(260, 66);
+            this.autoSection1.Name = "autoSection1";
+            this.autoSection1.Size = new System.Drawing.Size(1200, 834);
+            this.autoSection1.TabIndex = 5;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -337,11 +337,11 @@
             this.ClientSize = new System.Drawing.Size(1460, 903);
             this.Controls.Add(this.manualSection);
             this.Controls.Add(this.addQuestionsSection1);
-            this.Controls.Add(this.autoSection1);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelTopSection);
+            this.Controls.Add(this.autoSection1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.MinimumSize = new System.Drawing.Size(1194, 801);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

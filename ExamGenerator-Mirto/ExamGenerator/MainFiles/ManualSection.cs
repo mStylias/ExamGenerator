@@ -353,16 +353,6 @@ namespace ExamGenerator.MainFiles
 
             }
 
-
-
-            //foreach (QuestionModel model in ActiveQuestionModels)
-            //{
-            //    if (!sortedQuestions.Contains(model.Question))
-            //    {
-
-            //    }
-            //}
-
             DisplayQuestionModels();
             ToggleNavigationButtons();
 
