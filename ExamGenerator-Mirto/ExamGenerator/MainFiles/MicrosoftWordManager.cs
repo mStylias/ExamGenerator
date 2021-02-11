@@ -1,4 +1,5 @@
 ﻿using Microsoft.Office.Interop.Word;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,9 +12,26 @@ namespace ExamGenerator.MainFiles
 {
     public static class MicrosoftWordManager
     {
-        /* Create document method. Returns true if successful and false otherwise */
-        public static bool CreateExamDocument(string subjectName, List<Question> questions, string folderPath, string fileName, int layoutsNum)
+        static string officeNumberVersion;
+        public static string FindOfficeVersion()
         {
+            try
+            {
+                //Get Office Version
+                RegistryKey rk = Registry.ClassesRoot.OpenSubKey(@"Word.Application\\CurVer");
+                string officeVersion = rk.GetValue("").ToString();
+                officeNumberVersion = officeVersion.Split('.')[officeVersion.Split('.').GetUpperBound(0)];
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return officeNumberVersion;
+        }
+
+        /* Create document method. Returns true if successful and false otherwise */
+        public static bool CreateExamDocument(string subjectName, List<Question> questions, string folderPath, string fileName, int layoutsNum, string officeNumberVersion)
+        { 
             try
             {
                 //Create an instance for word app  
@@ -81,10 +99,22 @@ namespace ExamGenerator.MainFiles
                     questions.Shuffle();
 
                     // Save the document
-                    object filePath2 = Path.Combine(folderPath, fileName + i + ".docx");
-                    document.SaveAs2(ref filePath2);
-                    document.Close(ref missing, ref missing, ref missing);
-                    document = null;
+                    //Word 2007 - 2019 Version
+                    if (officeNumberVersion == "12" || officeNumberVersion == "14" || officeNumberVersion == "15" || officeNumberVersion == "16")
+                    {
+                        object filePath2 = Path.Combine(folderPath, fileName + i + ".docx");
+                        document.SaveAs2(ref filePath2);
+                        document.Close(ref missing, ref missing, ref missing);
+                        document = null;
+                    }
+                    //Word 97 - 2003 Version
+                    else if (officeNumberVersion == "7" || officeNumberVersion == "8" || officeNumberVersion == "9" || officeNumberVersion == "10" || officeNumberVersion == "11")
+                    {
+                        object filePath2 = Path.Combine(folderPath, fileName + i + ".doc");
+                        document.SaveAs2(ref filePath2);
+                        document.Close(ref missing, ref missing, ref missing);
+                        document = null;
+                    }
                     
                 }
 

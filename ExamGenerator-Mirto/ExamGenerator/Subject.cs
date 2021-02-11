@@ -90,5 +90,46 @@ namespace ExamGenerator
             return sortedQuestions;
         }
 
+        public int QuestionsNumberByAttribute(string difficulty, string tag)
+        {
+            int countTagAndDifficulty = 0;
+            int countTag = 0;
+            int countDifficulty = 0;
+            foreach (Question question in Questions)
+            {
+                if (tag != null)
+                {
+                    if (difficulty != null)
+                    {
+                        if (question.Tags.Contains(tag) && question.Equals(difficulty))
+                        {
+                            countTagAndDifficulty++;
+                        }
+                    }
+                    else
+                    {
+                        if (question.Tags.Contains(tag))
+                        {
+                            countTag++;
+                        }
+                    }
+                }
+                else
+                {
+                    if (difficulty != null)
+                    {
+                        if (question.Difficulty.Equals(difficulty))
+                        {
+                            countDifficulty++;
+                        }
+                    }
+                }
+            }
+            if (tag != null && difficulty != null) return countTagAndDifficulty;
+            else if (tag != null && difficulty == null) return countTag;
+            else if (tag == null && difficulty != null) return countDifficulty;
+            else return -1;
+        }
+
     }
 }
