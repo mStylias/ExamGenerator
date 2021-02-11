@@ -58,7 +58,7 @@ namespace ExamGenerator
                 subject.AddQuestion(new Question(tags, questionBody, possibleAnswers, correctAnswer, difficulty));
             }
 
-            autoSection1.subject = subject;
+            autoSection1.OnLoad(subject);
             addQuestionsSection1.OnLoad(subject);
             manualSection.OnLoad(subject);
         }

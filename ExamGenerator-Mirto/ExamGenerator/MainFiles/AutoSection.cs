@@ -15,10 +15,10 @@ namespace ExamGenerator
 {
     public partial class AutoSection : UserControl
     {
-        public Subject CurrentSubject { get; set; } 
-        public List<MainFiles.Question> TestQuestions = new List<MainFiles.Question>();
-        public List<string> CorrectAnswers = new List<string>();
-        public StringBuilder FileContent = new StringBuilder();
+        private Subject CurrentSubject { get; set; } 
+        public List<Question> TestQuestions = new List<Question>();
+        //public List<string> CorrectAnswers = new List<string>();
+        //public StringBuilder FileContent = new StringBuilder();
         Random random = new Random();
 
         public AutoSection()
@@ -34,7 +34,8 @@ namespace ExamGenerator
         public void OnLoad(Subject subject)
         {
             CurrentSubject = subject;
-            if (!CurrentSubject.AllTags.Any()) CurrentSubject.AllTags.Add("No Tags yet!");
+            if (!CurrentSubject.AllTags.Any()) 
+                CurrentSubject.AllTags.Add("No Tags yet!");
             else
             {
                 if(CurrentSubject.AllTags.Contains("No Tags yet!")) CurrentSubject.AllTags.Remove("No Tags yet!");
@@ -63,26 +64,27 @@ namespace ExamGenerator
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(togglePanelTags.Controls.OfType<NumericUpDown>().All(x => x.Value==0) && togglePanelDifficulty.Controls.OfType<NumericUpDown>().All(x => x.Value == 0))
+            if (togglePanelTags.Controls.OfType<NumericUpDown>().All(x => x.Value == 0) && togglePanelDifficulty.Controls.OfType<NumericUpDown>().All(x => x.Value == 0))
             {
-                for (int i = 0; i < QuestionsNumericUpDown.Value - 1; i++)
+                for (int i = 0; i < QuestionsNumericUpDown.Value; i++)
                 {
-                    int k = random.Next(0, CurrentSubject.Questions.Count() - 1);
+                    int k = random.Next(0, CurrentSubject.Questions.Count());
                     if (!TestQuestions.Contains(CurrentSubject.Questions[k]))
                     {
                         TestQuestions.Add(CurrentSubject.Questions[k]);
                         //FileContent.Append(CurrentSubject.Questions[k].ToString() + Environment.NewLine);
-                        CorrectAnswers.Add(CurrentSubject.Questions[k].CorrectAnswer);
+                        //CorrectAnswers.Add(CurrentSubject.Questions[k].CorrectAnswer);
                         //FileContent.Append(CurrentSubject.Questions[k].CorrectAnswer.ToString() + Environment.NewLine);
                     }
                 }
             }
-            else ChooseQuestionsByTagOrDifficulty();
-
-            if(ChooseQuestionsByTagOrDifficulty() == false)
-            {
+            else if (!ChooseQuestionsByTagOrDifficulty())
                 return;
-            }
+
+            //if(ChooseQuestionsByTagOrDifficulty() == false)
+            //{
+            //    return;
+            //}
            
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -212,28 +214,43 @@ namespace ExamGenerator
 
         private void DisplayTag(string name)
         {
+            Panel panel = new Panel();
+            panel.Dock = System.Windows.Forms.DockStyle.Top;
+            panel.Padding = new Padding(0, 0, 18, 0);
+            panel.AutoSize = true;
+            panel.MinimumSize = new Size(169, 42);
+
             Button button = new Button();
-            button.Dock = System.Windows.Forms.DockStyle.Top;
+            button.Dock = System.Windows.Forms.DockStyle.Fill;
             button.FlatAppearance.BorderSize = 0;
             button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             button.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             button.Location = new System.Drawing.Point(0, 0);
-            button.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            button.Size = new System.Drawing.Size(171, 30);
+            button.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            //ttonon.Size = new System.Drawing.Size(171, 30);
             button.TabIndex = 5;
             button.Text = name;
             button.UseVisualStyleBackColor = true;
 
+            Panel panel2 = new Panel();
+            panel2.Padding = new Padding(0, 11, 0, 0);
+            panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            panel2.AutoSize = true;
+            panel2.MinimumSize = new System.Drawing.Size(48, 20);
+
             NumericUpDown numericUpDown = new NumericUpDown();
-            numericUpDown.Dock = System.Windows.Forms.DockStyle.Top;
+            numericUpDown.Dock = System.Windows.Forms.DockStyle.Right;
             numericUpDown.Location = new System.Drawing.Point(120, 5);
-            numericUpDown.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            numericUpDown.AutoSize = false;
             numericUpDown.Size = new System.Drawing.Size(48, 20);
             numericUpDown.TabIndex = 5;
             numericUpDown.Name = name + "NumericUpDown";
 
-            togglePanelTags.Controls.Add(button);
-            togglePanelTags.Controls.Add(numericUpDown);
+            panel2.Controls.Add(numericUpDown);
+
+            panel.Controls.Add(button);
+            panel.Controls.Add(panel2);
+            togglePanelTags.Controls.Add(panel);
         }
 
         private bool ChooseQuestionsByTagOrDifficulty()
@@ -243,11 +260,11 @@ namespace ExamGenerator
                 MessageBox.Show("Number of questions per difficulty exceeds selected questions number. Please try again!");
                 return false;
             }
-            HashSet<string> tags = new HashSet<string>();
+
             foreach (string tag in CurrentSubject.AllTags)
             {
                 Control control = Controls.Find(tag + "NumericUpDown", true).FirstOrDefault();
-                if (control.GetType() == typeof(NumericUpDown))
+                if (control is NumericUpDown)
                 {
                     NumericUpDown numericUpDown = (NumericUpDown)control;
                     if (numericUpDown.Value == 0) continue;
@@ -256,50 +273,50 @@ namespace ExamGenerator
                         MessageBox.Show("Number of questions per tag exceeds selected questions number. Please try again!");
                         return false;
                     }
-                    tags.Add(tag);
+
                     next1:  int k = random.Next(0, 4);
                     switch (k)
                     {
                         case 0:
-                            if (QuestionsNumberByAttribute(null, tags) < (int)numericUpDown.Value) 
+                            if (QuestionsNumberByAttribute(null, tag) < (int)numericUpDown.Value) 
                             {
                                 MessageBox.Show("Problem1");
                                 goto next1;
                             } 
-                            SearchRandomQuestions(null, tags, (int)numericUpDown.Value);
-                            if (SearchRandomQuestions(null, tags, (int)numericUpDown.Value) == false) return false;
+                            SearchRandomQuestions(null, tag, (int)numericUpDown.Value);
+                            if (SearchRandomQuestions(null, tag, (int)numericUpDown.Value) == false) return false;
                             numericUpDown.Value--;
                             break;
                         case 1:
-                            if (QuestionsNumberByAttribute("Easy", tags) < (int)numericUpDown.Value)
+                            if (QuestionsNumberByAttribute("Easy", tag) < (int)numericUpDown.Value)
                             {
                                 MessageBox.Show("Problem2");
                                 goto next1;
                             }
-                            SearchRandomQuestions("Easy", tags, (int)numericUpDown.Value);
-                            if (SearchRandomQuestions("Easy", tags, (int)numericUpDown.Value) == false) return false;
+                            SearchRandomQuestions("Easy", tag, (int)numericUpDown.Value);
+                            if (SearchRandomQuestions("Easy", tag, (int)numericUpDown.Value) == false) return false;
                             numericUpDown.Value--;
                             EasyNumericUpDown.Value--;
                             break;
                         case 2:
-                            if (QuestionsNumberByAttribute("Medium", tags) < (int)numericUpDown.Value)
+                            if (QuestionsNumberByAttribute("Medium", tag) < (int)numericUpDown.Value)
                             { 
                                 MessageBox.Show("Problem3");
                                 goto next1;
                             }
-                            SearchRandomQuestions("Medium", tags, (int)numericUpDown.Value);
-                            if (SearchRandomQuestions("Medium", tags, (int)numericUpDown.Value) == false) return false;
+                            SearchRandomQuestions("Medium", tag, (int)numericUpDown.Value);
+                            if (SearchRandomQuestions("Medium", tag, (int)numericUpDown.Value) == false) return false;
                             numericUpDown.Value--;
                             MediumNumericUpDown.Value--;
                             break;
                         case 3:
-                            if (QuestionsNumberByAttribute("Hard", tags) < (int)numericUpDown.Value)
+                            if (QuestionsNumberByAttribute("Hard", tag) < (int)numericUpDown.Value)
                             {
                                 MessageBox.Show("Problem4");
                                 goto next1;
                             }
-                                SearchRandomQuestions("Hard", tags, (int)numericUpDown.Value);
-                            if (SearchRandomQuestions("Hard", tags, (int)numericUpDown.Value) == false) return false;
+                                SearchRandomQuestions("Hard", tag, (int)numericUpDown.Value);
+                            if (SearchRandomQuestions("Hard", tag, (int)numericUpDown.Value) == false) return false;
                             numericUpDown.Value--;
                             HardNumericUpDown.Value--;
                             break;
@@ -313,8 +330,8 @@ namespace ExamGenerator
                     MessageBox.Show("Can't find tag!");
                     return false;
                 }
-                tags.Clear();
             }
+
             int j = random.Next(0,3);
             switch (j)
             {
@@ -346,14 +363,14 @@ namespace ExamGenerator
                 if (!TestQuestions.Contains(CurrentSubject.Questions[k]))
                 {
                     TestQuestions.Add(CurrentSubject.Questions[k]);
-                    CorrectAnswers.Add(CurrentSubject.Questions[k].CorrectAnswer);
+                    //CorrectAnswers.Add(CurrentSubject.Questions[k].CorrectAnswer);
                 }
             }
             return true;
         }
 
 
-        public bool SearchRandomQuestions(string difficulty, HashSet<string> tags, int number)
+        public bool SearchRandomQuestions(string difficulty, string tag, int number)
         {
             if(number > CurrentSubject.Questions.Count())
             {
@@ -367,25 +384,23 @@ namespace ExamGenerator
                 int k = random.Next(0, CurrentSubject.Questions.Count());
                 if (!TestQuestions.Contains(CurrentSubject.Questions[k]))
                 {
-                    if (tags != null && tags.Count > 0)
+                    if (tag != null)
                     {
                         if(difficulty != null)
                         {
-                            foreach (string tag in tags)
                                 if (CurrentSubject.Questions[k].Tags.Contains(tag) && CurrentSubject.Questions[k].Equals(difficulty))
                                 {
                                     TestQuestions.Add(CurrentSubject.Questions[k]);
-                                    CorrectAnswers.Add(CurrentSubject.Questions[k].CorrectAnswer);
+                                    //CorrectAnswers.Add(CurrentSubject.Questions[k].CorrectAnswer);
                                     count++;
                                 }
                         }
                         else
                         {
-                            foreach (string tag in tags)
                                 if (CurrentSubject.Questions[k].Tags.Contains(tag))
                                 {
                                     TestQuestions.Add(CurrentSubject.Questions[k]);
-                                    CorrectAnswers.Add(CurrentSubject.Questions[k].CorrectAnswer);
+                                    //CorrectAnswers.Add(CurrentSubject.Questions[k].CorrectAnswer);
                                     count++;
                                 }  
                         }
@@ -397,7 +412,7 @@ namespace ExamGenerator
                             if (CurrentSubject.Questions[k].Difficulty.Equals(difficulty))
                             {
                                 TestQuestions.Add(CurrentSubject.Questions[k]);
-                                CorrectAnswers.Add(CurrentSubject.Questions[k].CorrectAnswer);
+                                //CorrectAnswers.Add(CurrentSubject.Questions[k].CorrectAnswer);
                                 count++;
                             }     
                         }
@@ -407,18 +422,17 @@ namespace ExamGenerator
             return true;
         }
 
-        public int QuestionsNumberByAttribute(string difficulty, HashSet<string> tags)
+        public int QuestionsNumberByAttribute(string difficulty, string tag)
         {
             int count1 = 0;
             int count2 = 0;
             int count3 = 0;
             foreach (MainFiles.Question question in CurrentSubject.Questions)
             {
-                if (tags != null && tags.Count > 0)
+                if (tag != null)
                 {
                     if (difficulty != null)
                     {
-                        foreach (string tag in tags)
                             if (question.Tags.Contains(tag) && question.Equals(difficulty))
                             {
                                 count1++;
@@ -426,7 +440,6 @@ namespace ExamGenerator
                     }
                     else
                     {
-                        foreach (string tag in tags)
                             if (question.Tags.Contains(tag))
                             {
                                 count2++;
@@ -444,9 +457,9 @@ namespace ExamGenerator
                     }
                 }
             }
-            if (tags != null && difficulty != null) return count1;
-            else if (tags != null && difficulty == null) return count2;
-            else if (tags == null && difficulty != null) return count3;
+            if (tag != null && difficulty != null) return count1;
+            else if (tag != null && difficulty == null) return count2;
+            else if (tag == null && difficulty != null) return count3;
             else return -1;
         }
     }
