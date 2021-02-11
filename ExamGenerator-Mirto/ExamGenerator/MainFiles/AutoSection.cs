@@ -46,6 +46,47 @@ namespace ExamGenerator
 
         private void button1_Click(object sender, EventArgs e)
         {
+            List<string> selectedDifficulties = new List<string>();
+            if (EasyNumericUpDown.Value > 0)
+                selectedDifficulties.Add("Easy");
+            if (MediumNumericUpDown.Value > 0)
+                selectedDifficulties.Add("Medium");
+            if (HardNumericUpDown.Value > 0)
+                selectedDifficulties.Add("Hard");
+
+            HashSet<string> selectedTags = new HashSet<string>();
+            foreach (string tag in CurrentSubject.AllTags)
+            {
+                NumericUpDown numericUpDown = tagsNumbers.Find(x => x.Name.Equals(tag + "NumericUpDown"));
+
+                if (numericUpDown.Value > 0)
+                    selectedTags.Add(tag);
+            }
+
+            List<Question> possibleQuestions = CurrentSubject.SearchQuestions(selectedDifficulties, selectedTags);
+
+            int possibleQuestionsCount = possibleQuestions.Count;
+            if (possibleQuestionsCount < QuestionsNumericUpDown.Value)
+            {
+                var userResponse = MessageBox.Show("Only " + possibleQuestionsCount + " questions can be selected with the given criteria. Do you want to create a test with only " +
+                                possibleQuestionsCount + " questions?", "Not enough questions found", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (userResponse == DialogResult.Yes)
+                {
+
+                }
+                else
+                    return;
+            }
+
+            List<Question> finalQuestions = new List<Question>();
+            foreach (string tag in selectedTags)
+            {
+                var tagCount = (int)tagsNumbers.Find(x => x.Name.Equals(tag + "NumericUpDown")).Value;
+                //foreach (Question question in possibleQuestions)
+            }
+
+            ///////////////////////////////////////////////////////////////////
             if (togglePanelTags.Controls.OfType<NumericUpDown>().All(x => x.Value == 0) && togglePanelDifficulty.Controls.OfType<NumericUpDown>().All(x => x.Value == 0))
             {
                 for (int i = 0; i < QuestionsNumericUpDown.Value; i++)
@@ -75,7 +116,7 @@ namespace ExamGenerator
                     fileName = textBox1.Text;
 
                 // Create exam
-                if (MicrosoftWordManager.CreateExamDocument(CurrentSubject.Name, TestQuestions, folderPath, fileName, Convert.ToInt32(LayoutNumericUpDown.Value), MicrosoftWordManager.FindOfficeVersion()))
+                if (MicrosoftWordManager.CreateExamDocument(CurrentSubject.Name, TestQuestions, folderPath, fileName, Convert.ToInt32(LayoutNumericUpDown.Value)))
                     MessageBox.Show("Succesfully generated exam!", "Success");
                 else
                     MessageBox.Show("An error occured during exam generation. " +
@@ -138,6 +179,7 @@ namespace ExamGenerator
           
         }
 
+        List<NumericUpDown> tagsNumbers = new List<NumericUpDown>();
         private void DisplayTag(string name)
         {
             Panel panel = new Panel();
@@ -171,6 +213,7 @@ namespace ExamGenerator
             numericUpDown.Size = new System.Drawing.Size(48, 20);
             numericUpDown.TabIndex = 5;
             numericUpDown.Name = name + "NumericUpDown";
+            tagsNumbers.Add(numericUpDown);
 
             panel2.Controls.Add(numericUpDown);
 
@@ -302,7 +345,7 @@ namespace ExamGenerator
                 MessageBox.Show("Not enough questions available!");
                 return false;
             }
-            int count = 0; 
+            int count = 0;
             Random random = new Random();
             while (count < number)
             {

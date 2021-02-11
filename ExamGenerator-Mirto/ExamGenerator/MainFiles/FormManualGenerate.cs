@@ -65,7 +65,7 @@ namespace ExamGenerator.MainFiles
                     fileName = textboxExamName.Text;
 
                 // Create exam
-                if (MicrosoftWordManager.CreateExamDocument(subjectName, questions, folderPath, fileName, Convert.ToInt32(LayoutNumericUpDown.Value), MicrosoftWordManager.FindOfficeVersion()))
+                if (MicrosoftWordManager.CreateExamDocument(subjectName, questions, folderPath, fileName, Convert.ToInt32(LayoutNumericUpDown.Value)))
                     MessageBox.Show("Succesfully generated exam!", "Success");
                 else
                     MessageBox.Show("An error occured during exam generation. " +

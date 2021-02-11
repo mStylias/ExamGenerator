@@ -90,6 +90,34 @@ namespace ExamGenerator
             return sortedQuestions;
         }
 
+        public List<Question> SearchQuestions(List<string> possibleDifficulties, HashSet<string> possibleTags)
+        {
+            var sortedQuestions = new List<Question>();
+            foreach (Question question in Questions)
+            {
+                if (possibleDifficulties.Count != 0 && !possibleDifficulties.Contains(question.Difficulty))
+                    continue;
+
+                if (possibleTags != null && possibleTags.Count > 0)
+                {
+                    bool atLeastOneTagIsPresent = false;
+                    foreach (string tag in possibleTags)
+                        if (question.Tags.Contains(tag))
+                        {
+                            atLeastOneTagIsPresent = true;
+                            break;
+                        }
+
+                    if (!atLeastOneTagIsPresent)
+                        continue;
+                }
+     
+                sortedQuestions.Add(question);
+            }
+
+            return sortedQuestions;
+        }
+
         public int QuestionsNumberByAttribute(string difficulty, string tag)
         {
             int countTagAndDifficulty = 0;

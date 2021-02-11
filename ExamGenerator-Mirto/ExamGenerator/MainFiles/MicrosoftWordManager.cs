@@ -13,7 +13,7 @@ namespace ExamGenerator.MainFiles
     public static class MicrosoftWordManager
     {
         static string officeNumberVersion;
-        public static string FindOfficeVersion()
+        private static string FindOfficeVersion()
         {
             try
             {
@@ -29,8 +29,13 @@ namespace ExamGenerator.MainFiles
             return officeNumberVersion;
         }
 
+        static MicrosoftWordManager()
+        {
+            FindOfficeVersion();
+        }
+
         /* Create document method. Returns true if successful and false otherwise */
-        public static bool CreateExamDocument(string subjectName, List<Question> questions, string folderPath, string fileName, int layoutsNum, string officeNumberVersion)
+        public static bool CreateExamDocument(string subjectName, List<Question> questions, string folderPath, string fileName, int layoutsNum)
         { 
             try
             {
@@ -99,23 +104,23 @@ namespace ExamGenerator.MainFiles
                     questions.Shuffle();
 
                     // Save the document
-                    //Word 2007 - 2019 Version
-                    if (officeNumberVersion == "12" || officeNumberVersion == "14" || officeNumberVersion == "15" || officeNumberVersion == "16")
-                    {
-                        object filePath2 = Path.Combine(folderPath, fileName + i + ".docx");
-                        document.SaveAs2(ref filePath2);
-                        document.Close(ref missing, ref missing, ref missing);
-                        document = null;
-                    }
-                    //Word 97 - 2003 Version
-                    else if (officeNumberVersion == "7" || officeNumberVersion == "8" || officeNumberVersion == "9" || officeNumberVersion == "10" || officeNumberVersion == "11")
+                    // Word 97 - 2003 Version
+                    if (officeNumberVersion == "7" || officeNumberVersion == "8" || officeNumberVersion == "9" || officeNumberVersion == "10" || officeNumberVersion == "11")
                     {
                         object filePath2 = Path.Combine(folderPath, fileName + i + ".doc");
                         document.SaveAs2(ref filePath2);
                         document.Close(ref missing, ref missing, ref missing);
                         document = null;
                     }
-                    
+                    // Word 2007 - 2019 Version
+                    else
+                    {
+                        object filePath2 = Path.Combine(folderPath, fileName + i + ".docx");
+                        document.SaveAs2(ref filePath2);
+                        document.Close(ref missing, ref missing, ref missing);
+                        document = null;
+                    }
+
                 }
 
 
@@ -166,10 +171,22 @@ namespace ExamGenerator.MainFiles
                 }
 
                 // Save the document
-                object filePath = Path.Combine(folderPath, fileName + " answers" + ".docx");
-                documentAnswers.SaveAs2(ref filePath);
-                documentAnswers.Close(ref missing, ref missing, ref missing);
-                documentAnswers = null;
+                // Word 97 - 2003 Version
+                if (officeNumberVersion == "7" || officeNumberVersion == "8" || officeNumberVersion == "9" || officeNumberVersion == "10" || officeNumberVersion == "11")
+                {
+                    object filePath2 = Path.Combine(folderPath, fileName + " answers" + ".doc");
+                    documentAnswers.SaveAs2(ref filePath2);
+                    documentAnswers.Close(ref missing, ref missing, ref missing);
+                    documentAnswers = null;
+                }
+                // Word 2007 - 2019 Version
+                else
+                {
+                    object filePath2 = Path.Combine(folderPath, fileName + " answers" + ".docx");
+                    documentAnswers.SaveAs2(ref filePath2);
+                    documentAnswers.Close(ref missing, ref missing, ref missing);
+                    documentAnswers = null;
+                }
 
                 // Quit word
                 winword.Quit(ref missing, ref missing, ref missing);
