@@ -26,11 +26,12 @@ namespace ExamGenerator.MainFiles
             Right
         }
 
-        TagLocation nextTagLocation = TagLocation.Left;
+        TagLocation nextTagLocation;
         public void OnLoad(Subject subject)
         {
             this.currentSubject = subject;
-            
+
+            nextTagLocation = TagLocation.Left;
             foreach (string tag in subject.AllTags)
             {
                 if (nextTagLocation == TagLocation.Left)

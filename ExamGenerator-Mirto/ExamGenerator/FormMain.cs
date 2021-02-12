@@ -26,40 +26,40 @@ namespace ExamGenerator
             labelUsername.Text = username;
 
             //Temporary load subject
-            subject = new Subject("Math");
+            //subject = new Subject("Math");
 
-            var possibleAnswers = new List<string>();
-            possibleAnswers.Add("1. Who the fuck knows");
-            possibleAnswers.Add("2. Certainly not me");
-            possibleAnswers.Add("3. Only the people who teach this shit");
-            var correctAnswer = "2. Certainly not me";
-            string difficulty;
+            //var possibleAnswers = new List<string>();
+            //possibleAnswers.Add("1. Who the fuck knows");
+            //possibleAnswers.Add("2. Certainly not me");
+            //possibleAnswers.Add("3. Only the people who teach this shit");
+            //var correctAnswer = "2. Certainly not me";
+            //string difficulty;
 
-            int tagIndex = 0;
-            for (int i = 0; i < 50; i++)
-            {
-                string questionBody = "Test" + i;
+            //int tagIndex = 0;
+            //for (int i = 0; i < 50; i++)
+            //{
+            //    string questionBody = "Test" + i;
 
-                if (i % 3 == 0)
-                {
-                    difficulty = "Easy";
-                }
-                else if (i % 3 == 2)
-                    difficulty = "Hard";
-                else
-                {
-                    difficulty = "Medium";
-                }
+            //    if (i % 3 == 0)
+            //    {
+            //        difficulty = "Easy";
+            //    }
+            //    else if (i % 3 == 2)
+            //        difficulty = "Hard";
+            //    else
+            //    {
+            //        difficulty = "Medium";
+            //    }
 
-                var tags = new HashSet<string>();
-                tags.Add("Limits");
-                if (i % 5 == 0)
-                    tagIndex++;
+            //    var tags = new HashSet<string>();
+            //    tags.Add("Limits");
+            //    if (i % 5 == 0)
+            //        tagIndex++;
 
-                tags.Add("Modulo " + tagIndex);
+            //    tags.Add("Modulo " + tagIndex);
 
-                subject.AddQuestion(new Question(tags, questionBody, possibleAnswers, correctAnswer, difficulty));
-            }
+            //    subject.AddQuestion(new Question(tags, questionBody, possibleAnswers, correctAnswer, difficulty));
+            //}
 
             autoSection1.OnLoad(subject);
             addQuestionsSection1.OnLoad(subject);
@@ -69,8 +69,9 @@ namespace ExamGenerator
         /* Updates the ui of all user controls using the subject */
         public void UpdateAndSave()
         {
-            addQuestionsSection1.UpdateUI();
             manualSection.UpdateUI();
+            addQuestionsSection1.UpdateUI();
+            autoSection1.UpdateUI();
             Serialize.SaveSubjects(Subject.Subjects);
         }
 

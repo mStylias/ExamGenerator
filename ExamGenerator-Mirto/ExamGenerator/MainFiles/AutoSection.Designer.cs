@@ -52,16 +52,9 @@ namespace ExamGenerator
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.textBoxFilename = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.togglePanelDifficulty = new ExamGenerator.CustomControls.TogglablePanel();
-            this.EasyNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.HardNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.MediumNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.EasyButton = new System.Windows.Forms.Button();
-            this.MediumButton = new System.Windows.Forms.Button();
-            this.HardButton = new System.Windows.Forms.Button();
-            this.togglePanelTags = new ExamGenerator.CustomControls.TogglablePanel();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -72,19 +65,27 @@ namespace ExamGenerator
             this.button1 = new System.Windows.Forms.Button();
             this.QuestionsNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.togglePanelDifficulty = new ExamGenerator.CustomControls.TogglablePanel();
+            this.EasyNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.HardNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.MediumNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.EasyButton = new System.Windows.Forms.Button();
+            this.MediumButton = new System.Windows.Forms.Button();
+            this.HardButton = new System.Windows.Forms.Button();
+            this.togglePanelTags = new ExamGenerator.CustomControls.TogglablePanel();
             this.panelTop.SuspendLayout();
             this.panelQuestions.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LayoutNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QuestionsNumericUpDown)).BeginInit();
             this.togglePanelDifficulty.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EasyNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HardNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MediumNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LayoutNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.QuestionsNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTop
@@ -379,7 +380,8 @@ namespace ExamGenerator
             // 
             this.panel4.AutoScroll = true;
             this.panel4.AutoSize = true;
-            this.panel4.Controls.Add(this.textBox1);
+            this.panel4.Controls.Add(this.panel5);
+            this.panel4.Controls.Add(this.textBoxFilename);
             this.panel4.Controls.Add(this.label11);
             this.panel4.Controls.Add(this.togglePanelDifficulty);
             this.panel4.Controls.Add(this.togglePanelTags);
@@ -396,19 +398,26 @@ namespace ExamGenerator
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 66);
             this.panel4.Name = "panel4";
-            this.panel4.Padding = new System.Windows.Forms.Padding(0, 0, 0, 50);
             this.panel4.Size = new System.Drawing.Size(900, 634);
             this.panel4.TabIndex = 2;
             // 
-            // textBox1
+            // panel5
             // 
-            this.textBox1.Font = new System.Drawing.Font("Century", 18F);
-            this.textBox1.Location = new System.Drawing.Point(338, 618);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(206, 30);
-            this.textBox1.TabIndex = 21;
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel5.Location = new System.Drawing.Point(0, 725);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(883, 70);
+            this.panel5.TabIndex = 22;
+            // 
+            // textBoxFilename
+            // 
+            this.textBoxFilename.Font = new System.Drawing.Font("Century", 18F);
+            this.textBoxFilename.Location = new System.Drawing.Point(338, 618);
+            this.textBoxFilename.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxFilename.Multiline = true;
+            this.textBoxFilename.Name = "textBoxFilename";
+            this.textBoxFilename.Size = new System.Drawing.Size(206, 30);
+            this.textBoxFilename.TabIndex = 21;
             // 
             // label11
             // 
@@ -420,111 +429,6 @@ namespace ExamGenerator
             this.label11.Size = new System.Drawing.Size(458, 28);
             this.label11.TabIndex = 20;
             this.label11.Text = "Please, choose the filename of your test:";
-            // 
-            // togglePanelDifficulty
-            // 
-            this.togglePanelDifficulty.BackColor = System.Drawing.Color.White;
-            this.togglePanelDifficulty.Controls.Add(this.EasyNumericUpDown);
-            this.togglePanelDifficulty.Controls.Add(this.HardNumericUpDown);
-            this.togglePanelDifficulty.Controls.Add(this.MediumNumericUpDown);
-            this.togglePanelDifficulty.Controls.Add(this.EasyButton);
-            this.togglePanelDifficulty.Controls.Add(this.MediumButton);
-            this.togglePanelDifficulty.Controls.Add(this.HardButton);
-            this.togglePanelDifficulty.Location = new System.Drawing.Point(480, 260);
-            this.togglePanelDifficulty.Margin = new System.Windows.Forms.Padding(2);
-            this.togglePanelDifficulty.Name = "togglePanelDifficulty";
-            this.togglePanelDifficulty.Size = new System.Drawing.Size(169, 107);
-            this.togglePanelDifficulty.TabIndex = 19;
-            this.togglePanelDifficulty.Visible = false;
-            this.togglePanelDifficulty.MouseLeave += new System.EventHandler(this.togglablePanel2_MouseLeave);
-            // 
-            // EasyNumericUpDown
-            // 
-            this.EasyNumericUpDown.Font = new System.Drawing.Font("Century", 12F);
-            this.EasyNumericUpDown.Location = new System.Drawing.Point(112, 2);
-            this.EasyNumericUpDown.Margin = new System.Windows.Forms.Padding(2);
-            this.EasyNumericUpDown.Name = "EasyNumericUpDown";
-            this.EasyNumericUpDown.Size = new System.Drawing.Size(36, 27);
-            this.EasyNumericUpDown.TabIndex = 15;
-            // 
-            // HardNumericUpDown
-            // 
-            this.HardNumericUpDown.Font = new System.Drawing.Font("Century", 12F);
-            this.HardNumericUpDown.Location = new System.Drawing.Point(112, 74);
-            this.HardNumericUpDown.Margin = new System.Windows.Forms.Padding(2);
-            this.HardNumericUpDown.Name = "HardNumericUpDown";
-            this.HardNumericUpDown.Size = new System.Drawing.Size(36, 27);
-            this.HardNumericUpDown.TabIndex = 17;
-            // 
-            // MediumNumericUpDown
-            // 
-            this.MediumNumericUpDown.Font = new System.Drawing.Font("Century", 12F);
-            this.MediumNumericUpDown.Location = new System.Drawing.Point(112, 38);
-            this.MediumNumericUpDown.Margin = new System.Windows.Forms.Padding(2);
-            this.MediumNumericUpDown.Name = "MediumNumericUpDown";
-            this.MediumNumericUpDown.Size = new System.Drawing.Size(36, 27);
-            this.MediumNumericUpDown.TabIndex = 16;
-            // 
-            // EasyButton
-            // 
-            this.EasyButton.BackColor = System.Drawing.Color.White;
-            this.EasyButton.FlatAppearance.BorderSize = 0;
-            this.EasyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EasyButton.Font = new System.Drawing.Font("Century", 12F);
-            this.EasyButton.Location = new System.Drawing.Point(11, -1);
-            this.EasyButton.Margin = new System.Windows.Forms.Padding(2);
-            this.EasyButton.Name = "EasyButton";
-            this.EasyButton.Size = new System.Drawing.Size(108, 36);
-            this.EasyButton.TabIndex = 20;
-            this.EasyButton.Text = "   Easy";
-            this.EasyButton.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.EasyButton.UseVisualStyleBackColor = false;
-            // 
-            // MediumButton
-            // 
-            this.MediumButton.BackColor = System.Drawing.Color.White;
-            this.MediumButton.FlatAppearance.BorderSize = 0;
-            this.MediumButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MediumButton.Font = new System.Drawing.Font("Century", 12F);
-            this.MediumButton.Location = new System.Drawing.Point(11, 35);
-            this.MediumButton.Margin = new System.Windows.Forms.Padding(2);
-            this.MediumButton.Name = "MediumButton";
-            this.MediumButton.Size = new System.Drawing.Size(108, 36);
-            this.MediumButton.TabIndex = 21;
-            this.MediumButton.Text = "   Medium";
-            this.MediumButton.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.MediumButton.UseVisualStyleBackColor = false;
-            // 
-            // HardButton
-            // 
-            this.HardButton.BackColor = System.Drawing.Color.White;
-            this.HardButton.FlatAppearance.BorderSize = 0;
-            this.HardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.HardButton.Font = new System.Drawing.Font("Century", 12F);
-            this.HardButton.Location = new System.Drawing.Point(11, 71);
-            this.HardButton.Margin = new System.Windows.Forms.Padding(2);
-            this.HardButton.Name = "HardButton";
-            this.HardButton.Size = new System.Drawing.Size(108, 36);
-            this.HardButton.TabIndex = 22;
-            this.HardButton.Text = "   Hard";
-            this.HardButton.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.HardButton.UseVisualStyleBackColor = false;
-            // 
-            // togglePanelTags
-            // 
-            this.togglePanelTags.AutoScroll = true;
-            this.togglePanelTags.AutoSize = true;
-            this.togglePanelTags.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.togglePanelTags.BackColor = System.Drawing.Color.White;
-            this.togglePanelTags.Location = new System.Drawing.Point(234, 260);
-            this.togglePanelTags.Margin = new System.Windows.Forms.Padding(2);
-            this.togglePanelTags.MaximumSize = new System.Drawing.Size(169, 144);
-            this.togglePanelTags.MinimumSize = new System.Drawing.Size(169, 36);
-            this.togglePanelTags.Name = "togglePanelTags";
-            this.togglePanelTags.Size = new System.Drawing.Size(169, 36);
-            this.togglePanelTags.TabIndex = 14;
-            this.togglePanelTags.Visible = false;
-            this.togglePanelTags.MouseLeave += new System.EventHandler(this.togglablePanel1_MouseLeave);
             // 
             // button5
             // 
@@ -654,6 +558,109 @@ namespace ExamGenerator
             this.label8.TabIndex = 0;
             this.label8.Text = "Please, choose the number of questions your test will have:";
             // 
+            // togglePanelDifficulty
+            // 
+            this.togglePanelDifficulty.BackColor = System.Drawing.Color.White;
+            this.togglePanelDifficulty.Controls.Add(this.EasyNumericUpDown);
+            this.togglePanelDifficulty.Controls.Add(this.HardNumericUpDown);
+            this.togglePanelDifficulty.Controls.Add(this.MediumNumericUpDown);
+            this.togglePanelDifficulty.Controls.Add(this.EasyButton);
+            this.togglePanelDifficulty.Controls.Add(this.MediumButton);
+            this.togglePanelDifficulty.Controls.Add(this.HardButton);
+            this.togglePanelDifficulty.Location = new System.Drawing.Point(480, 260);
+            this.togglePanelDifficulty.Margin = new System.Windows.Forms.Padding(2);
+            this.togglePanelDifficulty.Name = "togglePanelDifficulty";
+            this.togglePanelDifficulty.Size = new System.Drawing.Size(169, 107);
+            this.togglePanelDifficulty.TabIndex = 19;
+            this.togglePanelDifficulty.Visible = false;
+            // 
+            // EasyNumericUpDown
+            // 
+            this.EasyNumericUpDown.Font = new System.Drawing.Font("Century", 12F);
+            this.EasyNumericUpDown.Location = new System.Drawing.Point(112, 2);
+            this.EasyNumericUpDown.Margin = new System.Windows.Forms.Padding(2);
+            this.EasyNumericUpDown.Name = "EasyNumericUpDown";
+            this.EasyNumericUpDown.Size = new System.Drawing.Size(36, 27);
+            this.EasyNumericUpDown.TabIndex = 15;
+            // 
+            // HardNumericUpDown
+            // 
+            this.HardNumericUpDown.Font = new System.Drawing.Font("Century", 12F);
+            this.HardNumericUpDown.Location = new System.Drawing.Point(112, 74);
+            this.HardNumericUpDown.Margin = new System.Windows.Forms.Padding(2);
+            this.HardNumericUpDown.Name = "HardNumericUpDown";
+            this.HardNumericUpDown.Size = new System.Drawing.Size(36, 27);
+            this.HardNumericUpDown.TabIndex = 17;
+            // 
+            // MediumNumericUpDown
+            // 
+            this.MediumNumericUpDown.Font = new System.Drawing.Font("Century", 12F);
+            this.MediumNumericUpDown.Location = new System.Drawing.Point(112, 38);
+            this.MediumNumericUpDown.Margin = new System.Windows.Forms.Padding(2);
+            this.MediumNumericUpDown.Name = "MediumNumericUpDown";
+            this.MediumNumericUpDown.Size = new System.Drawing.Size(36, 27);
+            this.MediumNumericUpDown.TabIndex = 16;
+            // 
+            // EasyButton
+            // 
+            this.EasyButton.BackColor = System.Drawing.Color.White;
+            this.EasyButton.FlatAppearance.BorderSize = 0;
+            this.EasyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EasyButton.Font = new System.Drawing.Font("Century", 12F);
+            this.EasyButton.Location = new System.Drawing.Point(11, -1);
+            this.EasyButton.Margin = new System.Windows.Forms.Padding(2);
+            this.EasyButton.Name = "EasyButton";
+            this.EasyButton.Size = new System.Drawing.Size(108, 36);
+            this.EasyButton.TabIndex = 20;
+            this.EasyButton.Text = "   Easy";
+            this.EasyButton.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.EasyButton.UseVisualStyleBackColor = false;
+            // 
+            // MediumButton
+            // 
+            this.MediumButton.BackColor = System.Drawing.Color.White;
+            this.MediumButton.FlatAppearance.BorderSize = 0;
+            this.MediumButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MediumButton.Font = new System.Drawing.Font("Century", 12F);
+            this.MediumButton.Location = new System.Drawing.Point(11, 35);
+            this.MediumButton.Margin = new System.Windows.Forms.Padding(2);
+            this.MediumButton.Name = "MediumButton";
+            this.MediumButton.Size = new System.Drawing.Size(108, 36);
+            this.MediumButton.TabIndex = 21;
+            this.MediumButton.Text = "   Medium";
+            this.MediumButton.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.MediumButton.UseVisualStyleBackColor = false;
+            // 
+            // HardButton
+            // 
+            this.HardButton.BackColor = System.Drawing.Color.White;
+            this.HardButton.FlatAppearance.BorderSize = 0;
+            this.HardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HardButton.Font = new System.Drawing.Font("Century", 12F);
+            this.HardButton.Location = new System.Drawing.Point(11, 71);
+            this.HardButton.Margin = new System.Windows.Forms.Padding(2);
+            this.HardButton.Name = "HardButton";
+            this.HardButton.Size = new System.Drawing.Size(108, 36);
+            this.HardButton.TabIndex = 22;
+            this.HardButton.Text = "   Hard";
+            this.HardButton.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.HardButton.UseVisualStyleBackColor = false;
+            // 
+            // togglePanelTags
+            // 
+            this.togglePanelTags.AutoScroll = true;
+            this.togglePanelTags.AutoSize = true;
+            this.togglePanelTags.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.togglePanelTags.BackColor = System.Drawing.Color.White;
+            this.togglePanelTags.Location = new System.Drawing.Point(234, 260);
+            this.togglePanelTags.Margin = new System.Windows.Forms.Padding(2);
+            this.togglePanelTags.MaximumSize = new System.Drawing.Size(169, 144);
+            this.togglePanelTags.MinimumSize = new System.Drawing.Size(169, 36);
+            this.togglePanelTags.Name = "togglePanelTags";
+            this.togglePanelTags.Size = new System.Drawing.Size(169, 36);
+            this.togglePanelTags.TabIndex = 14;
+            this.togglePanelTags.Visible = false;
+            // 
             // AutoSection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -665,7 +672,6 @@ namespace ExamGenerator
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AutoSection";
             this.Size = new System.Drawing.Size(900, 700);
-            this.Load += new System.EventHandler(this.AutoSection_Load);
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
             this.panelQuestions.ResumeLayout(false);
@@ -675,12 +681,12 @@ namespace ExamGenerator
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LayoutNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QuestionsNumericUpDown)).EndInit();
             this.togglePanelDifficulty.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.EasyNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HardNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MediumNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LayoutNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.QuestionsNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -729,8 +735,9 @@ namespace ExamGenerator
         private System.Windows.Forms.Button EasyButton;
         private System.Windows.Forms.Button MediumButton;
         private System.Windows.Forms.Button HardButton;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+        private System.Windows.Forms.TextBox textBoxFilename;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel panel5;
     }
 }

@@ -16,6 +16,7 @@ namespace ExamGenerator
         Subject subject;
         string username;
         FormMain formMain;
+
         public FormLoad(Subject subject, string username)
         {
             InitializeComponent();
@@ -25,10 +26,18 @@ namespace ExamGenerator
             this.subject = subject;
             this.username = username;
 
+            InitializeLoading();
+        }
+
+        [STAThread]
+        private void InitializeLoading()
+        {
             Thread loadMain = new Thread(LoadFormMain);
+            loadMain.SetApartmentState(ApartmentState.STA);
             loadMain.Start();
         }
 
+        [STAThread]
         private void LoadFormMain()
         {
             formMain = new FormMain(subject, username);
@@ -37,6 +46,7 @@ namespace ExamGenerator
             Invoke((Action)(() => pictureBox1.Enabled = false));
             Application.Run();
             Invoke((Action)(() => Application.Exit()));
+            Console.WriteLine("Exit success");
         }
     }
 }
