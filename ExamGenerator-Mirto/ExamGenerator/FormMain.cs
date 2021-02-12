@@ -14,14 +14,14 @@ namespace ExamGenerator
 {
     public partial class FormMain : Form
     {
-        public Subject subject;
+        public Subject Subject { get; set; }
         string username;
 
         public FormMain(Subject subject, string username)
         {
             InitializeComponent();
             previousSize = Size; // Used to make user controls responsive
-            this.subject = subject;
+            this.Subject = subject;
             this.username = username;
             labelUsername.Text = username;
 
@@ -138,7 +138,7 @@ namespace ExamGenerator
             button.UseVisualStyleBackColor = true;
             button.Click += ChangeSubject_CheckedChanged;
 
-            if (this.subject.Equals(subject))
+            if (this.Subject.Equals(subject))
                 button.BackColor = Color.FromArgb(241, 241, 253);
            
             panelSubjects.Controls.Add(button);
@@ -147,11 +147,24 @@ namespace ExamGenerator
 
         private void ChangeSubject_CheckedChanged(object sender, EventArgs e)
         {
-            Subject subject = Subject.Subjects[((Button)sender).Text];
+            if (!(((Button)sender).BackColor == Color.FromArgb(241, 241, 253)))
+            {
+                Subject subject = Subject.Subjects[((Button)sender).Text];
 
-            this.Hide();
-            FormLoad form = new FormLoad(subject, username);
-            form.Show();
+                this.Hide();
+                // Check if the desired form already exists
+                foreach (Form form in Application.OpenForms)
+                    if (form is FormMain)
+                        if (((FormMain)form).Subject == subject)
+                        {
+                            form.Invoke((Action)(() => form.Show()));;
+                            return;
+                        }
+
+                FormLoad formNew = new FormLoad(subject, username);
+                formNew.Show();
+            }
+                
         } 
 
         // Responsiveness
