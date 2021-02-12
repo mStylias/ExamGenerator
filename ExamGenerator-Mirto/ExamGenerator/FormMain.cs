@@ -35,6 +35,7 @@ namespace ExamGenerator
             var correctAnswer = "2. Certainly not me";
             string difficulty;
 
+            int tagIndex = 0;
             for (int i = 0; i < 50; i++)
             {
                 string questionBody = "Test" + i;
@@ -53,7 +54,9 @@ namespace ExamGenerator
                 var tags = new HashSet<string>();
                 tags.Add("Limits");
                 if (i % 5 == 0)
-                    tags.Add("Modulo " + i);
+                    tagIndex++;
+
+                tags.Add("Modulo " + tagIndex);
 
                 subject.AddQuestion(new Question(tags, questionBody, possibleAnswers, correctAnswer, difficulty));
             }

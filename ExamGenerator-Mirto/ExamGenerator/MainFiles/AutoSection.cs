@@ -15,7 +15,7 @@ namespace ExamGenerator
 {
     public partial class AutoSection : UserControl
     {
-        private Subject CurrentSubject { get; set; } 
+        private Subject CurrentSubject { get; set; }
         public List<Question> TestQuestions = new List<Question>();
         Random random = new Random();
 
@@ -26,17 +26,17 @@ namespace ExamGenerator
 
         private void AutoSection_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         public void OnLoad(Subject subject)
         {
             CurrentSubject = subject;
-            if (!CurrentSubject.AllTags.Any()) 
+            if (!CurrentSubject.AllTags.Any())
                 CurrentSubject.AllTags.Add("No Tags yet!");
             else
             {
-                if(CurrentSubject.AllTags.Contains("No Tags yet!")) CurrentSubject.AllTags.Remove("No Tags yet!");
+                if (CurrentSubject.AllTags.Contains("No Tags yet!")) CurrentSubject.AllTags.Remove("No Tags yet!");
                 foreach (string tag in CurrentSubject.AllTags)
                 {
                     DisplayTag(tag);
@@ -46,24 +46,58 @@ namespace ExamGenerator
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Dictionary<string, int> allRemainingDifficultyNums = new Dictionary<string, int>();
+
             List<string> selectedDifficulties = new List<string>();
+
             if (EasyNumericUpDown.Value > 0)
+            {
                 selectedDifficulties.Add("Easy");
+                allRemainingDifficultyNums.Add("Easy", (int)EasyNumericUpDown.Value);
+            }
             if (MediumNumericUpDown.Value > 0)
+            {
                 selectedDifficulties.Add("Medium");
+                allRemainingDifficultyNums.Add("Medium", (int)MediumNumericUpDown.Value);
+            }
             if (HardNumericUpDown.Value > 0)
+            {
                 selectedDifficulties.Add("Hard");
+                allRemainingDifficultyNums.Add("Hard", (int)HardNumericUpDown.Value);
+            }
+
+            Dictionary<string, int> allRemainingTagsNums = new Dictionary<string, int>();
 
             HashSet<string> selectedTags = new HashSet<string>();
+            var tagsNumbersCopy = tagsNumbers.ToList();
+
             foreach (string tag in CurrentSubject.AllTags)
             {
-                NumericUpDown numericUpDown = tagsNumbers.Find(x => x.Name.Equals(tag + "NumericUpDown"));
+                NumericUpDown tagNumber = tagsNumbersCopy.Find(x => x.Name.Equals(tag + "NumericUpDown"));
 
-                if (numericUpDown.Value > 0)
+                if (tagNumber.Value > 0)
+                {
                     selectedTags.Add(tag);
+                    allRemainingTagsNums.Add(tag, (int)tagNumber.Value);
+                }
+
+            }
+
+            // Check
+            int counter = 0;
+            foreach (NumericUpDown numeric in tagsNumbersCopy)
+                counter += (int)numeric.Value;
+
+            if (counter < EasyNumericUpDown.Value + MediumNumericUpDown.Value + HardNumericUpDown.Value && counter != 0)
+            {
+                MessageBox.Show("Select at least as many tags as the specified number of questions or leave them all 0",
+                                "Unable to generate test", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
             List<Question> possibleQuestions = CurrentSubject.SearchQuestions(selectedDifficulties, selectedTags);
+            possibleQuestions.Shuffle();
+            Console.WriteLine(possibleQuestions.Count + " possible questions");
 
             int possibleQuestionsCount = possibleQuestions.Count;
             if (possibleQuestionsCount < QuestionsNumericUpDown.Value)
@@ -73,60 +107,202 @@ namespace ExamGenerator
 
                 if (userResponse == DialogResult.Yes)
                 {
-
+                    QuestionsNumericUpDown.Value = possibleQuestionsCount;
                 }
                 else
                     return;
             }
 
+
+
             List<Question> finalQuestions = new List<Question>();
+
+            List<List<Question>> allTagsQuestions = new List<List<Question>>();
             foreach (string tag in selectedTags)
             {
-                var tagCount = (int)tagsNumbers.Find(x => x.Name.Equals(tag + "NumericUpDown")).Value;
-                //foreach (Question question in possibleQuestions)
+                List<Question> tagQuestions = new List<Question>();
+                foreach (Question question in possibleQuestions)
+                    if (question.Tags.Contains(tag))
+                        tagQuestions.Add(question);
+
+                allTagsQuestions.Add(tagQuestions);
+            }
+            Console.WriteLine(allTagsQuestions.Count + " number of tags");
+
+            List<List<Question>> allDiffQuestions = new List<List<Question>>();
+            foreach (string diff in selectedDifficulties)
+            {
+                List<Question> diffQuestions = new List<Question>();
+                foreach (Question question in possibleQuestions)
+                    if (question.Difficulty.Equals(diff))
+                        diffQuestions.Add(question);
+
+                allDiffQuestions.Add(diffQuestions);
             }
 
-            ///////////////////////////////////////////////////////////////////
-            if (togglePanelTags.Controls.OfType<NumericUpDown>().All(x => x.Value == 0) && togglePanelDifficulty.Controls.OfType<NumericUpDown>().All(x => x.Value == 0))
+            Dictionary<Question, int> mostCommonQuestions = new Dictionary<Question, int>();
+            foreach (Question question in possibleQuestions)
+                mostCommonQuestions.Add(question, 0);
+
+            foreach (Question question in possibleQuestions)
             {
-                for (int i = 0; i < QuestionsNumericUpDown.Value; i++)
+                foreach (List<Question> tagQuestions in allTagsQuestions)
+                    if (tagQuestions.Contains(question))
+                        mostCommonQuestions[question]++;
+
+                foreach (List<Question> diffQuestions in allDiffQuestions)
+                    if (diffQuestions.Contains(question))
+                        mostCommonQuestions[question]++;
+            }
+
+            //foreach (var keyValue in mostCommonQuestions)
+            //{
+            //    Console.WriteLine(keyValue.Value);
+            //}
+
+            var sortedMostCommonQuestions = from entry in mostCommonQuestions orderby entry.Value descending select entry;
+
+            Console.WriteLine(sortedMostCommonQuestions.Count() + " sorted questions");
+
+            foreach (var keyValue in sortedMostCommonQuestions)
+            {
+                if (finalQuestions.Count == QuestionsNumericUpDown.Value)
                 {
-                    int k = random.Next(0, CurrentSubject.Questions.Count());
-                    if (!TestQuestions.Contains(CurrentSubject.Questions[k]))
+                    break;
+                }
+
+                bool AreTagsValid = true;
+                foreach (string tag in keyValue.Key.Tags)
+                {
+                    if (!allRemainingTagsNums.ContainsKey(tag))
+                        AreTagsValid = true;
+                    else if (allRemainingTagsNums[tag] > 0)
                     {
-                        TestQuestions.Add(CurrentSubject.Questions[k]);
+                        AreTagsValid = true;
+                        break;
+                    }
+                    else
+                    {
+                        AreTagsValid = false;
+                        break;
                     }
                 }
-            }
-            else if (!ChooseQuestionsByTagOrDifficulty())
-                return;
 
-            if(ChooseQuestionsByTagOrDifficulty() == false)
+                if (!AreTagsValid)
+                    continue;
+
+                if (allRemainingDifficultyNums.ContainsKey(keyValue.Key.Difficulty) && allRemainingDifficultyNums[keyValue.Key.Difficulty] == 0)
+                    continue;
+
+                if (allRemainingDifficultyNums.ContainsKey(keyValue.Key.Difficulty) && allRemainingDifficultyNums[keyValue.Key.Difficulty] > 0)
+                    allRemainingDifficultyNums[keyValue.Key.Difficulty]--;
+
+                foreach (string tag in keyValue.Key.Tags)
+                    if (allRemainingTagsNums.ContainsKey(tag))
+                        allRemainingTagsNums[tag]--;
+
+                Console.WriteLine(keyValue.Key.Body + "");
+                //// show question
+                //Console.WriteLine("---------------------------");
+                //Console.WriteLine(keyValue.Key.Body);
+                //foreach (string tag in keyValue.Key.Tags)
+                //    Console.Write(tag + ", ");
+                //Console.WriteLine();
+                //Console.WriteLine(keyValue.Key.Difficulty);
+                ////
+
+                finalQuestions.Add(keyValue.Key);
+            }
+
+            foreach (var keyValue in allRemainingTagsNums)
+                if (keyValue.Value > 0)
+                {
+                    MessageBox.Show("Couldn't generate test with the given number of questions and criteria");
+                    return;
+                }
+
+            foreach (var keyValue in allRemainingDifficultyNums)
+                if (keyValue.Value > 0)
+                {
+                    MessageBox.Show("Couldn't generate test with the given number of questions and criteria");
+                    return;
+                }
+
+
+            if (finalQuestions.Count == 0)
             {
+                MessageBox.Show("Choose the number of questions that the exam should contain", "Unable to create exam", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-           
-            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+                
+            if (finalQuestions.Count < QuestionsNumericUpDown.Value)
             {
-                string folderPath = folderBrowserDialog1.SelectedPath;
-                string fileName;
-                if (string.IsNullOrWhiteSpace(textBox1.Text))
-                    fileName = CurrentSubject.Name;
-                else
-                    fileName = textBox1.Text;
+                var userResponse = MessageBox.Show("A maximum of " + finalQuestions.Count + " questions can be generated with the given criteria. " +
+                                "Do you want to generate only " + finalQuestions.Count + " instead of " + QuestionsNumericUpDown.Value + " questions?",
+                                "Not enought questions found", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                // Create exam
-                if (MicrosoftWordManager.CreateExamDocument(CurrentSubject.Name, TestQuestions, folderPath, fileName, Convert.ToInt32(LayoutNumericUpDown.Value)))
-                    MessageBox.Show("Succesfully generated exam!", "Success");
-                else
-                    MessageBox.Show("An error occured during exam generation. " +
-                                    "If the document already exists close any programs that might be using it " +
-                                    "and try again.", "Generation Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (userResponse == DialogResult.Yes)
+                    GenerateWordDocuments(finalQuestions);
             }
+            else
+            {
+                GenerateWordDocuments(finalQuestions);
+            }
+
+            Console.Write("\n\n\nEND\n\n\n");
+
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //if (togglePanelTags.Controls.OfType<NumericUpDown>().All(x => x.Value == 0) && togglePanelDifficulty.Controls.OfType<NumericUpDown>().All(x => x.Value == 0))
+            //{
+            //    for (int i = 0; i < QuestionsNumericUpDown.Value; i++)
+            //    {
+            //        int k = random.Next(0, CurrentSubject.Questions.Count());
+            //        if (!TestQuestions.Contains(CurrentSubject.Questions[k]))
+            //        {
+            //            TestQuestions.Add(CurrentSubject.Questions[k]);
+            //        }
+            //    }
+            //}
+            //else if (!ChooseQuestionsByTagOrDifficulty())
+            //    return;
+
+            //if(ChooseQuestionsByTagOrDifficulty() == false)
+            //{
+            //    return;
+            //}
+
+            //if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            //{
+            //    string folderPath = folderBrowserDialog1.SelectedPath;
+            //    string fileName;
+            //    if (string.IsNullOrWhiteSpace(textBox1.Text))
+            //        fileName = CurrentSubject.Name;
+            //    else
+            //        fileName = textBox1.Text;
+
+            //    // Create exam
+            //    if (MicrosoftWordManager.CreateExamDocument(CurrentSubject.Name, TestQuestions, folderPath, fileName, Convert.ToInt32(LayoutNumericUpDown.Value)))
+            //        MessageBox.Show("Succesfully generated exam!", "Success");
+            //    else
+            //        MessageBox.Show("An error occured during exam generation. " +
+            //                        "If the document already exists close any programs that might be using it " +
+            //                        "and try again.", "Generation Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
 
         }
 
-        
+        private void GenerateWordDocuments(List<Question> finalQuestions)
+        {
+            foreach (Question question in finalQuestions)
+            {
+                Console.WriteLine("---------------------------");
+                Console.WriteLine(question.Body);
+                foreach (string tag in question.Tags)
+                    Console.Write(tag + ", ");
+                Console.WriteLine();
+                Console.WriteLine(question.Difficulty);
+            }
+        }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
